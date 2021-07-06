@@ -109,17 +109,16 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>基于智能规划的海洋数据中心的节能散热优化系统</h2>
+												<h2>智能规划的海洋数据中心的节能散热优化系统</h2>
 												<p>热量传递偏微分方程、牛顿冷却定律、规划算法、优化设计、综合评价</p>
 												<ul class="meta">
 													<li class="icon fa-clock">2021.5.13</li>
 												</ul>
 											</header>
 
-											<section>
-												<span class="image featured"><img src="images/pic05.jpg" alt="" /></span>
+											<section>						
 												<p>
-													随着大数据中心的发展，其占用大量土地资源、冷却消耗大量的电能和冷却水资源等问题日益突出。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着大数据中心的发展，其占用大量土地资源、冷却消耗大量的电能和冷却水资源等问题日益突出。
 													为解决上述问题，本文对海底数据中心进行优化设计，建立了一种基于热传导方程—规划算法的海底数据中心散热优化系统，
 													使其在有限的体积内存放更多的服务器并保证服务器工作过程，并为微软，谷歌，华为等公司的海底数据中心的外壳散热提供设计方案。
 													此项目的海底数据中心可将服务器等互联网设施安装在带有先进冷却功能的海底密闭的压力容器中，用海底复合缆供电，并将数据回传至互联网。
@@ -129,24 +128,56 @@
 											</section>
 
 											<section>
-												<h3>More intriguing information</h3>
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-													justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-													ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-													vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien
-													vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-													Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-													Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.
-												</p>
+												<h3>研制背景及意义</h3>
+												<dl>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;据统计，全球数据中心每年消耗的电量，占全球总电量的2%左右，
+													而其中能源消耗的成本占整个IT行业的30%-50%，特别是电子器件散热所需消耗的能量占比极大。
+													目前，国内大数据中心主要建设在内陆地区，预计2020年大数据中心年经济体量超过3000亿元。
+													但大数据中心建设在陆地上需要占用大量土地，冷却时需要消耗大量的电能和冷却水资源，并花费大量建设成本。
+													由于沿海发达省市数据中心增长迅猛，类似的资源矛盾尤为突出。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海洋数据中心是将服务器等互联网设施安装在带有先进冷却功能的海底密闭的压力容器中，用海底复合缆供电并将数据回传至互联网；
+													海底数据中心通过与海水进行热交换，利用巨量流动海水对互联网设施进行散热，有效节约了能源。
+													海底数据中心对岸上土地占用极少，没有冷却塔，无需淡水消耗，
+													既可以包容海洋牧场、渔业网箱等生态类活动，又可与海上风电、海上石油平台等工业类活动互相服务。
+													将数据中心部署在沿海城市的附近水域可以极大地缩短数据与用户的距离，不仅无需占用陆上资源，还能节约能源消耗，
+													是完全绿色可持续发展的大数据中心解决方案
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而对于海底数据中心，如何在有限的体积内存放更多的服务器且保证服务器工作过程中向海水中正常快速的散热是一项非常有挑战性的问题
+												</dt>
+												</dl>
+												
 											</section>
 
 											<section>
-												<h3>So in conclusion ...</h3>
+												<h3>研究思路</h3>
+												<dl>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路一：为计算海底数据中心所能承载服务器的最大数目，通过分析热量传递过程，加以相关约束条件，建立一种基于热传导方程-目标规划函数模型的海底数据中心最大承载量计算体系，
+													以求各种规格海底数据中心所能容纳服务器的数目。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路二：因海底数据中心是由集装箱和内部服务器等构成，集装箱结构优化对于其散热有着重要的意义，
+													所以本文根据集装箱结构确立综合系数，利用传热管连接并对模型中边界条件和外形结构进行优化，
+													再利用三维仿真、数值分析等方式求得散热量实际优化情况；改进思路一的模型，求出并验证集装箱改进的效果。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路三：因较深的海水具有较低的温度，能取得更好的散热效果，但增大的压力会对集装箱外壳的耐压能力提出更高的要求。
+													所以综合考虑耐腐蚀性、耐压能力、散热能力、性价比几个方面，建立基于改进层次分析法的综合评价体系，对各指标进行评分，进一步在约束条件下求出综合评分最高的材料和设计。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路四：通过研究不同时间段的潮汐和季节导致的海水流涌速度和温度的变化，建立基于因子模型和动态规划的多元时间序列分段模型，
+													来分析潮汐和季节对海地数据中心集装箱散热效果的影响。
+												</dt>
+												<dt align="center"><img src="images/design.jpg" alt=""></dt>
+												</dl>
+											</section>
+											
+											<section>
+												<h3>理论设计与计算</h3>
 												<p>
 													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
 													justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
