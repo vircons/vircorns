@@ -26,7 +26,7 @@
 			<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li class="current"><a href="index.html">Home</a></li>
+						<li class="current"><a href="../index.html">Home</a></li>
 						<li>
 							<a href="#">Project</a>
 							<ul>
@@ -178,21 +178,52 @@
 											
 											<section>
 												<h3>理论设计与计算</h3>
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-													justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-													ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-													vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-													Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-													Phasellus sed nisl vitae.
-												</p>
-												<p>
-													Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-													fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-													Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-												</p>
+												<dl>
+												<h4>1.海底数据中心最大承载量计算体系</h4>
+												<dt align="center"><img src="images/process1.png" alt=""></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.一维化思想:核心是把三位问题一维化，
+													则整个海底数据中心的热量传递模型其实就是一个线性分布的点集，从而通过研究点与点的关系而推论整个圆柱形海底数据中心的实际温度分布情况。
+												</dt>
+												<dt align="center"><img src="images/3-1.png" alt=""></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.热传导方程的确立：利用微元法来建立海底数据中心散热系统的热量传递模型。
+												</dt>
+												<dt align="center"><img src="images/3-2.png" alt=""></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.确立定解条件并建立热量传递模型：首先确立初始条件，
+													然后根据牛顿冷却定律（物体的热流密度与物体温度及周围物体的温度只差成正比）确立边界条件。
+													综上，建立海底数据中心系统热量传递的偏微分方程模型。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.隐式差分方程求解热量传递模型：因热量传递模型是一维偏微分方程用有限元素法的优势不明显，
+													本文采用有限差分法计求解偏微分方程定解问题的数值。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.牛顿冷却定律求解集装箱散热情况：温度高于周围环境的物体向周围媒质传递热量逐渐冷却时的规律为：
+													当物体表面与周围存在温度差时，单位时间从单位面积散失的热量与温度差成正比。
+
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.基于规划算法的服务器数目最优设计模型：为求约束条件下1U服务器的最大数目，
+													我们将目标转化为求服务器集合体的最大体积，基于建立的热量传递模型，利用规划算法建立最优设计模型。
+												</dt>
+												</dl>
+												<dl>
+												<h4>2.海底数据中心结构优化设计</h4>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.基于目标规划的集装箱外形优化设计：基于建立的目标规划模型，我们可以确定以下关系，随着集装箱外壁的增大，服务器集合体中心温度会降低，
+													进一步可以得出，随着随着集装箱外壁的增大，服务器集合体中心温度达到80℃时，其外边界在一维方向上的最大值越大，则其体积最大值越大。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.基于三位仿真—数值分析的翅柱结构散热优化模型：为了实现最大化的散热效果，本文考虑增加翅片结构，自然对流热管散热器翅片的传热过程类似于多个垂直壁面之间的自然对流传热，
+													此外，通过参考他人对翅片特征长度和翅片表面最大温差的分析，本文将散热翅片的自然对流换热近似作为垂直等温或定热流壁面处理。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.基于热量传递-冷却定律的集装箱优化：基于热量传递模型，我们用一个综合系数来衡量不同尺寸散热器，根据集装箱结构确立综合系数，利用传热管连接并对模型中边界条件进行优化；接着，本文根据外壳结构优化设计及三位仿真分析，求得散热量实际优化情况，
+													从而达到在满足服务器集合体中心温度不超过80℃时，服务器集合体的最大体积更大，即服务器最大数目更多。
+												</dt>
+												</dl>
 											</section>
 
 										</article>
