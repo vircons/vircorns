@@ -143,13 +143,13 @@
 											<section>
 												<h2 class="major"><span>目录</span></h2>
 												<dt><h4><a href="#No1">第一章：绪论</a></h4></dt>
-												<dt><h4><a href="#">第二章：线性表</a></h4></dt>
-												<dt><h4><a href="#">第三章：栈和队列</a></h4></dt>
-												<dt><h4><a href="#">第四章：串</a></h4></dt>
-												<dt><h4><a href="#">第五章：树和二叉树</a></h4></dt>
-												<dt><h4><a href="#">第六章：图</a></h4></dt>
-												<dt><h4><a href="#">第七章：查找</a></h4></dt>
-												<dt><h4><a href="#">第八章：排序</a></h4></dt>
+												<dt><h4><a href="#No2">第二章：线性表</a></h4></dt>
+												<dt><h4><a href="#No3">第三章：栈和队列</a></h4></dt>
+												<dt><h4><a href="#No4">第四章：串</a></h4></dt>
+												<dt><h4><a href="#No5">第五章：树和二叉树</a></h4></dt>
+												<dt><h4><a href="#No6">第六章：图</a></h4></dt>
+												<dt><h4><a href="#No7">第七章：查找</a></h4></dt>
+												<dt><h4><a href="#No8">第八章：排序</a></h4></dt>
 											</section>
 								</div>
 							</div>
@@ -171,42 +171,61 @@
 											<section>
 												<h3><div id="No1">第一章：绪论</div></h3>
 												<dl>
-												<dt align="center"><img src="images/Know1.jpg" alt=""></dt>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/DS-1.jpg" alt=""></dt>
+												<dt><b>Q1:数组和链表的区别</b></dt>
 												<dt>
-													Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-													Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-													Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-													consequat etiam lorem ipsum dolor sit amet nullam.
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
+													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
+													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
+												</dt>
+												<dt><b>Q2:树和图的区别</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3>More intriguing information</h3>
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-													justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-													ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-													vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien
-													vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-													Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-													Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.
-												</p>
-												<p>
-													Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-													quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-													Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-													fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-													Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-													rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-													Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-													Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-													Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.
-												</p>
+												<h3><div id="No2">第二章：线性表</div></h3>
+												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/DS-2.jpg" alt=""></dt>
+												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
+													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
+													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
+												</dt>
+												<dt><b>Q2:树和图的区别</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+												</dt>
+												</dl>
 											</section>
 
 											<section>
