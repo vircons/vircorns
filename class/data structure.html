@@ -203,27 +203,49 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-2.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;(1)插入操作
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部插入，时间复杂度为O(1)，
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部插入，时间复杂度为O(n)，
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为n/2，时间复杂度为O(n)。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;(2)删除操作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部删除，时间复杂度为O(1)。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部删除，时间复杂度为O(n)。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n-1)/2，时间复杂度为O(n)。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;(3)按值查找
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：查找的元素在表头，时间复杂度为O(1)。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：查找的元素在表尾或不存在，时间复杂度为O(n)。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n+1)/2，时间复杂度为O(n)。
+												</dt>
+												<dt><b>Q2:顺序存储与链式存储区别</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顺序存储存储密度大，空间利用度高，比链式存储节约空间，存储操作上方便操作，顺序支持随机存取，查找会比较容易
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链式存储插入或删除时方便些，空间使用灵活，但存储密度小，空间利用度低
 												</dt>
 												</dl>
 											</section>
