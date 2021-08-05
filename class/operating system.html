@@ -69,7 +69,7 @@
 								<li>
 									<a href="#">课程小结</a>
 									<ul>
-										<li><a href="#">计算机组成原理</a></li>
+										<li><a href="computer composition principle.html">计算机组成原理</a></li>
 										<li><a href="operating system.html">操作系统</a></li>
 										<li><a href="data structure.html">数据结构</a></li>
 										<li><a href="#">计算机网络</a></li>
@@ -120,14 +120,14 @@
 														<article class="box post-summary">
 															<h3><a href="#">计算机网络</a></h3>
 															<ul class="meta">
-																<li class="icon fa-clock">9 hours ago</li>														</ul>
+																<li class="icon fa-clock">2021.8.8</li>														</ul>
 														</article>
 													</li>
 													<li>
 														<article class="box post-summary">
-															<h3><a href="#">计算机组成原理</a></h3>
+															<h3><a href="computer composition principle.html">计算机组成原理</a></h3>
 															<ul class="meta">
-																<li class="icon fa-clock">Yesterday</li>
+																<li class="icon fa-clock">2021.8.5</li>
 															</ul>
 														</article>
 													</li>
@@ -138,11 +138,11 @@
 										<!-- Something -->
 											<section>
 												<h2 class="major"><span>目录</span></h2>
-												<dt><h4><a href="#No1">第一章</a></h4></dt>
-												<dt><h4><a href="#No2">第二章</a></h4></dt>
-												<dt><h4><a href="#No3">第三章</a></h4></dt>
-												<dt><h4><a href="#No4">第四章</a></h4></dt>
-												<dt><h4><a href="#No5">第五章</a></h4></dt>
+												<dt><h4><a href="#No1">第一章：绪论</a></h4></dt>
+												<dt><h4><a href="#No2">第二章：进程管理</a></h4></dt>
+												<dt><h4><a href="#No3">第三章：内存管理</a></h4></dt>
+												<dt><h4><a href="#No4">第四章：文件管理</a></h4></dt>
+												<dt><h4><a href="#No5">第五章：设备管理</a></h4></dt>
 											</section>
 								</div>
 							</div>
@@ -162,180 +162,257 @@
 											</header>
 
 											<section>
-												<h3><div id="No1">第一章</div></h3>
+												<h3><div id="No1">第一章：绪论</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-1.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/OS-1.jpg" alt=""></dt>
+												<dt><h4>1.1 操作系统的基本概念</h4></dt>
+												<dt><b>操作系统的定义</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作系统是以一组控制和管理计算机硬件和软件资源，合理地对各类作业进行调度，以及方便用户使用的程序的集合
+												</dt>
+												<dt><b>引入操作系统的目的</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供一个计算机用户与计算机硬件系统之间的接口，使计算机系统更易于使用；
+													有效地控制和管理计算机系统中各种硬件和软件资源，使之得到更有效的利用；
+													合理地组织计算机系统的工作流程，以改善系统性能。
+												</dt>
+												<dt><b>操作系统的特征</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发性：并行性是指两个或多个事件在同一时刻发生；
+													而并发性是指两个或多个事件在同一时间间隔内发生。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享性：资源共享是指系统中的硬件和软件资源不再为某个程序所独占，而是供多个用户共同使用。
+													分为两种方式：互斥共享；同时访问。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虚拟性：虚拟是指把一个物理上的实体变为若干个逻辑上的对应物。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异步性：在多道程序环境中，由于资源等因素的限制，系统中的每道程序何时执行、
+													多道程序间的执行顺序以及完成每道程序所需的时间都是不确定的，因而也是不可预知的。
+												</dt>
+												<dt><b>五大基本功能</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;1.处理器管理
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程控制：负责进程的创建、撤销及状态转换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程同步：对并发执行的进程进行协调
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程通信：负责完成进程间的信息交换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程调度：按一定算法进行处理器分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;2.存储器管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存分配：按一定的策略为每道程序分配内存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存保护：保证各程序在自己的内存区域内运行而不相互干扰
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存扩充：为允许大型作业或多作业的运行，必须借助虚拟存储技术去获得增加内存的效果
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;3.设备管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备分配：根据一定的设备分配原则对设备进行分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备传输控制：实现物理的输出/输出操作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备独立性：用户程序中的设备与实际使用的物理设备无关
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;4.文件管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件存储空间的管理：负责对文件存储空间进行管理，包括存储空间的分配与回收等功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目录管理：目录是为方便文件管理而设置的数据结构，它能提供按名存取的功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件操作管理：实现文件的操作，负责完成数据的读写
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件保护：提供文件保护功能，防止文件遭到破坏
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;5.与用户接口
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命令接口：提供一组命令供用户直接或间接控制自己的作业，包括联机命令接口和脱机命令接口
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序接口：也称为系统调用，由系统提供一组系统调用命令供用户程序和其他系统程序调用
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图形接口
+												</dt>
+												<dt><b>操作系统的发展</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;手工操作时期
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;单道批处理系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：多个用户可共享，空闲时间少，易于管理大型重复工作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：安全性差，很难调试且成本高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征:自动性；顺序性；单道性；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;多道批处理系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：资源利用率高、可提高内存和I/O设备利用率、系统吞吐量高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点:作业需要排队、平均周转时间长、无交互能力
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征:多道性；无序性；调度性；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;分时系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：扩大了应用范围，便于共享和交换信息，经济实惠
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：存在可靠性问题、数据通讯问题
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征：多路性；独立性；及时性；交互性
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;实时系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：专用性；实时性；可靠性高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：资源利用率低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用需求:(1)实时控制(2)实时信息处理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;现代操作系统
+												</dt>
+												<dt><b>核心态与用户态</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>核心态与用户态</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No2">第二章：线性表</div></h3>
+												<h3><div id="No2">第二章：进程管理</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-2.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt align="center"><img src="images/OS-2.jpg" alt=""></dt>
+												<dt><b>操作系统的特征</b></dt>
 												<dt>
-													&nbsp;&nbsp;(1)插入操作
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部插入，时间复杂度为O(1)，
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部插入，时间复杂度为O(n)，
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为n/2，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;(2)删除操作
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部删除，时间复杂度为O(1)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部删除，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n-1)/2，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;(3)按值查找
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：查找的元素在表头，时间复杂度为O(1)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：查找的元素在表尾或不存在，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n+1)/2，时间复杂度为O(n)。
-												</dt>
-												<dt><b>Q2:顺序存储与链式存储区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.存取方式：顺序表可以顺序存取，也可以随机存取；链表只能从表头顺序存取元素
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.顺序存取时，逻辑上相邻的元素，对应的物理存储位置也是相邻的；链式存储逻辑上相邻的元素，物理存储位置不一定相邻
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.基本操作，顺序表进行查找操作时较为容易，链式存储进行插入、删除操作时时间复杂度较低
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.空间分配：顺序存储在静态分配情形下，一旦存储空间装满就不能扩充，动态分配时，则需要移动大量元素，且若内存中没有更大块的连续存储空间，则会导致分配失败；
-													链式存储的节点空间只在需要时申请分配，只有内存有空间就可以分配，操作灵活、高效。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No3">第三章：栈和队列</div></h3>
+												<h3><div id="No3">第三章：内存管理</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-3.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/OS-3.jpg" alt=""></dt>
+												<dt><b>操作系统的特征</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 											
 											<section>
-												<h3><div id="No4">第四章：串</div></h3>
+												<h3><div id="No4">第四章：文件管理</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-4.jpg" alt=""></dt>
+												<dt align="center"><img src="images/OS-4.jpg" alt=""></dt>
 												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>操作系统的特征</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 											
 											<section>
-												<h3><div id="No5">第五章：树和二叉树</div></h3>
+												<h3><div id="No5">第五章：设备管理</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-5.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/OS-5.jpg" alt=""></dt>
+												<dt><b>操作系统的特征</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
@@ -444,11 +521,8 @@
 									<section>
 										<h2 class="major"><span>Get in touch</span></h2>
 										<ul class="contact">
-											<li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
-											<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
-											<li><a class="icon brands fa-instagram" href="#"><span class="label">Instagram</span></a></li>
-											<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
-											<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+											<li><a class="icon brands fa-facebook-f" href="https://blog.csdn.net/weixin_43476037"><span class="label">CSDN</span></a></li>
+											<li><a class="icon brands fa-twitter" href="#"><span class="label">Mail</span></a></li>
 										</ul>
 									</section>
 
