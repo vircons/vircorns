@@ -281,10 +281,6 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-4.jpg" alt=""></dt>
-												<dt><b>Q1: </b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
 												</dl>
 											</section>
 											
@@ -293,27 +289,72 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-5.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>Q1:二叉树的性质</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在二叉树的第i层上之多有2^(i-1)个结点
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深度为k的二叉树至多有(2^k)-1个结点
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对任何一棵二叉树T，如果其终端结点数为a，度为2的结点数对b，则a=b+1
 												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
+												<dt><b>Q2:特殊的树</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+													&nbsp;&nbsp;&nbsp;&nbsp;1.AVLtree
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自平衡二叉查找树。在AVL树中任何节点的两个子树的高度最大差别为一，所以它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下都是O（log n）。
+													增加和删除可能需要通过一次或多次树旋转来重新平衡这个树
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用场景：AVL树适合用于插入删除次数比较少，但查找多的情况。插入删除导致很多的旋转，旋转是非常耗时的。AVL 在linux内核的vm area中使用
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;2.二叉搜索树
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;满足的条件：1.非空左子树的所有键值小于其根节点的键值；
+													2.非空右子树的所有键值大于其根节点的键值；3.左右子树都是二叉搜索树
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用场景：如果是没有退化称为链表的二叉树，查找效率就是lgn，效率不错，但是一旦退换称为链表了，要么使用平衡二叉树，或者之后的RB树，因为链表就是线性的查找效率。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;3.红黑树
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个结点要么是红的要么是黑的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根结点是黑的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果一个结点是红的，那么它的两个儿子都是黑的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于任意结点而言，其到叶结点树尾端NIL指针的每条路径都包含相同数目的黑结点
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用场景：广泛用在C++的STL中。如map和set都是用红黑树实现的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;4.B+树
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有n棵子树的节点中含有n个关键字，每个关键字不保存数据，只用来索引，数据都保存在叶子节点。是为文件系统而生的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B+树叶子节点保存了父节点的所有关键字和关键字记录的指针，每个叶子节点的关键字从小到大链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B+树的根节点关键字数量和其子节点个数相等
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B+的非叶子节点只进行数据索引，不会存实际的关键字记录的指针，所有数据地址必须要到叶子节点才能获取到，所以每次数据查询的次数都一样
 												</dt>
 												</dl>
 											</section>
@@ -323,27 +364,12 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-6.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>Q1: </b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
@@ -353,27 +379,12 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-7.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>Q1: </b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
