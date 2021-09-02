@@ -406,11 +406,12 @@
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邻接表的优点是节省空间，只存储实际存在的边。其缺点是关注顶点的度时，就可能需要遍历一个链表
 												</dt>
+												<dt><b>Q2:最小生成树 </b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prim算法首先以一个结点作为最小生成树的初始结点，然后以迭代的方式找出与最小生成树中各结点权重最小边，并加入到最小生成树中。加入之后如果产生回路则跳过这条边，选择下一个结点。时间复杂度为O(n2)。与图中边数无关，该算法适合于稠密图。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kruskal在找最小生成树结点之前，需要对所有权重边做从小到大排序。将排序好的权重边依次加入到最小生成树中，如果加入时产生回路就跳过这条边，加入下一条边。当所有结点都加入到最小生成树中之后，就找出了最小生成树。其时间复杂度为O（eloge）。适合稀疏图
 												</dt>
 												</dl>
 											</section>
@@ -435,27 +436,13 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-8.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt><b>各类排序比较 </b></dt>
+												<dt align="center"><img src="images/DS-8-1.jpg" alt=""></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
@@ -466,108 +453,18 @@
 							</div>
 							<div class="col-12">
 
-								<!-- Features -->
-									<section class="box features">
-										<h2 class="major"><span>A Major Heading</span></h2>
-										<div>
-											<div class="row">
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-															<h3><a href="#">A Subheading</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-															<h3><a href="#">Another Subheading</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-															<h3><a href="#">And Another</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-															<h3><a href="#">And One More</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-12">
-													<ul class="actions">
-														<li><a href="#" class="button large">Do Something</a></li>
-														<li><a href="#" class="button alt large">Think About It</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</section>
-
 			<!-- Footer -->
 				<footer id="footer">
 					<div class="container">
 						<div class="row gtr-200">
 							<div class="col-12">
 
-								<!-- About -->
-									<section>
-										<h2 class="major"><span>What's this about?</span></h2>
-										<p>
-											This is <strong>TXT</strong>, yet another free responsive site template designed by
-											<a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
-											<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
-											whatever you're working on (personal or commercial), just be sure to give us credit for the design.
-											That's basically it :)
-										</p>
-									</section>
-
-							</div>
-							<div class="col-12">
-
 								<!-- Contact -->
 									<section>
 										<h2 class="major"><span>Get in touch</span></h2>
 										<ul class="contact">
-											<li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
-											<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
-											<li><a class="icon brands fa-instagram" href="#"><span class="label">Instagram</span></a></li>
-											<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
-											<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+											<li><a class="icon brands fa-facebook-f" href="https://blog.csdn.net/weixin_43476037"><span class="label">CSDN</span></a></li>
+											<li><a class="icon brands fa-twitter" href="#"><span class="label">Mail</span></a></li>
 										</ul>
 									</section>
 
