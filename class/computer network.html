@@ -40,8 +40,10 @@
 										<li><a href="#">热敏电阻传感器</a></li>
 										<li><a href="#">TCP多线程简易聊天室</a></li>
 										<li><a href="#">物联网感知实习</a></li>
+										<li><a href="#">数据库设计</a></li>
 										<li><a href="#">STM32电子表设计</a></li>
 										<li><a href="#">智能小车自主驾驶</a></li>
+										<li><a href="#">基于STM32和ZigBee的智能控锁系统</a></li>
 									</ul>
 								</li>
 								<li>
@@ -50,6 +52,7 @@
 										<li><a href="#">国赛</a></li>
 										<li><a href="#">美赛</a></li>
 										<li><a href="#">Mathorcup</a></li>
+										<li><a href="#">电工杯</a></li>
 										<li><a href="#">亚太</a></li>
 									</ul>
 								</li>
@@ -58,7 +61,6 @@
 						<li>
 							<a href="#">Study</a>
 							<ul>
-								<li><a href="#">力扣代码</a></li>
 								<li>
 									<a href="#">蓝桥杯</a>
 									<ul>
@@ -77,14 +79,6 @@
 										<li><a href="Machine Learning.html">机器学习</a></li>
 										<li><a href="#">编译原理</a></li>
 										<li><a href="#">算法设计与分析</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="#">网络安全</a>
-									<ul>
-										<li><a href="#">计算机组成原理</a></li>
-										<li><a href="#">操作系统</a></li>
-										<li><a href="#">数据结构</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -165,8 +159,6 @@
 											<section>
 												<h3><div id="No1">第一章：概述</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CN-1.jpg" alt=""></dt>
 												<dt><b>名词解释</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCP/IP：Transmission Control Protocol/Internet Protocol——传输控制协议/网际协议，
@@ -248,8 +240,6 @@
 											<section>
 												<h3><div id="No2">第二章：物理层</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CN-2.jpg" alt=""></dt>
 												<dt><b>物理层的功能</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决0,1的传输
@@ -297,8 +287,6 @@
 											<section>
 												<h3><div id="No3">第三章：数据链路层</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CN-3.jpg" alt=""></dt>
 												<dt><b>数据链路层的功能</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供点到点的链路：为主机/路由器等相邻结点之间提供通过公共或本地介质(或信道)进行（可靠、有效）数据帧传输服务
@@ -357,8 +345,6 @@
 											<section>
 												<h3><div id="No4">第四章：网络层</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CN-4.jpg" alt=""></dt>
 												<dt><b>英文缩写</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ARP：Address Resolution Protocol——地址解析协议，根据IP地址获取物理地址的一个TCP/IP协议
@@ -424,8 +410,6 @@
 											<section>
 												<h3><div id="No5">第五章：运输层</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CN-5.jpg" alt=""></dt>
 												<dt><b>TCP和UDP的比较</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;UDP
@@ -515,7 +499,8 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4)快恢复：快重传配合使用的还有快恢复算法，当发送方连续收到三个重复确认时，就执行“乘法减小”算法，把ssthresh门限减半，但是接下去并不执行慢开始算法：因为如果网络出现拥塞的话就不会收到好几个重复的确认，
 													所以发送方现在认为网络可能没有出现拥塞。所以此时不执行慢开始算法，而是将cwnd设置为ssthresh的大小，然后执行拥塞避免算法
 												</dt>
-												<section>
+											</section>
+											<section>
 												<h3><div id="No6">第六章：应用层</div></h3>
 												<dl>
 												<b>知识框架</b>

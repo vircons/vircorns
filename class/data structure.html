@@ -40,8 +40,10 @@
 										<li><a href="#">热敏电阻传感器</a></li>
 										<li><a href="#">TCP多线程简易聊天室</a></li>
 										<li><a href="#">物联网感知实习</a></li>
+										<li><a href="#">数据库设计</a></li>
 										<li><a href="#">STM32电子表设计</a></li>
 										<li><a href="#">智能小车自主驾驶</a></li>
+										<li><a href="#">基于STM32和ZigBee的智能控锁系统</a></li>
 									</ul>
 								</li>
 								<li>
@@ -50,6 +52,7 @@
 										<li><a href="#">国赛</a></li>
 										<li><a href="#">美赛</a></li>
 										<li><a href="#">Mathorcup</a></li>
+										<li><a href="#">电工杯</a></li>
 										<li><a href="#">亚太</a></li>
 									</ul>
 								</li>
@@ -58,7 +61,6 @@
 						<li>
 							<a href="#">Study</a>
 							<ul>
-								<li><a href="#">力扣代码</a></li>
 								<li>
 									<a href="#">蓝桥杯</a>
 									<ul>
@@ -77,14 +79,6 @@
 										<li><a href="Machine Learning.html">机器学习</a></li>
 										<li><a href="#">编译原理</a></li>
 										<li><a href="#">算法设计与分析</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="#">网络安全</a>
-									<ul>
-										<li><a href="#">计算机组成原理</a></li>
-										<li><a href="#">操作系统</a></li>
-										<li><a href="#">数据结构</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -421,13 +415,6 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/DS-7.jpg" alt=""></dt>
-												<dt><b>Q1: </b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
 												</dl>
 											</section>
 											
@@ -438,11 +425,32 @@
 												<dt align="center"><img src="images/DS-8.jpg" alt=""></dt>
 												<dt><b>各类排序比较 </b></dt>
 												<dt align="center"><img src="images/DS-8-1.jpg" alt=""></dt>
+												<dt><b>Q1:简述快速排序过程</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择一个基准元素,通常选择第一个元素或者最后一个元素
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过一趟排序将待排序的记录分割成独立的两部分，其中一部分记录的元素值均比基准元素值小。另一部分记录的元素值比基准值大
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此时基准元素在其排好序后的正确位置
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后分别对这两部分记录用同样的方法继续进行排序，直到整个序列有序
+												</dt>
+												<dt><b>Q2:快排的优化</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改进1：如果数组近乎有序，标定点的选择会影响快速排序的性能，如果每次都选择最小值作为标定点，快速排序时间复杂度会退化为O(n^{2})，因此需要随机化标定点元素
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改进2：如果数组有大量相同元素，上面的做法会将相同元素分到大于v的区间，会造成两个子区间元素不平衡，所以需要将相等元素平衡地分入两个区间。
+												</dt>
+												<dt><b>Q3:冒泡排序算法的改进 </b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值,我们考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者) , 从而使排序趟数几乎减少了一半
 												</dt>
 												</dl>
 											</section>
