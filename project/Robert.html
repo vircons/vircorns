@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>智能小车自动驾驶</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<div class="logo container">
+						<div>
+							<h1><a href="index.html" id="logo">课设</a></h1>
+							<p>机器人视觉应用</p>
+						</div>
+					</div>
+				</header>
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="../index.html">Home</a></li>
+						<li>
+							<a href="#">Project</a>
+							<ul>
+								<li><a href="energy-conservation.html">节能减排竞赛</a></li>
+								<li><a href="Epidemic prediction system.html">软件杯</a></li>
+								<li>
+									<a href="#">课程设计</a>
+									<ul>
+										<li><a href="Plane Wars.html">飞机大战</a></li>
+										<li><a href="thermistor.html">热敏电阻传感器</a></li>
+										<li><a href="TCP.html">TCP多线程简易聊天室</a></li>
+										<li><a href="Iot awareness.html">物联网感知实习</a></li>
+										<li><a href="database.html">数据库设计</a></li>
+										<li><a href="STM32-clock.html">STM32电子表设计</a></li>
+										<li><a href="Robert.html">智能小车自主驾驶</a></li>
+										<li><a href="STM32-ZigBee.html">基于STM32和ZigBee的智能控锁系统</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">建模比赛</a>
+									<ul>
+										<li><a href="#">国赛</a></li>
+										<li><a href="#">美赛</a></li>
+										<li><a href="#">Mathorcup</a></li>
+										<li><a href="#">电工杯</a></li>
+										<li><a href="#">亚太</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Study</a>
+							<ul>
+								<li>
+									<a href="#">蓝桥杯</a>
+									<ul>
+										<li><a href="#">c/c++组</a></li>
+										<li><a href="#">嵌入式组</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">课程小结</a>
+									<ul>
+										<li><a href="../class/computer composition principle.html">计算机组成原理</a></li>
+										<li><a href="../class/operating system.html">操作系统</a></li>
+										<li><a href="../class/data structure.html">数据结构</a></li>
+										<li><a href="../class/computer network.html">计算机网络</a></li>
+										<li><a href="../class/database.html">数据库</a></li>
+										<li><a href="../class/Machine Learning.html">机器学习</a></li>
+										<li><a href="../class/Fundamentals of Compiling.html">编译原理</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">科研成果</a></li>
+					</ul>
+				</nav>
+				
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="content">
+
+									<!-- Content -->
+
+										<article class="box page-content">
+
+											<header>
+												<h2>智能小车自主驾驶</h2>
+												<ul class="meta">
+													<li class="icon fa-clock">2021.7.1</li>
+												</ul>
+											</header>
+
+											<section>
+												<h3>项目介绍</h3>
+												<dl>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此次系统需要机器人小车的自动驾驶。此次系统主要实现目标为：利用opencv等其他技术实现机器人的自动驾驶，能够成功自动巡线并拐弯，
+												能够识别红绿灯和斑马线并进行响应操作。其模块图如下图所示，其实现的主要功能有：(1)识别车道线；(2)雷达导航；
+												(3)行人检测；(4)红绿灯识别；(5)斑马线识别
+												</dt>
+												<dt align="center"><img src="images/Robert-1.jpg"></dt>
+												<h3>相关技术</h3>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;convertScaleAb：位深转化函数，可将任意类型的数据转化为CV_8UC1
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;warpPerspective：透视变换函数，成像投影到一个新的视平面
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;convertScaleAb
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;convertScaleAb
+												</dt>
+												<h3>车道线cv识别</h3>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.对采集到的图像进行一系列的处理(convertScaleAbs以及warpPerspective)
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.车道线提取，定义HSV三个通道的上限和下限值，提取掩膜
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.将掩膜区域外像素值置为0（黑色）
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.计算掩膜图像的矩
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.判断掩膜区域面积
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.计算掩膜区域中心点坐标
+												</dt>
+												<dt align="center"><img src="images/Robert-2.jpg"></dt>
+												<h3>雷达改进算法</h3>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.传入光达数据数组、目标中心位置、允许的偏移量；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.根据偏移量和中心位置计算起始终止位置；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.根据起始终止位置的情况：起始终止位置都在数组范围内；起始位置小于数组起点；终止位置大于数组终点
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.分别执行对应的代码，求得区间内的最小值，若符合条件则输出位置和距离
+												</dt>
+												<h3>行人检测</h3>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.障碍物检测即进行深度检测
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.利用数组相减的最小值求和求出深度
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.若求和的值过大，则控制停车
+												</dt>
+												<h3>红绿灯识别</h3>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.根据CPU计算能力，配置每3帧图像处理1帧；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.对绿灯的HSV范围进行检测；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.对不同颜色进行计数，以便判断是否能够前进；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.检测掩膜，并进行高斯滤波和腐蚀；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.若连续2帧检测到绿灯，修改变量isGreen为1
+												</dt>
+												<dt align="center"><img src="images/Robert-3.jpg"></dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3>实际效果展示</h3>
+												<dl>
+												<dt align="center"><embed src="images/vedio.mp4" height="1080" width="960"/></dt>
+												</dl>
+											</section>
+										</article>
+								</div>
+							</div>
+							<div class="col-12">
+
+								<!-- Features -->
+									<section class="box features">
+										<h2 class="major"><span>Thank you for your reading</span></h2>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-12">
+								<!-- Contact -->
+									<section>
+										<h2 class="major"><span>Get in touch</span></h2>
+										<ul class="contact">
+											<li><a class="icon brands fa-facebook-f" href="https://blog.csdn.net/weixin_43476037"><span class="label">CSDN</span></a></li>
+											<li><a class="icon brands fa-twitter" href="#"><span class="label">Mail</span></a></li>
+										</ul>
+									</section>
+
+							</div>
+						</div>
+
+						<!-- Copyright -->
+							<div id="copyright">
+								<ul class="menu">
+									<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
