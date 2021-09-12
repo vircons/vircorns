@@ -645,6 +645,35 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在分页存储管理中心，用户作业的地址空间被划分成若干个大小相等的区域，称为页或者页面
 												</dt>
 												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：内存利用率高；实现了离散分配；便于存储访问控制；无外部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：需要硬件支持；内存访问效率下降；共享困难；内部碎片
+												</dt>
+												<dt><b>基本分段存储管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常情况下，一个作业是由多个程序段和数据段组成的，
+													分段存储管理系统中，作业的地址空间由若干个逻辑分段组成，每个分段是一组逻辑意义上相对完整的信息集合，每个分段都有自己的名字，每个分段都从0开始编址，并采用一段连续的地址空间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分段存储是二维的，包括段号和位移
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：便于程序模块化处理和处理变换的数据结构；便于动态链接和共享；无内部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：需要硬件支持；为满足分段的动态增长和减少外碎片，要采用拼接技术；分段的最大尺寸受到可用空间的限制；有外部碎片
+												</dt>
+												<dt><b>分段与分页的区别</b></dt>
+												<dt align="center"><img src="images/OS-3-1.jpg" alt=""></dt>
+												<dt><b>虚拟内存</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												<dt>
