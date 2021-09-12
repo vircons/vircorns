@@ -481,8 +481,72 @@
 													本来其它进程可以有效利用这些时间。在多处理机系统中非常有用。
 													自旋锁的优点是：当期望短时间持有锁时，自旋锁很有用。（小王一直等着别人出来，自己不去睡觉）
 												</dt>
+												<dt><b>管程</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P,V操作分散在用户程序中，系统无法有效的控制和管理，
+													而且P,V操作使用不当还会引起系统的死锁，所以产生了新的进程同步工具-----管程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;基本特征
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局部于管程的数据只能被局部于管程内的过程所访问
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个进程只有通过调用管程内的过程才能进入管程访问共享数据
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每次仅允许一个进程在管程内执行某个内部过程，即进程互斥地通过内部过程进入管程。
+													其他想进入管程的过程必须等待，并阻塞在等待队列
+												</dt>
+												<dt><b>死锁</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统当中存在一组进程，互持有对方所需资源且等待对方资源，无外力作用下，即产生死锁
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;特征/必要条件
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：一个时间内某种资源仅为一个进程所占有
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持有并等待：进程每次申请它所需的一部分资源，在等待分配新资源的同时，进程继续占有已经分配到的资源
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可抢占：进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能由获得该资源的进程自己来释放
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;环路等待：系统中必然存在一条有两个或两个以上的进程组成的循环，其中每一个进程都在等待相邻进程所占用的资源（没有环路就一定不会出现死锁）
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;处理方法
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;1.死锁预防
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;破坏四个必要条件之一
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：由于资源本身固有特性的限制，不太可能通过破坏互斥条件来防止死锁
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持有并等待：方法一：要么持有所有资源，要么不持有任何资源；方法二：每个进程提出新资源申请前，先释放他所有资源
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可抢占：对弈一个已经获得了某些资源的进程，若新的资源请求不能立即满足，则它必须释放所有已经获得的资源，以后需要资源时再重新申请
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;环路等待：有序资源分配法
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;2.死锁避免
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要求操作系统事先得到有关进程申请资源和使用资源的额外信息。确保系统永远不会进入不安全状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;银行家算法
 												</dt>
 												</dl>
 											</section>
@@ -492,12 +556,93 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/OS-3.jpg" alt=""></dt>
-												<dt><b>操作系统的特征</b></dt>
+												<dt><b>概述</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;功能
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存的分配与回收
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址变换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扩充内存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存储保护
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序的链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装入时动态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行时动态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序的装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝对装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可重定位装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;动态运行装入
+												</dt>
+												<dt><b>内部碎片与外部碎片</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部碎片是指已经分配给作业但不能被利用的内存空间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;外部碎片是指系统中还没有分配给作业， 但由于碎片太小而无法分配给申请内存空间的新进程的存储块
+												</dt>
+												<dt><b>连续分配管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;单一连续分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个给操作系统，一个给用户作业
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静态分配，适合单道程序，一旦进入就要等到其结束
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其优点是管理简单，只需要很少的软件和营建支出，且便于用户了解和使用，不存在其他用户干扰的问题；其缺点是只能用于单用户、单任务操作系统，各类资源的利用率都很低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会产生内部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;固定分区分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将内存空间划分成若干个固定大小的分区，每个分区装入一道程序。分区的大小可以不等，但必须事先确定，在运行时不能改变。当有空闲分区是，便从或被队列中选择一个适当大小的作业装入运行。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;动态分区分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在作业进入主存时，根据作业的大小动态地建立分区，并使分区的大小正好满足作业的需要
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：实现了多道程序公用主存；管理方案相对加纳单、不需要更多开销；实现存储保护的手段比较简单
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：主存利用不够充分，存在外部碎片；无法实现多进程共享存储器信息；无法实现主存的扩充，进程地址空间受实际存储空间的限制
+												</dt>
+												<dt><b>基本分页存储管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过允许一个作业存放到许多不相邻接的分区中，可以避免拼接，从而有效解决外部碎片问题
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在分页存储管理中心，用户作业的地址空间被划分成若干个大小相等的区域，称为页或者页面
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
