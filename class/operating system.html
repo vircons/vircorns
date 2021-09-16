@@ -668,17 +668,28 @@
 												<dt align="center"><img src="images/OS-3-1.jpg" alt=""></dt>
 												<dt><b>虚拟内存</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑上扩充内存容量的存储器系统称为虚拟存储器
+												</dt>
+												<dt><b>请求分页管理的优缺点</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：可以离散储存程序，降低了碎片数量；提供虚拟存储器，提高了主存利用率，
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：必须有硬件支持；有些情况上系统会产生抖动现象；程序最后一页仍存在未被利用的部分空间
+												</dt>
+												<dt><b>抖动</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若选用的页面置换算法不合适，可能会出现：刚被淘汰的页面，过后不久又要访问，
+													并且调入不久后又调出，如此反复，使得系统把大部分时间用在了页面的调入调出上，
+													而几乎不能完成任何有效地工作，这种现象称为抖动
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抖动产生的原因是在请求分页系统中的每个进程只能分配到所需全部内存空间的一部分
 												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
+												<dt><b>离散分配管理方式比较</b></dt>
+												<dt align="center"><img src="images/OS-3-2.jpg" alt=""></dt>
+												<dt><b>内存管理方式之间的比较</b></dt>
+												<dt align="center"><img src="images/OS-3-3.jpg" alt=""></dt>
 												</dl>
 											</section>
 											
@@ -687,19 +698,40 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/OS-4.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
-												<dt><b>操作系统的特征</b></dt>
+												<dt><b>文件的基本概念</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在计算机中，大量的数据和信息时通过文件存储和管理的。
+													在用户进行输入、输出中，以文件为基本单位。
+													文件系统负责管理文件，并为用户提供对文件进行存取、共享及保护的方法
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;组成结构(自底向上)
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据项：文件系统中最低级的数据组织形式，包含基本数据项和组合数据项
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录：记录是一组相关的数据项的集合，用于藐视一个对象在某方面的属性
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件：由创建者所定义的一组相关信息的结合，逻辑上可分有结构文件和无结构文件
+												</dt>
+												<dt><b>文件系统的层次结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户接口：操作系统通常使用图形桌面作为一个接口，通过接口操作，像操作系统发出命令；
+													这就是第一层，最抽象的也是最顶层的面对用户的接口，连接的是现实世界与虚拟世界
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件系统目录：通过FCB或索引节点查找目录
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存取控制验证：FCB上有权限信息，需要验证
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;逻辑文件系统与文件信息缓冲区：获得相应文件的逻辑地址，根据相应的策略去找具体的物理地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物理文件系统：底层的实现，分为两部分内容：辅存的分配管理和设备的管理
 												</dt>
 												</dl>
 											</section>
@@ -709,18 +741,132 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/OS-5.jpg" alt=""></dt>
-												<dt><b>操作系统的特征</b></dt>
+												<dt><b>I/O管理的任务和功能</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;设备管理的主要任务是完成用户提出的I/O请求，为用户分配I/O设备，提高I/O设备的利用率，方面用户使用I/O设备
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;为了完成上述任务，设备管理应具备以下功能：
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)设备分配：按照设备类型和相应的分配算法决定将I/O设备分配给哪一个进程
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)设备处理：实现CPU和设备控制器之间的通信
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)缓冲管理：缓和CPU与I/O设备速度不匹配的矛盾
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)设备独立性：应用程序独立于物理设备
+												</dt>
+												<dt><b>设备控制器的功能</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收和识别来自CPU的各种指令
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现CPU与设备控制器、设备控制器与设备之间的数据交换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录设备的状态供CPU查询
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;识别所控制的每个设备的地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对CPU输出的数据或设备向CPU输入的数据进行缓冲
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对输入/输出数据进行差错控制
+												</dt>
+												<dt><b>I/O控制方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序直接控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU不断测试I/O设备
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：简单
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：CPU利用率相当低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当用户需要数据时，由CPU向设备控制器发出启动指令启动外设输入数据。在输入数据同时，CPU可以做其他工作。
+													当输入完成是，设备控制器向CPU发出一个中断信号，CPU接收到中断信号之后，转去执行设备中断处理程序。
+													设备中断处理程序将输入数据寄存器中的数据传送到某一特定内存单元中，供要求输入的进程使用，然后再启动设备去读下一个数据
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：CPU和I/O可以并行工作，打打提高了CPU利用率
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备每输入/输出一个数据，都要请求中断CPU，
+													这样在一次数据传送过程中的中断次数过多，耗费了大量CPU时间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在外设和内存之间开辟直接的数据交换通路
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：设备和CPU可以并行工作，同时设备与内存的数据交换速度加快，且不需要CPU干预
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备都需要一个DMA控制器，当设备增加是，多个DMA控制器使用不经济
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;通道控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与DMA类似，以内存为中心，实现设备与内存直接交换数据的控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通道可分为字节多路通道，数据选择通道和数据多路通道
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：解决了I/O操作的独立性和各部工作的并行性，提高整个系统效率
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：由于需要更多硬件，因此成本更高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;DMA与中断控制方式的区别
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式在每个数据传送完成后中断CPU，而DMA控制方式则是在所要求传送的一批数据全部传送结束时才中断CPU；
+													中断控制方式的数据传送是在中断处理时由CPU控制完成的，而DMA控制方式则是在DMA控制器的控制下完成的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;通道控制与DMA的区别
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式需要CPU来控制所传输数据块的大小、传输的内存，
+													而通道控制方式中由通道来控制管理的；
+													其次，一个DMA控制器对应一台设备与内存传递数据，而一个通道可以控制多态设备与内存的数据交换
+												</dt>
+												<dt><b>假脱机技术(SPOOLing)/b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过共享设备来虚拟独占设备，将独占改造成共享设备，从而提高了设备利用率和系统的效率，该技术称为假脱机技术
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;特点
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提高了I/O速度
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备并没有分配给任何进程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现了虚拟设备功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPOOLing除了是一种速度匹配技术外，也是一种虚拟设备技术
 												</dt>
 												</dl>
 											</section>
