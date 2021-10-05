@@ -19,7 +19,7 @@
 					<div class="logo container">
 						<div>
 							<h1><a href="index.html" id="logo">超重要！</a></h1>
-							<p>数据库系统</p>
+							<p>--数据库--</p>
 						</div>
 					</div>
 				</header>
@@ -85,12 +85,59 @@
 						<li><a href="#">科研成果</a></li>
 					</ul>
 				</nav>
-				
+
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
 						<div class="row">
-							<div class="col-12">
+							<div class="col-3 col-12-medium">
+								<div class="sidebar">
+
+									<!-- Sidebar -->
+
+										<!-- Recent Posts -->
+											<section>
+												<h2 class="major"><span>其他整理</span></h2>
+												<ul class="divided">
+													<li>
+														<article class="box post-summary">
+															<h3><a href="data structure.html">数据结构</a></h3>
+															<ul class="meta">
+																<li class="icon fa-clock">2021.7.30</li>
+															</ul>
+														</article>
+													</li>
+													<li>
+														<article class="box post-summary">
+															<h3><a href="computer network.html">计算机网络</a></h3>
+															<ul class="meta">
+																<li class="icon fa-clock">2021.8.8</li>														</ul>
+														</article>
+													</li>
+													<li>
+														<article class="box post-summary">
+															<h3><a href="computer composition principle.html">计算机组成原理</a></h3>
+															<ul class="meta">
+																<li class="icon fa-clock">2021.8.5</li>
+															</ul>
+														</article>
+													</li>
+												</ul>
+												<a href="../index.html" class="button alt">首页</a>
+											</section>
+
+										<!-- Something -->
+											<section>
+												<h2 class="major"><span>目录</span></h2>
+												<dt><h4><a href="#No1">第一章：绪论</a></h4></dt>
+												<dt><h4><a href="#No2">第二章：进程管理</a></h4></dt>
+												<dt><h4><a href="#No3">第三章：内存管理</a></h4></dt>
+												<dt><h4><a href="#No4">第四章：文件管理</a></h4></dt>
+												<dt><h4><a href="#No5">第五章：设备管理</a></h4></dt>
+											</section>
+								</div>
+							</div>
+							<div class="col-9 col-12-medium imp-medium">
 								<div class="content">
 
 									<!-- Content -->
@@ -98,185 +145,752 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>智能规划的海洋数据中心的节能散热优化系统</h2>
-												<p>热量传递偏微分方程、牛顿冷却定律、规划算法、优化设计、综合评价</p>
+												<h2>数据库-整理</h2>
 												<ul class="meta">
-													<li class="icon fa-clock">2021.5.13</li>
+													<li class="icon fa-clock">2021.8.4</li>
+													<li class="icon fa-comments">by Vircorns</li>
 												</ul>
 											</header>
 
-											<section>						
-												<p>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着大数据中心的发展，其占用大量土地资源、冷却消耗大量的电能和冷却水资源等问题日益突出。
-													为解决上述问题，本文对海底数据中心进行优化设计，建立了一种基于热传导方程—规划算法的海底数据中心散热优化系统，
-													使其在有限的体积内存放更多的服务器并保证服务器工作过程，并为微软，谷歌，华为等公司的海底数据中心的外壳散热提供设计方案。
-													此项目的海底数据中心可将服务器等互联网设施安装在带有先进冷却功能的海底密闭的压力容器中，用海底复合缆供电，并将数据回传至互联网。
-													本系统通过求出各种规格海底数据中心所能容纳服务器的散热情况和温度分布，规划处其可容纳的服务器数目，并分析数据中心的外壁，
-													规划最优材料和结构设计方案，以更好达到其节省陆地资源、节约能源消耗，实现可持续发展的目的
-												</p>
-											</section>
-
 											<section>
-												<h3>研制背景及意义</h3>
+												<h3><div id="No1">第一章：绪论</div></h3>
 												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/OS-1.jpg" alt=""></dt>
+												<dt><h4>1.1 操作系统的基本概念</h4></dt>
+												<dt><b>操作系统的定义</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;据统计，全球数据中心每年消耗的电量，占全球总电量的2%左右，
-													而其中能源消耗的成本占整个IT行业的30%-50%，特别是电子器件散热所需消耗的能量占比极大。
-													目前，国内大数据中心主要建设在内陆地区，预计2020年大数据中心年经济体量超过3000亿元。
-													但大数据中心建设在陆地上需要占用大量土地，冷却时需要消耗大量的电能和冷却水资源，并花费大量建设成本。
-													由于沿海发达省市数据中心增长迅猛，类似的资源矛盾尤为突出。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作系统是以一组控制和管理计算机硬件和软件资源，合理地对各类作业进行调度，以及方便用户使用的程序的集合
+												</dt>
+												<dt><b>引入操作系统的目的</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供一个计算机用户与计算机硬件系统之间的接口，使计算机系统更易于使用；
+													有效地控制和管理计算机系统中各种硬件和软件资源，使之得到更有效的利用；
+													合理地组织计算机系统的工作流程，以改善系统性能。
+												</dt>
+												<dt><b>操作系统的特征</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发性：并行性是指两个或多个事件在同一时刻发生；
+													而并发性是指两个或多个事件在同一时间间隔内发生。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海洋数据中心是将服务器等互联网设施安装在带有先进冷却功能的海底密闭的压力容器中，用海底复合缆供电并将数据回传至互联网；
-													海底数据中心通过与海水进行热交换，利用巨量流动海水对互联网设施进行散热，有效节约了能源。
-													海底数据中心对岸上土地占用极少，没有冷却塔，无需淡水消耗，
-													既可以包容海洋牧场、渔业网箱等生态类活动，又可与海上风电、海上石油平台等工业类活动互相服务。
-													将数据中心部署在沿海城市的附近水域可以极大地缩短数据与用户的距离，不仅无需占用陆上资源，还能节约能源消耗，
-													是完全绿色可持续发展的大数据中心解决方案
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享性：资源共享是指系统中的硬件和软件资源不再为某个程序所独占，而是供多个用户共同使用。
+													分为两种方式：互斥共享；同时访问。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而对于海底数据中心，如何在有限的体积内存放更多的服务器且保证服务器工作过程中向海水中正常快速的散热是一项非常有挑战性的问题
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虚拟性：虚拟是指把一个物理上的实体变为若干个逻辑上的对应物。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异步性：在多道程序环境中，由于资源等因素的限制，系统中的每道程序何时执行、
+													多道程序间的执行顺序以及完成每道程序所需的时间都是不确定的，因而也是不可预知的。
+												</dt>
+												<dt><b>五大基本功能</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;1.处理器管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程控制：负责进程的创建、撤销及状态转换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程同步：对并发执行的进程进行协调
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程通信：负责完成进程间的信息交换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程调度：按一定算法进行处理器分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;2.存储器管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存分配：按一定的策略为每道程序分配内存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存保护：保证各程序在自己的内存区域内运行而不相互干扰
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存扩充：为允许大型作业或多作业的运行，必须借助虚拟存储技术去获得增加内存的效果
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;3.设备管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备分配：根据一定的设备分配原则对设备进行分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备传输控制：实现物理的输出/输出操作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备独立性：用户程序中的设备与实际使用的物理设备无关
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;4.文件管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件存储空间的管理：负责对文件存储空间进行管理，包括存储空间的分配与回收等功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目录管理：目录是为方便文件管理而设置的数据结构，它能提供按名存取的功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件操作管理：实现文件的操作，负责完成数据的读写
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件保护：提供文件保护功能，防止文件遭到破坏
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;5.与用户接口
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命令接口：提供一组命令供用户直接或间接控制自己的作业，包括联机命令接口和脱机命令接口
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序接口：也称为系统调用，由系统提供一组系统调用命令供用户程序和其他系统程序调用
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图形接口
+												</dt>
+												<dt><b>操作系统的发展</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;手工操作时期
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;单道批处理系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：多个用户可共享，空闲时间少，易于管理大型重复工作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：安全性差，很难调试且成本高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征:自动性；顺序性；单道性；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;多道批处理系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：资源利用率高、可提高内存和I/O设备利用率、系统吞吐量高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点:作业需要排队、平均周转时间长、无交互能力
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征:多道性；无序性；调度性；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;分时系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：扩大了应用范围，便于共享和交换信息，经济实惠
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：存在可靠性问题、数据通讯问题
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特征：多路性；独立性；及时性；交互性
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;实时系统
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：专用性；实时性；可靠性高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：资源利用率低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用需求:(1)实时控制(2)实时信息处理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;现代操作系统
+												</dt>
+												<dt><b>核心态与用户态</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;核心态：又称管态、系统态，是操作系统管理程序执行时机器所处的状态。
+													它具有较高的特权，能执行包括特权指令的一切指令，能访问所有寄存器和存储区
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户态：又称目态，是用户程序执行时机器所处的状态。
+													是具有较低特权的执行状态，它只能执行规定的指令，只能访问指定的寄存器和存储区。
+												</dt>
+												<dt><b>微内核结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;优点：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个服务进程运行在独立的用户进程中，即便某个服务器失败或产生问题，也不会引起系统其他服务器和其他组成部分的崩溃，可靠性好
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统具有很好的灵活性，只要接口规范，操作系统可以方便地增删服务功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;便于维护，即修改服务器的代码不会影响系统其他部分
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;适合分布式处理的计算环境
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;缺点：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效率不高，尤其是通信频繁的系统
 												</dt>
 												</dl>
-												
 											</section>
 
 											<section>
-												<h3>研究思路</h3>
+												<h3><div id="No2">第二章：进程管理</div></h3>
 												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/OS-2.jpg" alt=""></dt>
+												<dt><b>进程</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路一：为计算海底数据中心所能承载服务器的最大数目，通过分析热量传递过程，加以相关约束条件，建立一种基于热传导方程-目标规划函数模型的海底数据中心最大承载量计算体系，
-													以求各种规格海底数据中心所能容纳服务器的数目。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是程序在处理器上的一次执行过程
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路二：因海底数据中心是由集装箱和内部服务器等构成，集装箱结构优化对于其散热有着重要的意义，
-													所以本文根据集装箱结构确立综合系数，利用传热管连接并对模型中边界条件和外形结构进行优化，
-													再利用三维仿真、数值分析等方式求得散热量实际优化情况；改进思路一的模型，求出并验证集装箱改进的效果。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是可以和别的进程并行执行的计算
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路三：因较深的海水具有较低的温度，能取得更好的散热效果，但增大的压力会对集装箱外壳的耐压能力提出更高的要求。
-													所以综合考虑耐腐蚀性、耐压能力、散热能力、性价比几个方面，建立基于改进层次分析法的综合评价体系，对各指标进行评分，进一步在约束条件下求出综合评分最高的材料和设计。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是程序在一个数据集合上的运行过程，是系统进行资源分配和调度的一个独立单位
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思路四：通过研究不同时间段的潮汐和季节导致的海水流涌速度和温度的变化，建立基于因子模型和动态规划的多元时间序列分段模型，
-													来分析潮汐和季节对海地数据中心集装箱散热效果的影响。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程可定义为一个数据结构及能在其上进行操作的一个程序
 												</dt>
-												<dt align="center"><img src="images/design.jpg" alt=""></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是一个程序关于某个数据集合在处理器上顺序执行发生的活动7
+												</dt>
+												<dt><b>进程和程序</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是动态的，程序是静止的。进程是程序的执行。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是暂时的，程序是永久的。进程是一个状态变化额过程，程序可以长久保存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程与程序的组成不同。每个进程包含了程序段和数据段以及进程控制块，而程序是有序代码的集合
+												</dt>
+												<dt>0
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序可以产生多个不同进程，一个进程可以执行多个程序。进程可创建其他进程，程序不能形成新的程序
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程具有并行特性，程序则没有
+												</dt>
+												<dt><b>进程的状态与转换</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就绪状态：进程已获得了除处理器以外的所有资源，一旦获得处理器，就可以立即执行，此时进程所处的状态为就绪状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行状态(运行状态)：当一个进程获得毕业的资源并在CPU上执行时，该进程所处的状态为执行态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阻塞状态(等待状态)：正在执行的进程，由于发生某事件而暂时无法执行下去，此时进程所处的状态为阻塞状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建状态：进程正在被创建，尚未转到就绪状态。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结束状态：进程正在从系统中小时，可能是正常结束或其他原因中断退出运行
+												</dt>
+												<dt align="center"><img src="images/OS-21.jpg" alt=""></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就绪状态->执行状态：一个进程被进程调度程序选中
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行状态->阻塞状态：请求并等待某个事件发生
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行状态->就绪状态：时间片用完或在抢占式调度中有更高优先级的进程变为就绪状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阻塞状态->就绪状态：进程因为等待的某个条件发生而被唤醒
+												</dt>
+												<dt><b>三级调度</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;高级调度(作业调度)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从外存的后备队列上选择一个或多个作业调入内存，为它们分配基本的内存和外设资源并建立相应的进程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行频率较低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作业调度每次要接纳多少个作业进入内存取决于多道程序的并发程度，即允许有多少个作业同时在内存中运行
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;中级调度
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引入中级调度是为了提高内存利用率和系统吞吐量，其主要任务是按照给定的原则和策略，
+													将处于外存对换区中的具备运行条件的进程调入内存，并将其状态修改为就绪态，挂在就绪队列上等等；或将处于内存中暂时不能运行的进程交换到外存对换区，将此时的进程状态称为挂起状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;低级调度(进程调度)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按照某种算法从就绪队列中选择一个或多个进程使其获得物理CPU
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是最基本的一种调度，发生的非常频繁，有时是系统中唯一的调度
+												</dt>
+												<dt><b>同步与互斥</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广义同步：竞争资源的多个进程按着特定的顺序执行，目的是使并发执行的进程之间能有效的共享资源和相互合作，从而使程序的执行具有可再现性
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：一组并发进程中的一个或多个程序段，因共享某一公有资源而导致它们必须以一个不允许交叉执行的单位执行
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狭义同步：异步环境下的一组并发进程，因直接制约而互相发送消息而进行相互合作、互相等待，使得各进程按一定的速度执行的过程称为进程间的同步
+												</dt>
+												<dt><b>临界区（互斥区）</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义：在进程中涉及到临界资源的程序段叫临界区
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;临界区三原则
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：临界区内只能有一个进程执行
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前进：如果临界区内没有进程执行且有进程需要进入临界区，则选择进程进入临界区，且选择不能无限推迟
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有限等待：一个进程等待进入临界区的时间是有限的，即保证每个请求进入临界区的进程都能在有限的时间中进入临界区
+												</dt>
+												<dt><b>信号量与自旋锁</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;信号量
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型信号量：一个整型量S，除初始化外，仅能通过标准的原子操作P和V来访问。整型信号量引入了P、V操作，
+													但是在进行P操作时，若无可用资源，则进程持续对该信号量进行测试，存在“忙等”现象，未遵循“让权等待”原则
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录型信号量：为了克服对忙等问题，添加量链表结构，用于链接所有等待该资源的进程；当进程对信号量进行P操作时，若此时无剩余资源可用，则进程自我阻塞，放弃处理器，并插入到等待链表中。
+													当进程对信号量进行V操作时，若链表中仍有等待该资源的进程，则唤醒链表中的第一个等待进程（小王可以去睡觉，等别人唤醒）
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自旋锁
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当一个进程处于临界区时，其它进程持续循环等待（忙等待）。繁忙等待浪费了CPU 周期，
+													本来其它进程可以有效利用这些时间。在多处理机系统中非常有用。
+													自旋锁的优点是：当期望短时间持有锁时，自旋锁很有用。（小王一直等着别人出来，自己不去睡觉）
+												</dt>
+												<dt><b>管程</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P,V操作分散在用户程序中，系统无法有效的控制和管理，
+													而且P,V操作使用不当还会引起系统的死锁，所以产生了新的进程同步工具-----管程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;基本特征
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局部于管程的数据只能被局部于管程内的过程所访问
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个进程只有通过调用管程内的过程才能进入管程访问共享数据
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每次仅允许一个进程在管程内执行某个内部过程，即进程互斥地通过内部过程进入管程。
+													其他想进入管程的过程必须等待，并阻塞在等待队列
+												</dt>
+												<dt><b>死锁</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系统当中存在一组进程，互持有对方所需资源且等待对方资源，无外力作用下，即产生死锁
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;特征/必要条件
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：一个时间内某种资源仅为一个进程所占有
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持有并等待：进程每次申请它所需的一部分资源，在等待分配新资源的同时，进程继续占有已经分配到的资源
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可抢占：进程所获得的资源在未使用完毕之前，不能被其他进程强行夺走，即只能由获得该资源的进程自己来释放
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;环路等待：系统中必然存在一条有两个或两个以上的进程组成的循环，其中每一个进程都在等待相邻进程所占用的资源（没有环路就一定不会出现死锁）
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;处理方法
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;1.死锁预防
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;破坏四个必要条件之一
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互斥：由于资源本身固有特性的限制，不太可能通过破坏互斥条件来防止死锁
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持有并等待：方法一：要么持有所有资源，要么不持有任何资源；方法二：每个进程提出新资源申请前，先释放他所有资源
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可抢占：对弈一个已经获得了某些资源的进程，若新的资源请求不能立即满足，则它必须释放所有已经获得的资源，以后需要资源时再重新申请
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;环路等待：有序资源分配法
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;2.死锁避免
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要求操作系统事先得到有关进程申请资源和使用资源的额外信息。确保系统永远不会进入不安全状态
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;银行家算法
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No3">第三章：内存管理</div></h3>
+												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/OS-3.jpg" alt=""></dt>
+												<dt><b>概述</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内存的分配与回收
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址变换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扩充内存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存储保护
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序的链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装入时动态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行时动态链接
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序的装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝对装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可重定位装入
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;动态运行装入
+												</dt>
+												<dt><b>内部碎片与外部碎片</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部碎片是指已经分配给作业但不能被利用的内存空间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;外部碎片是指系统中还没有分配给作业， 但由于碎片太小而无法分配给申请内存空间的新进程的存储块
+												</dt>
+												<dt><b>连续分配管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;单一连续分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个给操作系统，一个给用户作业
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静态分配，适合单道程序，一旦进入就要等到其结束
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其优点是管理简单，只需要很少的软件和营建支出，且便于用户了解和使用，不存在其他用户干扰的问题；其缺点是只能用于单用户、单任务操作系统，各类资源的利用率都很低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会产生内部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;固定分区分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将内存空间划分成若干个固定大小的分区，每个分区装入一道程序。分区的大小可以不等，但必须事先确定，在运行时不能改变。当有空闲分区是，便从或被队列中选择一个适当大小的作业装入运行。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;动态分区分配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在作业进入主存时，根据作业的大小动态地建立分区，并使分区的大小正好满足作业的需要
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：实现了多道程序公用主存；管理方案相对加纳单、不需要更多开销；实现存储保护的手段比较简单
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：主存利用不够充分，存在外部碎片；无法实现多进程共享存储器信息；无法实现主存的扩充，进程地址空间受实际存储空间的限制
+												</dt>
+												<dt><b>基本分页存储管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过允许一个作业存放到许多不相邻接的分区中，可以避免拼接，从而有效解决外部碎片问题
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在分页存储管理中心，用户作业的地址空间被划分成若干个大小相等的区域，称为页或者页面
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：内存利用率高；实现了离散分配；便于存储访问控制；无外部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：需要硬件支持；内存访问效率下降；共享困难；内部碎片
+												</dt>
+												<dt><b>基本分段存储管理方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常情况下，一个作业是由多个程序段和数据段组成的，
+													分段存储管理系统中，作业的地址空间由若干个逻辑分段组成，每个分段是一组逻辑意义上相对完整的信息集合，每个分段都有自己的名字，每个分段都从0开始编址，并采用一段连续的地址空间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分段存储是二维的，包括段号和位移
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：便于程序模块化处理和处理变换的数据结构；便于动态链接和共享；无内部碎片
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：需要硬件支持；为满足分段的动态增长和减少外碎片，要采用拼接技术；分段的最大尺寸受到可用空间的限制；有外部碎片
+												</dt>
+												<dt><b>分段与分页的区别</b></dt>
+												<dt align="center"><img src="images/OS-3-1.jpg" alt=""></dt>
+												<dt><b>虚拟内存</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑上扩充内存容量的存储器系统称为虚拟存储器
+												</dt>
+												<dt><b>请求分页管理的优缺点</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：可以离散储存程序，降低了碎片数量；提供虚拟存储器，提高了主存利用率，
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：必须有硬件支持；有些情况上系统会产生抖动现象；程序最后一页仍存在未被利用的部分空间
+												</dt>
+												<dt><b>抖动</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若选用的页面置换算法不合适，可能会出现：刚被淘汰的页面，过后不久又要访问，
+													并且调入不久后又调出，如此反复，使得系统把大部分时间用在了页面的调入调出上，
+													而几乎不能完成任何有效地工作，这种现象称为抖动
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抖动产生的原因是在请求分页系统中的每个进程只能分配到所需全部内存空间的一部分
+												</dt>
+												<dt><b>离散分配管理方式比较</b></dt>
+												<dt align="center"><img src="images/OS-3-2.jpg" alt=""></dt>
+												<dt><b>内存管理方式之间的比较</b></dt>
+												<dt align="center"><img src="images/OS-3-3.jpg" alt=""></dt>
 												</dl>
 											</section>
 											
 											<section>
-												<h3>理论设计与计算</h3>
+												<h3><div id="No4">第四章：文件管理</div></h3>
 												<dl>
-												<h4>1.海底数据中心最大承载量计算体系</h4>
-												<dt align="center"><img src="images/process1.png" alt=""></dt>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/OS-4.jpg" alt=""></dt>
+												<dt><b>文件的基本概念</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.一维化思想:核心是把三位问题一维化，
-													则整个海底数据中心的热量传递模型其实就是一个线性分布的点集，从而通过研究点与点的关系而推论整个圆柱形海底数据中心的实际温度分布情况。
-												</dt>
-												<dt align="center"><img src="images/3-1.png" alt=""></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.热传导方程的确立：利用微元法来建立海底数据中心散热系统的热量传递模型。
-												</dt>
-												<dt align="center"><img src="images/3-2.png" alt=""></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.确立定解条件并建立热量传递模型：首先确立初始条件，
-													然后根据牛顿冷却定律（物体的热流密度与物体温度及周围物体的温度只差成正比）确立边界条件。
-													综上，建立海底数据中心系统热量传递的偏微分方程模型。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在计算机中，大量的数据和信息时通过文件存储和管理的。
+													在用户进行输入、输出中，以文件为基本单位。
+													文件系统负责管理文件，并为用户提供对文件进行存取、共享及保护的方法
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.隐式差分方程求解热量传递模型：因热量传递模型是一维偏微分方程用有限元素法的优势不明显，
-													本文采用有限差分法计求解偏微分方程定解问题的数值。
+													&nbsp;&nbsp;&nbsp;&nbsp;组成结构(自底向上)
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.牛顿冷却定律求解集装箱散热情况：温度高于周围环境的物体向周围媒质传递热量逐渐冷却时的规律为：
-													当物体表面与周围存在温度差时，单位时间从单位面积散失的热量与温度差成正比。
-
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据项：文件系统中最低级的数据组织形式，包含基本数据项和组合数据项
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.基于规划算法的服务器数目最优设计模型：为求约束条件下1U服务器的最大数目，
-													我们将目标转化为求服务器集合体的最大体积，基于建立的热量传递模型，利用规划算法建立最优设计模型。
-												</dt>
-												</dl>
-												<dl>
-												<h4>2.海底数据中心结构优化设计</h4>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.基于目标规划的集装箱外形优化设计：基于建立的目标规划模型，我们可以确定以下关系，随着集装箱外壁的增大，服务器集合体中心温度会降低，
-													进一步可以得出，随着随着集装箱外壁的增大，服务器集合体中心温度达到80℃时，其外边界在一维方向上的最大值越大，则其体积最大值越大。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录：记录是一组相关的数据项的集合，用于藐视一个对象在某方面的属性
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.基于三位仿真—数值分析的翅柱结构散热优化模型：为了实现最大化的散热效果，本文考虑增加翅片结构，自然对流热管散热器翅片的传热过程类似于多个垂直壁面之间的自然对流传热，
-													此外，通过参考他人对翅片特征长度和翅片表面最大温差的分析，本文将散热翅片的自然对流换热近似作为垂直等温或定热流壁面处理。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件：由创建者所定义的一组相关信息的结合，逻辑上可分有结构文件和无结构文件
+												</dt>
+												<dt><b>文件系统的层次结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户接口：操作系统通常使用图形桌面作为一个接口，通过接口操作，像操作系统发出命令；
+													这就是第一层，最抽象的也是最顶层的面对用户的接口，连接的是现实世界与虚拟世界
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.基于热量传递-冷却定律的集装箱优化：基于热量传递模型，我们用一个综合系数来衡量不同尺寸散热器，根据集装箱结构确立综合系数，利用传热管连接并对模型中边界条件进行优化；接着，本文根据外壳结构优化设计及三位仿真分析，求得散热量实际优化情况，
-													从而达到在满足服务器集合体中心温度不超过80℃时，服务器集合体的最大体积更大，即服务器最大数目更多。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件系统目录：通过FCB或索引节点查找目录
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.基于热量传递模型的材料优化设计：基于热量传递模型对多种抗压耐腐蚀材料进行热力分析，求出其最大服务器承载量。根据对应的热量分布图、材料导热系数和牛顿冷却定律，
-													本文求出上述各材料的传热性能及服务器最大承载量。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存取控制验证：FCB上有权限信息，需要验证
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.基于改进层次分析法的材料模糊综合评价体系：根据所研究评价体系的实际情况，从耐压能力、耐腐蚀性、散热效果、成本等角度，建立模糊综合评价的评价指标体系，由个评价指标的样本数据建立单评价指标的相对隶属度的模糊评价矩阵。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;逻辑文件系统与文件信息缓冲区：获得相应文件的逻辑地址，根据相应的策略去找具体的物理地址
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.模型求解与材料评价：层次分析法中构造判断矩阵的方法是一致矩阵法，即，不把所有因素放在一起比较，而是两两相互比较；对此时采用相对尺度，以尽可能减少性质不同因素相互比较的困难，以提高准确度。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物理文件系统：底层的实现，分为两部分内容：辅存的分配管理和设备的管理
 												</dt>
 												</dl>
 											</section>
+											
 											<section>
-												<h3>创新点</h3>
+												<h3><div id="No5">第五章：设备管理</div></h3>
 												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/OS-5.jpg" alt=""></dt>
+												<dt><b>I/O管理的任务和功能</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新一:本文通过分析热量传递过程，在体积和温度等约束下以集装箱可容纳服务器数目最大为目标函数，建立了给予热量传递方程的目标规划函数，并对实际模型做出合理简化，以服务器温度不超过80℃，服务器集合体体积小于集装箱体积为约束条件，
-													以服务器数目最大为目标函数建立规划模型，求得服务器最大数目。
+													&nbsp;&nbsp;&nbsp;&nbsp;设备管理的主要任务是完成用户提出的I/O请求，为用户分配I/O设备，提高I/O设备的利用率，方面用户使用I/O设备
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新二:本文根据实际设计和优化集装箱结构，以达到在满足体积和温度约束条件下，服务器最大数目更多，并进行了验证。根据集装箱结构确立综合系数，利用传热管连接并对模型中边界条件进行优化。并优化外形和结构，利用三维仿真、数值分析等方式求得散热量实际优化情况；
-													求出并验证集装箱改进的效果：在相同温度约束条件下，改进设计的集装箱对服务器容纳量提高39.1%。
+													&nbsp;&nbsp;&nbsp;&nbsp;为了完成上述任务，设备管理应具备以下功能：
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新三:本文综合考虑耐腐蚀性、耐压能力、散热能力、性价比几个方面，建立基于改进层次分析法的综合评价体系，对各指标进行评分，进一步在约束条件下求出综合评分最高的材料和设计。考虑到海水会腐蚀金属制品的结构，以及深海存在更大的压力，故以耐腐蚀的材料为第一目标，以耐压性能设为第二目标最后，
-													本文根据第一二目标选择合适的材料并对海底深度进行优化设计，并建立基于改进层次分析法的综合评价体系，求出最优设计和方案。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)设备分配：按照设备类型和相应的分配算法决定将I/O设备分配给哪一个进程
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新四:本文通过研究不同时间段的潮汐和季节导致的海水流涌速度和温度的变化，建立基于因子模型和动态规划的多元时间序列分段模型，来分析潮汐和季节对海地数据中心集装箱散热效果的影响。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)设备处理：实现CPU和设备控制器之间的通信
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新五:建立模型时依据的物理规律明确切合实际，在处理集装箱外壁与海水层时联系具体，将海水层视为低温恒温热源，进而根据牛顿冷却定律得到方程的第三类边界条件。并且，本文在模型改进中考虑了服务器之间的传热体系，使得模型更加符合实际。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)缓冲管理：缓和CPU与I/O设备速度不匹配的矛盾
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创新六:在求解偏微分方程定解问题的数值解时，采用有限差分法，计算方便且优势明显。在热量传递模型的求解过程中，隐形差分格式采用追赶法，将三对角矩阵分解成两个对角阵，简化运算程序，加快计算速度。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)设备独立性：应用程序独立于物理设备
+												</dt>
+												<dt><b>设备控制器的功能</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收和识别来自CPU的各种指令
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现CPU与设备控制器、设备控制器与设备之间的数据交换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录设备的状态供CPU查询
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;识别所控制的每个设备的地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对CPU输出的数据或设备向CPU输入的数据进行缓冲
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对输入/输出数据进行差错控制
+												</dt>
+												<dt><b>I/O控制方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;程序直接控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU不断测试I/O设备
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：简单
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：CPU利用率相当低
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当用户需要数据时，由CPU向设备控制器发出启动指令启动外设输入数据。在输入数据同时，CPU可以做其他工作。
+													当输入完成是，设备控制器向CPU发出一个中断信号，CPU接收到中断信号之后，转去执行设备中断处理程序。
+													设备中断处理程序将输入数据寄存器中的数据传送到某一特定内存单元中，供要求输入的进程使用，然后再启动设备去读下一个数据
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：CPU和I/O可以并行工作，打打提高了CPU利用率
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备每输入/输出一个数据，都要请求中断CPU，
+													这样在一次数据传送过程中的中断次数过多，耗费了大量CPU时间
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在外设和内存之间开辟直接的数据交换通路
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：设备和CPU可以并行工作，同时设备与内存的数据交换速度加快，且不需要CPU干预
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备都需要一个DMA控制器，当设备增加是，多个DMA控制器使用不经济
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;通道控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与DMA类似，以内存为中心，实现设备与内存直接交换数据的控制方式
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通道可分为字节多路通道，数据选择通道和数据多路通道
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：解决了I/O操作的独立性和各部工作的并行性，提高整个系统效率
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：由于需要更多硬件，因此成本更高
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;DMA与中断控制方式的区别
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式在每个数据传送完成后中断CPU，而DMA控制方式则是在所要求传送的一批数据全部传送结束时才中断CPU；
+													中断控制方式的数据传送是在中断处理时由CPU控制完成的，而DMA控制方式则是在DMA控制器的控制下完成的
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;通道控制与DMA的区别
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式需要CPU来控制所传输数据块的大小、传输的内存，
+													而通道控制方式中由通道来控制管理的；
+													其次，一个DMA控制器对应一台设备与内存传递数据，而一个通道可以控制多态设备与内存的数据交换
+												</dt>
+												<dt><b>假脱机技术(SPOOLing)</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过共享设备来虚拟独占设备，将独占改造成共享设备，从而提高了设备利用率和系统的效率，该技术称为假脱机技术
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;特点
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提高了I/O速度
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备并没有分配给任何进程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现了虚拟设备功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPOOLing除了是一种速度匹配技术外，也是一种虚拟设备技术
 												</dt>
 												</dl>
 											</section>
+											
+
 										</article>
 
 								</div>
 							</div>
-							<div class="col-12">
-
-								<!-- Features -->
-									<section class="box features">
-										<h2 class="major"><span>Thank you for your reading</span></h2>
-									</section>
-
-							</div>
+							
 						</div>
 					</div>
 				</section>
-
 			<!-- Footer -->
 				<footer id="footer">
 					<div class="container">
 						<div class="row gtr-200">
 							<div class="col-12">
+
 								<!-- Contact -->
 									<section>
-										<h2 class="major"><span>Get in touch</span></h2>
+										<h2 class="major"><span>More</span></h2>
 										<ul class="contact">
-											<li><a class="icon brands fa-facebook-f" href="https://blog.csdn.net/weixin_43476037"><span class="label">CSDN</span></a></li>
-											<li><a class="icon brands fa-twitter" href="#"><span class="label">Mail</span></a></li>
+											<li><a href="https://blog.csdn.net/weixin_43476037"><img src="images/csdn.jpg" alt=""><span class="label"></span></a></li>
 										</ul>
 									</section>
 
@@ -292,7 +906,6 @@
 
 					</div>
 				</footer>
-
 		</div>
 
 		<!-- Scripts -->
