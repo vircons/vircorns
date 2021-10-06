@@ -41,7 +41,6 @@
 										<li><a href="../project/TCP.html">TCP多线程简易聊天室</a></li>
 										<li><a href="../project/Iot awareness.html">物联网感知实习</a></li>
 										<li><a href="../project/database.html">数据库设计</a></li>
-										<li><a href="../project/STM32-clock.html">STM32电子表设计</a></li>
 										<li><a href="../project/Robert.html">智能小车自主驾驶</a></li>
 										<li><a href="../project/STM32-ZigBee.html">基于STM32和ZigBee的智能控锁系统</a></li>
 									</ul>
@@ -77,7 +76,6 @@
 										<li><a href="computer network.html">计算机网络</a></li>
 										<li><a href="database.html">数据库</a></li>
 										<li><a href="Machine Learning.html">机器学习</a></li>
-										<li><a href="Fundamentals of Compiling.html">编译原理</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -136,7 +134,6 @@
 												<dt><h4><a href="#No5">第五章：数据库完整性</a></h4></dt>
 												<dt><h4><a href="#No6">第六章：关系数据理论</a></h4></dt>
 												<dt><h4><a href="#No7">第七章：数据库设计</a></h4></dt>
-												<dt><h4><a href="#No8">第八章：数据库编程</a></h4></dt>
 												<dt><h4><a href="#No9">第九章：关系查询处理和查询优化</a></h4></dt>
 												<dt><h4><a href="#No10">第十章：数据库恢复技术</a></h4></dt>
 												<dt><h4><a href="#No11">第十一章：并发控制</a></h4></dt>
@@ -207,215 +204,354 @@
 											</section>
 
 											<section>
-												<h3><div id="No2">第二章：进程管理</div></h3>
+												<h3><div id="No2">第二章：关系数据库</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/OS-2.jpg" alt=""></dt>
-												<dt><b>进程</b></dt>
+												<dt><b>关系的三种类型</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基本关系、查询表、视图表
+												</dt>
+												<dt><b>关系的两个不变性</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体完整性和参照完整性
+												</dt>
+												<dt><b>参照完整性规则</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若属性F是基本关系R的外码，它与基本关系S的主码相对应，则对于R中每个元组在F上值需为
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空值（F中每个属性均空值）
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;等于S中某个元组的主码值
+												</dt>
+												<dt><b>关系模型的三个组成部分</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关系数据结构、关系操作集合、关系完整性约束
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No3">第三章：内存管理</div></h3>
+												<h3><div id="No3">第三章：SQL</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/OS-3.jpg" alt=""></dt>
-												<dt><b>概述</b></dt>
+												<dt><b>模式定义</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREATE SCHEMA <模式名> AUTHORIZATION <用户名>
+												</dt>
+												<dt><b>修改</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALTER TABLE <表名> ADD/DROP
+												</dt>
+												<dt><b>相关子查询和非相关子查询</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非相关子查询是独立于外部查询的子查询，子查询总共执行一次，执行完毕后将值传递给外部查询
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相关子查询的执行依赖于外部查询的数据，外部查询执行一行，子查询就执行一次
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此非相关子查询比相关子查询效率高
+												</dt>
+												<dt><b>视图</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从一个或几个基本表导出的表，是基本表或视图产生的虚表
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;优点
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简化用户操作
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用户能以多种角度看待同一数据
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对重构数据库提供了一定程度的逻辑独立性
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对机密数据提供安全保护
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;适当利用视图可以更清晰地表达查询
 												</dt>
 												</dl>
 											</section>
 											
 											<section>
-												<h3><div id="No4">第四章：文件管理</div></h3>
+												<h3><div id="No4">第四章：数据库安全性</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/OS-4.jpg" alt=""></dt>
-												<dt><b>文件的基本概念</b></dt>
+												<dt><b>基本概念</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在计算机中，大量的数据和信息时通过文件存储和管理的。
-													在用户进行输入、输出中，以文件为基本单位。
-													文件系统负责管理文件，并为用户提供对文件进行存取、共享及保护的方法
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库的安全性：保护数据库以防止不合法使用所造成的数据泄露、更改和破坏
+												</dt>
+												<dt><b>不安全因素</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非授权用户对数据库的恶意存取和破坏
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;组成结构(自底向上)
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库中重要或敏感的数据被泄露
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据项：文件系统中最低级的数据组织形式，包含基本数据项和组合数据项
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全环境的脆弱性
+												</dt>
+												<dt><b>数据库安全性的控制方法</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户身份鉴别
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录：记录是一组相关的数据项的集合，用于藐视一个对象在某方面的属性
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存取权限控制
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件：由创建者所定义的一组相关信息的结合，逻辑上可分有结构文件和无结构文件
-												</dt>
-												<dt><b>文件系统的层次结构</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户接口：操作系统通常使用图形桌面作为一个接口，通过接口操作，像操作系统发出命令；
-													这就是第一层，最抽象的也是最顶层的面对用户的接口，连接的是现实世界与虚拟世界
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审计
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件系统目录：通过FCB或索引节点查找目录
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;视图机制
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存取控制验证：FCB上有权限信息，需要验证
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据加密
+												</dt>
+												<dt><b>敏感度标记</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝密TS、机密S、可信C、公开P
+												</dt>
+												<dt><b>自主存取控制方法</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义各个用户对不同数据对象的存取权限。
+													当用户对数据库访问时，首先检查用户的存取权限。防止不合法用户对数据库的存取
+												</dt>
+												<dt><b>强制存取控制方法</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个数据对象被（强制地）标以一定的密级，
+													每一个用户也被（强制地）授予某一个级别的许可证。系统规定只有具有某一许可证级别的用户才能存取某一密级的数据对象
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;逻辑文件系统与文件信息缓冲区：获得相应文件的逻辑地址，根据相应的策略去找具体的物理地址
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主体是系统活动实体，既包括DBMS所管理的实际用户，也包括代表用户的各进程
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物理文件系统：底层的实现，分为两部分内容：辅存的分配管理和设备的管理
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客体是系统中的被动实体，是受主体操纵的，包括文件、基本表、索引、视图等
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主体的敏感度标记称为许可证级别，客体的敏感度标记称为密级
 												</dt>
 												</dl>
 											</section>
 											
 											<section>
-												<h3><div id="No5">第五章：设备管理</div></h3>
+												<h3><div id="No5">第五章：数据库完整性</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/OS-5.jpg" alt=""></dt>
-												<dt><b>I/O管理的任务和功能</b></dt>
+													<dt><b>数据库完整性</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据的正确性和相容性
+													</dt>
+													<dt><b>数据库的完整性与安全性的区别和联系</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前者是为了防止数据库中存在不符合语义的数据，防止错误信息的输入和输出，即所谓垃圾进垃圾出所造成的无效操作和错误结果
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后者是保护数据库防止恶意的破坏和非法的存取。
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全性措施防范对象是非法用户和非法操作，完整性措施的防范对象是不合语义的数据
+													</dt>
+													<dt><b>为维护数据库完整性，数据库管理系统必须能够实现如下功能</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义功能：提供定义完整性约束条件的机制
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检查功能：提供完整性检查的方法
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;违约处理功能：进行违约处理
+													</dt>
+													<dt><b>触发器</b></dt>
+													<dt><pre>
+	CREATE TRIGGER <触发器名> 
+	BEFORE|AFTER <触发事件（SELECT,UPDATE）> ON <表名>
+	REFERENCING NEW|OLD ROW AS <变量>
+	FOR EACH {ROW|STATEMENT}
+	BEGIN
+		……
+	END 														
+													</pre></dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No6">第六章：关系数据理论</div></h3>
+												<dl>
+													<dt><b>最小函数依赖集满足</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;右部单属性
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不存在冗余函数依赖
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不存在冗余决定属性
+													</dt>
+													<dt><b>范式</b></dt>
+													<dt><pre>
+			1NF
+	消除非主属性对码的部分函数依赖
+			2NF
+	消除非主属性对码的传递函数依赖
+			3NF
+	消除主属性对码的部分和传递函数依赖
+			BCNF
+	消除非平凡且非函数依赖的多值依赖
+			4NF
+													</pre></dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No7">第七章：数据库设计</div></h3>
+												<dl>
+													<dt><b>数据库设计基本步骤</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需求分析
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;概念模型设计阶段（概念模型）（E-R图）
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;逻辑结构设计阶段（某种数据模型）（在基本表基础上建立必要的视图，形成数据的外模式）
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物理结构设计阶段（物理存储安排）（建立索引，形成数据库内模式）
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库实施阶段
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库运行和维护阶段
+													</dt>
+													<dt><b>数据字典</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库中关于数据的描述而不是数据本身。 在需求分析阶段建立，在数据库设计过程中不断修改、充实和完善。
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;内容
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据项
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据结构
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据流
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据存储
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;处理过程
+													</dt>
+													<dt><b>ER图冲突</b></dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;属性冲突
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命名冲突
+													</dt>
+													<dt>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结构冲突
+													</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No9">第九章：关系查询处理和查询优化</div></h3>
+												<dl>
+												<dt><b>查询优化</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;设备管理的主要任务是完成用户提出的I/O请求，为用户分配I/O设备，提高I/O设备的利用率，方面用户使用I/O设备
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可分为代数优化（逻辑优化）和物理优化（非代数优化）
+												</dt>
+												<dt><b>查询处理步骤</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询分析、查询检查、查询优化、查询执行
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No10">第十章：数据库恢复技术</div></h3>
+												<dl>
+												<dt><b>恢复的基本原理：冗余</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建立冗余数据最常用的技术：数据转储和登记日志文件
+												</dt>
+												<dt><b>日志文件</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用来记录事务对数据库的更新操作的文件
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;为了完成上述任务，设备管理应具备以下功能：
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置日志文件的目的：进行事务故障恢复、系统故障恢复，协助后备副本进行介质故障恢复
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)设备分配：按照设备类型和相应的分配算法决定将I/O设备分配给哪一个进程
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为保证数据库是可恢复的，登记日志文件必须遵循两条原则
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)设备处理：实现CPU和设备控制器之间的通信
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													登记的次序严格按并发事务执行的时间次序
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)缓冲管理：缓和CPU与I/O设备速度不匹配的矛盾
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													必须先写日志文件，后写数据库
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No11">第十一章：并发控制</div></h3>
+												<dl>
+												<dt><b>基础</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事务是并发控制的基本单位
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)设备独立性：应用程序独立于物理设备
-												</dt>
-												<dt><b>设备控制器的功能</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收和识别来自CPU的各种指令
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为保证事务的隔离性和一致性，数据库管理系统需要对并发操作进行正确调度
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现CPU与设备控制器、设备控制器与设备之间的数据交换
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发操作带来的不一致性包括丢失修改、不可重复读和读“脏”数据
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录设备的状态供CPU查询
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发控制的主要技术有封锁、时间戳、乐观控制法和多版本并发控制
+												</dt>
+												<dt><b>封锁协议</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一级封锁协议：事务T在修改数据R之前必须先对其加X锁，直到事务结束才释放
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;识别所控制的每个设备的地址
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二级封锁协议：在一级封锁协议基础上增加，事务T在读取数据R之前必须先对其加S锁，读完后即可释放S锁
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对CPU输出的数据或设备向CPU输入的数据进行缓冲
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三级封锁协议：在一级封锁协议基础上增加，事务T在读取数据R之前必须先对其加S锁，直到事务结束才释放
+												</dt>
+												<dt><b>死锁</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;预防死锁：一次封锁法，顺序封锁法
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对输入/输出数据进行差错控制
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;诊断死锁：超时法，事务等待图法
 												</dt>
-												<dt><b>I/O控制方式</b></dt>
+												<dt><b>正确调度：可串行化调度</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;程序直接控制方式
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可串行化调度：多个事务并发执行是正确的，当且仅当其结果与按某一次序串行地执行这些事务时的结果相同
 												</dt>
+												<dt><b>两段锁协议</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU不断测试I/O设备
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：简单
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事务必须分两个阶段对数据项加锁和解锁。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：CPU利用率相当低
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在对任何数据进行读、写之前，首先要申请对该数据封锁
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在释放一个封锁后，事务不再申请和获得任何其他锁
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当用户需要数据时，由CPU向设备控制器发出启动指令启动外设输入数据。在输入数据同时，CPU可以做其他工作。
-													当输入完成是，设备控制器向CPU发出一个中断信号，CPU接收到中断信号之后，转去执行设备中断处理程序。
-													设备中断处理程序将输入数据寄存器中的数据传送到某一特定内存单元中，供要求输入的进程使用，然后再启动设备去读下一个数据
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：CPU和I/O可以并行工作，打打提高了CPU利用率
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备每输入/输出一个数据，都要请求中断CPU，
-													这样在一次数据传送过程中的中断次数过多，耗费了大量CPU时间
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在外设和内存之间开辟直接的数据交换通路
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：设备和CPU可以并行工作，同时设备与内存的数据交换速度加快，且不需要CPU干预
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：每台设备都需要一个DMA控制器，当设备增加是，多个DMA控制器使用不经济
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;通道控制方式
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与DMA类似，以内存为中心，实现设备与内存直接交换数据的控制方式
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通道可分为字节多路通道，数据选择通道和数据多路通道
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：解决了I/O操作的独立性和各部工作的并行性，提高整个系统效率
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：由于需要更多硬件，因此成本更高
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;DMA与中断控制方式的区别
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断控制方式在每个数据传送完成后中断CPU，而DMA控制方式则是在所要求传送的一批数据全部传送结束时才中断CPU；
-													中断控制方式的数据传送是在中断处理时由CPU控制完成的，而DMA控制方式则是在DMA控制器的控制下完成的
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;通道控制与DMA的区别
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DMA控制方式需要CPU来控制所传输数据块的大小、传输的内存，
-													而通道控制方式中由通道来控制管理的；
-													其次，一个DMA控制器对应一台设备与内存传递数据，而一个通道可以控制多态设备与内存的数据交换
-												</dt>
-												<dt><b>假脱机技术(SPOOLing)</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过共享设备来虚拟独占设备，将独占改造成共享设备，从而提高了设备利用率和系统的效率，该技术称为假脱机技术
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;特点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提高了I/O速度
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设备并没有分配给任何进程
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实现了虚拟设备功能
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPOOLing除了是一种速度匹配技术外，也是一种虚拟设备技术
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一阶段是获得封锁（扩展阶段），第二阶段是释放封锁（收缩阶段）
 												</dt>
 												</dl>
 											</section>
