@@ -41,7 +41,6 @@
 										<li><a href="../project/TCP.html">TCP多线程简易聊天室</a></li>
 										<li><a href="../project/Iot awareness.html">物联网感知实习</a></li>
 										<li><a href="../project/database.html">数据库设计</a></li>
-										<li><a href="../project/STM32-clock.html">STM32电子表设计</a></li>
 										<li><a href="../project/Robert.html">智能小车自主驾驶</a></li>
 										<li><a href="../project/STM32-ZigBee.html">基于STM32和ZigBee的智能控锁系统</a></li>
 									</ul>
@@ -77,7 +76,6 @@
 										<li><a href="computer network.html">计算机网络</a></li>
 										<li><a href="database.html">数据库</a></li>
 										<li><a href="Machine Learning.html">机器学习</a></li>
-										<li><a href="Fundamentals of Compiling.html">编译原理</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -129,11 +127,15 @@
 										<!-- Something -->
 											<section>
 												<h2 class="major"><span>目录</span></h2>
-												<dt><h4><a href="#No1">第一章：绪论</a></h4></dt>
-												<dt><h4><a href="#No2">第二章：进程管理</a></h4></dt>
-												<dt><h4><a href="#No3">第三章：内存管理</a></h4></dt>
-												<dt><h4><a href="#No4">第四章：文件管理</a></h4></dt>
-												<dt><h4><a href="#No5">第五章：设备管理</a></h4></dt>
+												<dt><h4><a href="#No1">第一章：计算机系统概论</a></h4></dt>
+												<dt><h4><a href="#No3">第三章：系统总线</a></h4></dt>
+												<dt><h4><a href="#No4">第四章：存储器</a></h4></dt>
+												<dt><h4><a href="#No5">第五章：输入输出系统</a></h4></dt>
+												<dt><h4><a href="#No6">第六章：计算机的运算方法</a></h4></dt>
+												<dt><h4><a href="#No7">第七章：指令系统</a></h4></dt>
+												<dt><h4><a href="#No8">第八章：CPU的结构和功能</a></h4></dt>
+												<dt><h4><a href="#No9">第九章：控制单元的功能</a></h4></dt>
+												<dt><h4><a href="#No10">第十章：控制单元的设计</a></h4></dt>
 											</section>
 								</div>
 							</div>
@@ -145,316 +147,255 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>操作系统-整理</h2>
+												<h2>计算机组成原理-整理</h2>
 												<ul class="meta">
-													<li class="icon fa-clock">2021.8.4</li>
+													<li class="icon fa-clock">2021.9.13</li>
 													<li class="icon fa-comments">by Vircorns</li>
 												</ul>
 											</header>
 
 											<section>
-												<h3><div id="No1">第一章：绪论</div></h3>
+												<h3><div id="No1">第一章：计算机系统概论</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-1.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/CCP-1.jpg" alt=""></dt>
+												<dt><b>冯·诺依曼计算机的特点</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.计算机由运算器，控制器，存储器，输入和输出设备五大部件组成
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.指令和数据以同等地位存放于存储器内，并可按地址寻访
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.指令和数据均用二进制码表示
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.指令由操作码和地址码组成，操作码用来表示操作的性质，地址码用来表示操作数所在存储器中的位置
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.指令在存储器内按顺序存放
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.机器以运算器为中心
+												</dt>
+												<dt><b>高级语言、汇编语言和机器语言的差别及联系</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;一、指代不同
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高级语言：相对于机器语言是一种指令集的体系
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇编语言：是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机器语言：不经翻译即可为机器直接理解和接受的程序语言或指令代码
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;二、编码方式不同
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高级语言：语法和结构更类似汉字或者普通英文，且由于远离对硬件的直接操作，使得一般人更容易学习
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇编语言：汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。特定的汇编语言和特定的机器语言指令集是一一对应的，不同平台之间不可直接移植
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机器语言：使用绝对地址和绝对操作码。不同的计算机都有各自的机器语言，即指令系统。从使用的角度看，机器语言是最低级的语言
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;特点不同
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高级语言：高级编程语拥有很多函数库，用户可以根据自身的需求在代码中加入头文件来调用这些函数来实现自己的功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇编语言：用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机器语言：指令是一种二进制代码，由操作码和操作数两部分组成。操作码规定了指令的操作，是指令中的关键字，不能缺省。操作数表示该指令的操作对象
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No2">第二章：进程管理</div></h3>
+												<h3><div id="No3">第三章：系统总线</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-2.jpg" alt=""></dt>
+												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt><b>常用的总线结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 总线结构通常可以分为单总线结构和多总线结构
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 单总线结构：简单，便于扩充，但所有的传送都通过这组共享总线，因此极易形成计算机系统的瓶颈。
+													它也不允许两个以上的部件在同一时刻向总线传输信息，影响工作效率。
+													这类总线多用于小型计算机或微型计算机。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多总线结构：解决了单总线所有部件同时共享总线的现状，有效的提高了系统的工作效率，如传统微型计算机
+												</dt>
+												<dt><b>同步通信和异步通信</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同步通信：指由统一时钟控制的通信，控制方式简单，灵活性差，当系统中各部件工作速度差异较大时，总线工作效率明显下降
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异步通信：指没有统一时钟控制的通信，部件间采用应答方式进行联系，控制方式较同步复杂，灵活性高，当系统中各部件工作速度差异较大时，有利于提高总线工作效率
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No4">第四章：存储器</div></h3>
+												<dl>
+												<b>1.概述</b>
+												<dt align="center"><img src="images/CCP-4-1.jpg" alt=""></dt>
+												<dt><b>存储器的层次结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存储器的层次结构体现在缓存-主存层次和主存-辅存层次
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缓存-主存：为了解决CPU和主存速度不匹配的问题，使CPU访存速度加快，接近于缓存速度，寻址空间更接近主存；
+													主存-辅存：主要起扩容作用，使容量更接近辅存，速度更接近主存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缓存-主存：信息调度全部由硬件自动完成；主存-辅存：由硬件和软件配合完成
+												</dt>
+												<b>2.主存储器</b>
+												<dt align="center"><img src="images/CCP-4-2.jpg" alt=""></dt>
+												<dt><b>存储器的层次结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<b>3.高速缓冲存储器</b>
+												<dt align="center"><img src="images/CCP-4-4.jpg" alt=""></dt>
+												<dt><b>存储器的层次结构</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No5">第五章：输入输出系统</div></h3>
+												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/CCP-5.jpg" alt=""></dt>
 												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
-													&nbsp;&nbsp;(1)插入操作
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部插入，时间复杂度为O(1)，
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部插入，时间复杂度为O(n)，
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为n/2，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;(2)删除操作
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：在尾部删除，时间复杂度为O(1)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：在头部删除，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n-1)/2，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;(3)按值查找
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况：查找的元素在表头，时间复杂度为O(1)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最坏情况：查找的元素在表尾或不存在，时间复杂度为O(n)。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平均情况：需要移动的平均次数为(n+1)/2，时间复杂度为O(n)。
-												</dt>
-												<dt><b>Q2:顺序存储与链式存储区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.存取方式：顺序表可以顺序存取，也可以随机存取；链表只能从表头顺序存取元素
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.顺序存取时，逻辑上相邻的元素，对应的物理存储位置也是相邻的；链式存储逻辑上相邻的元素，物理存储位置不一定相邻
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.基本操作，顺序表进行查找操作时较为容易，链式存储进行插入、删除操作时时间复杂度较低
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.空间分配：顺序存储在静态分配情形下，一旦存储空间装满就不能扩充，动态分配时，则需要移动大量元素，且若内存中没有更大块的连续存储空间，则会导致分配失败；
-													链式存储的节点空间只在需要时申请分配，只有内存有空间就可以分配，操作灵活、高效。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No3">第三章：内存管理</div></h3>
+												<h3><div id="No6">第六章：计算机的运算方法</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-3.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/CCP-6.jpg" alt=""></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
-											
+
 											<section>
-												<h3><div id="No4">第四章：文件管理</div></h3>
+												<h3><div id="No2">第三章：系统总线</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-4.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
-											
+
 											<section>
-												<h3><div id="No5">第五章：设备管理</div></h3>
+												<h3><div id="No2">第三章：系统总线</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/DS-5.jpg" alt=""></dt>
-												<dt><b>Q1:数组和链表的区别</b></dt>
+												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从逻辑结构上来看，数组必须实现定于固定的长度，不能适应数据动态增减的情况，即数组的大小一旦定义就不能改变。
-													当数据增加是，可能超过原先定义的元素的个数；当数据减少时，造成内存浪费；链表动态进行存储分配，可以适应数据动态地增减的情况，且可以方便地插入、删除数据项。
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从内存存储的角度看；数组从栈中分配空间，自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从访问方式类看，数组在内存中是连续的存储，因此可以利用下标索引进行访问；链表是链式存储结构，
-													在访问元素时候只能够通过线性方式由前到后顺序的访问，所以访问效率比数组要低
-												</dt>
-												<dt><b>Q2:树和图的区别</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树的元素存在一对多的关系，必须包含一个根节点，而图是多对多的关系，没有根节点
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树都是已连接的，因此可以遍历；而图可能未连接，因此不适用层次遍历等
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树是有向无环图，是一个分层的模型结构；而图是网络模型
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
+
+											<section>
+												<h3><div id="No2">第三章：系统总线</div></h3>
+												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No2">第三章：系统总线</div></h3>
+												<dl>
+												<b>知识框架</b>
+												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												</dl>
+											</section>
+												
 											
 
 										</article>
 
 								</div>
 							</div>
-							<div class="col-12">
-
-								<!-- Features -->
-									<section class="box features">
-										<h2 class="major"><span>A Major Heading</span></h2>
-										<div>
-											<div class="row">
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-															<h3><a href="#">A Subheading</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-															<h3><a href="#">Another Subheading</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-															<h3><a href="#">And Another</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-3 col-6-medium col-12-small">
-
-													<!-- Feature -->
-														<section class="box feature">
-															<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-															<h3><a href="#">And One More</a></h3>
-															<p>
-																Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in
-																lectus dolore. Praesent semper mod quis eget sed etiam eu ante risus.
-															</p>
-														</section>
-
-												</div>
-												<div class="col-12">
-													<ul class="actions">
-														<li><a href="#" class="button large">Do Something</a></li>
-														<li><a href="#" class="button alt large">Think About It</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</section>
-
-							</div>
 						</div>
 					</div>
 				</section>
 
 			<!-- Footer -->
-				<footer id="footer">
-					<div class="container">
-						<div class="row gtr-200">
-							<div class="col-12">
+			<footer id="footer">
+				<div class="container">
+					<div class="row gtr-200">
+						<div class="col-12">
 
-								<!-- About -->
-									<section>
-										<h2 class="major"><span>What's this about?</span></h2>
-										<p>
-											This is <strong>TXT</strong>, yet another free responsive site template designed by
-											<a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
-											<a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
-											whatever you're working on (personal or commercial), just be sure to give us credit for the design.
-											That's basically it :)
-										</p>
-									</section>
+							<!-- Contact -->
+								<section>
+									<h2 class="major"><span>More</span></h2>
+									<ul class="contact">
+										<li><a href="https://blog.csdn.net/weixin_43476037"><img src="images/csdn.jpg" alt=""><span class="label"></span></a></li>
+									</ul>
+								</section>
 
-							</div>
-							<div class="col-12">
+						</div>
+					</div>
 
-								<!-- Contact -->
-									<section>
-										<h2 class="major"><span>Get in touch</span></h2>
-										<ul class="contact">
-											<li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
-											<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
-											<li><a class="icon brands fa-instagram" href="#"><span class="label">Instagram</span></a></li>
-											<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
-											<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
-										</ul>
-									</section>
-
-							</div>
+					<!-- Copyright -->
+						<div id="copyright">
+							<ul class="menu">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
 						</div>
 
-						<!-- Copyright -->
-							<div id="copyright">
-								<ul class="menu">
-									<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-								</ul>
-							</div>
-
-					</div>
-				</footer>
+				</div>
+			</footer>
 
 		</div>
 
