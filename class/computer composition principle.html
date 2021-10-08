@@ -242,6 +242,16 @@
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异步通信：指没有统一时钟控制的通信，部件间采用应答方式进行联系，控制方式较同步复杂，灵活性高，当系统中各部件工作速度差异较大时，有利于提高总线工作效率
 												</dt>
+												<dt><b>系统总线</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据总线：各个功能部件之间传送数据信息，双向传输
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址总线：用来指明数据总线上，源数据或目的数据所在的主存单元的地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;控制总线：用来发送各种控制信号。对于控制总线中的单根线，是单向的，即只能由一个部件发向另一个部件
+												</dt>
 												</dl>
 											</section>
 
@@ -258,32 +268,39 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缓存-主存：为了解决CPU和主存速度不匹配的问题，使CPU访存速度加快，接近于缓存速度，寻址空间更接近主存；
 													主存-辅存：主要起扩容作用，使容量更接近辅存，速度更接近主存
 												</dt>
+												<dt><b>存储器按存取方式分类</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缓存-主存：信息调度全部由硬件自动完成；主存-辅存：由硬件和软件配合完成
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以分为随机存储器、只读存储器、顺序存储器和直接存储器
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随机存储器和只读存储器属于随机存储器，即存取时间与物理地址无关
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顺序存储器（典型的如磁带）和直接存储器（典型的如磁盘）属于串行存储器，即存取时间与物理地址有关
 												</dt>
 												<b>2.主存储器</b>
 												<dt align="center"><img src="images/CCP-4-2.jpg" alt=""></dt>
-												<dt><b>存储器的层次结构</b></dt>
+												<dt><b>提高访存速度的措施</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调整主存结构—单体多字、多体并行
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 采用高速器件
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用层次结构  Cache –主存
 												</dt>
 												<b>3.高速缓冲存储器</b>
-												<dt align="center"><img src="images/CCP-4-4.jpg" alt=""></dt>
-												<dt><b>存储器的层次结构</b></dt>
+												<dt align="center"><img src="images/CCP-4-3.jpg" alt=""></dt>
+												<dt><b>Cache映射方式</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直接映射、全相联映射、组相联映射
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直接映射：优点：地址变换速度快。缺点：cache利用率不高，块冲突率高
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全相联映射：cache利用率高，块冲突率低。缺点：地址变换复杂，需要较多的硬件
 												</dt>
 												</dl>
 											</section>
@@ -292,8 +309,36 @@
 												<h3><div id="No5">第五章：输入输出系统</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-5.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt align="center"><img src="images/CCP-5.jpg" alt="" width="" height=""></dt>
+												<dt><b>I/O系统的发展</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>I/O系统的发展</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
@@ -313,10 +358,10 @@
 											</section>
 
 											<section>
-												<h3><div id="No2">第三章：系统总线</div></h3>
+												<h3><div id="No7">第七章：指令系统</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt align="center"><img src="images/CCP-7.jpg" alt=""></dt>
 												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -325,10 +370,10 @@
 											</section>
 
 											<section>
-												<h3><div id="No2">第三章：系统总线</div></h3>
+												<h3><div id="No8">第八章：CPU的结构和功能</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt align="center"><img src="images/CCP-8.jpg" alt=""></dt>
 												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -337,10 +382,10 @@
 											</section>
 
 											<section>
-												<h3><div id="No2">第三章：系统总线</div></h3>
+												<h3><div id="No9">第九章：控制单元的功能</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt align="center"><img src="images/CCP-9.jpg" alt=""></dt>
 												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -349,10 +394,10 @@
 											</section>
 
 											<section>
-												<h3><div id="No2">第三章：系统总线</div></h3>
+												<h3><div id="No10">第十章：控制单元的设计</div></h3>
 												<dl>
 												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-3.jpg" alt=""></dt>
+												<dt align="center"><img src="images/CCP-10.jpg" alt=""></dt>
 												<dt><b>Q1:线性表上基本操作的实现</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
