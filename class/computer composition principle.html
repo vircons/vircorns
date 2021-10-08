@@ -258,7 +258,7 @@
 											<section>
 												<h3><div id="No4">第四章：存储器</div></h3>
 												<dl>
-												<b>1.概述</b>
+												<h4>一.概述</h4>
 												<dt align="center"><img src="images/CCP-4-1.jpg" alt=""></dt>
 												<dt><b>存储器的层次结构</b></dt>
 												<dt>
@@ -278,7 +278,7 @@
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顺序存储器（典型的如磁带）和直接存储器（典型的如磁盘）属于串行存储器，即存取时间与物理地址有关
 												</dt>
-												<b>2.主存储器</b>
+												<h4>二.主存储器</h4>
 												<dt align="center"><img src="images/CCP-4-2.jpg" alt=""></dt>
 												<dt><b>提高访存速度的措施</b></dt>
 												<dt>
@@ -290,7 +290,7 @@
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用层次结构  Cache –主存
 												</dt>
-												<b>3.高速缓冲存储器</b>
+												<h4>三.高速缓冲存储器</h4>
 												<dt align="center"><img src="images/CCP-4-3.jpg" alt=""></dt>
 												<dt><b>Cache映射方式</b></dt>
 												<dt>
@@ -308,39 +308,146 @@
 											<section>
 												<h3><div id="No5">第五章：输入输出系统</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-5.jpg" alt="" width="" height=""></dt>
+												<h4>一.概述</h4>
+												<dt align="center"><img src="images/CCP-5-1.jpg" alt=""></dt>
 												<dt><b>I/O系统的发展</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）早期（分散连接、串行工作、程序查询）
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）接口模块和DMA阶段（总线连接、并行工作、中断及DMA）
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）通道阶段（通道是具有特殊功能的处理器）
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）I/O处理机阶段
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I/O系统的发展实际上是逐步将CPU从繁重的I/O工作中解放出来的过程；
 												</dt>
-												<dt><b>I/O系统的发展</b></dt>
+												<dt><b>I/O设备编址方式</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) 统一编址：把I/O地址看做存储器地址的一部分，用取数、存数指令
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2) 不统一编址：有专门的 I/O 指令
+												</dt>
+												<dt><b>I/O联络方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)立即响应：速度十分缓慢的设备，无需特殊联系信号，只要CPU的I/O指令到，立即响应
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)异步工作采用应答信号:I/O设备与主机四度不匹配时，常采用异步工作方式 
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)同步工作采用同步时标：要求I/O设备和CPU速度完全同步
+												</dt>
+												<h4>二.外部设备</h4>
+												<dt align="center"><img src="images/CCP-5-2.jpg" alt=""></dt>
+												<h4>三.I/O接口</h4>
+												<dt align="center"><img src="images/CCP-5-3.jpg" alt=""></dt>
+												<dt><b>为什么要设置接口</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.实现设备的选择
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.实现数据缓冲达到速度匹配
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.实现数据串-并格式转换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.实现电平转换
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.传送控制命令
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.反映设备的状态（“忙”、“就绪”、“中断请求”）
+												</dt>
+												<h4>四.程序查询方式</h4>
+												<dt align="center"><img src="images/CCP-5-4.jpg" alt=""></dt>
+												<dt><b>程序流程</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）由于这种传送方式要占用CPU中的寄存器，故要保存寄存器内容
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）由于传送往往是一批数据，因此需先设置I/O设备与主机交换数据的计数器
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）设置欲传送数据在主存缓冲区的首地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）CPU启动I/O设备
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5）将I/O接口中的设备状态标志取到CPU测试是否准备好。
+												</dt>
+												<h4>五.程序中断方式</h4>
+												<dt align="center"><img src="images/CCP-5-5.jpg" alt=""></dt>
+												<dt><b>中断</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机在执行程序过程中，当出现异常清空或特殊请求时，计算机停止现行程序的运行，
+													转去处理这些异常清空或特殊请求，处理结束后，再返回现行程序的间断处，继续执行原程序，即为中断
+												</dt>
+												<dt><b>中断服务程序的基本流程</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）保护现场
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）中断服务
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）恢复现场
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）中断返回
+												</dt>
+												<dt><b>单重中断和多重中断</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单重中断：不允许中断现行的中断服务程序
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多重中断：允许级别更高的中断源中断现行的中断服务程序，也称为中断嵌套
+												</dt>
+												<h4>六.DMA方式</h4>
+												<dt align="center"><img src="images/CCP-5-6.jpg" alt=""></dt>
+												<dt><b>DMA与主存交换数据的三种方式</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)停止 CPU 访问主存
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)周期挪用（或周期窃取）
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)DMA 与 CPU 交替访问
+												</dt>
+												<dt><b>DMA 接口功能</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)向CPU申请DMA传送
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)处理总线控制权的转交
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)管理系统总线、控制数据传送
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)确定数据传送的首地址和长度—以块为单位传输
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5)DMA传送结束时，给出操作完成信号—每传输完一个数据块，中断一次，做DMA后处理
+												</dt>
+												<dt><b>DMA传送过程</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)预处理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)数据传送
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)后处理
 												</dt>
 												</dl>
 											</section>
