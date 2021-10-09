@@ -740,63 +740,105 @@
 												<dl>
 												<h4>一.CPU的结构</h4>
 												<dt align="center"><img src="images/CCP-8-1.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>CPU 的功能</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.控制器的功能
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													取指令：能自动从存储器中取出指令，为此控制器必须能自动形成指令的地址，并能发出取指的命令。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<h4>一.CPU的结构</h4>
-												<dt align="center"><img src="images/CCP-8-1.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													分析指令：一是分析指令要完成的操作；二是分析参与操作的操作数地址，即有效地址
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													执行指令：根据“操作命令”和“操作数地址”发出各种操作命令
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													控制程序输入及结果的输出
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													总线管理
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													处理异常情况和特殊请求
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.运算器的功能
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													实现算术运算和逻辑运算
 												</dt>
 												<h4>二.指令周期</h4>
 												<dt align="center"><img src="images/CCP-8-2.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>概念</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取出并执行一条指令所需的全部时间
 												</dt>
 												<h4>三.指令流水</h4>
 												<dt align="center"><img src="images/CCP-8-3.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>如何提高机器速度</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.提高访存速度
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.提高 I/O 和主机之间的传送速度
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.提高运算器速度
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.提高整机处理能力
+												</dt>
+												
+												<dt><b>旁路技术</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其主要思想是不必等某条指令的执行结果送回到寄存器后再从寄存器中取该结果作为下一条指令的源操作数，
+													而是直接将执行结果送到其它指令所需要的地方
 												</dt>
 												<h4>四.中断系统</h4>
 												<dt align="center"><img src="images/CCP-8-4.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>中断</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断：是指CPU在正常运行程序时，由于内部/外部事件(或由程序)引起CPU中断正在运行的程序，
+													而转到为中断事件服务的程序中去，服务完毕，再返回执行原程序
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断系统需解决的问题：
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(1)各中断源如何向CPU 提出请求
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(2)各中断源同时提出请求怎么办
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(3)CPU什么条件、什么时间、以什么方式响应中断
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(4)如何保护现场
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(5)如何寻找入口地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(6)如何恢复现场，如何返回
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(7)处理中断的过程中又出现新的中断怎么办 
 												</dt>
 												</dl>
 											</section>
@@ -806,21 +848,105 @@
 												<dl>
 												<b>知识框架</b>
 												<dt align="center"><img src="images/CCP-9.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>完成一条指令分 4 个工作周期</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取指周期
 												</dt>
+												<dt><pre>
+		PC->MAR->地址线
+		1->R
+		M(MAR)->MDR		
+		MDR->IR		
+		OP(IR)->CU	
+		(PC)+1->PC						
+
+												</pre></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间址周期
+												</dt>
+												<dt><pre>
+		Ad(IR)->MAR	
+		1->R	
+		M(MAR)->MDR
+		MDR->Ad(IR)										
+
+												</pre></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行周期
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以访存指令为例
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.加法指令&nbsp;&nbsp;ADD&nbsp;&nbsp;X
+												</dt>
+												<dt><pre>
+		Ad(IR)->MAR												
+		1->R	
+		M(MAR)->MDR
+		(ACC)+(MDR)->ACC												
+												</pre></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.存数指令&nbsp;&nbsp;STA&nbsp;&nbsp;X
+												</dt>
+												<dt><pre>
+		Ad(IR)->MAR												
+		1->W	
+		ACC->MDR
+		MDR->M(MAR)											
+													
+												</pre></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.取数指令&nbsp;&nbsp;LDA&nbsp;&nbsp;X
+												</dt>
+												<dt><pre>
+		Ad(IR)->MAR												
+		1->R	
+		ACC->MDR
+		MDR->ACC	
+													
+												</pre></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断周期
+												</dt>
+												<dt><pre>
+		0->MAR
+		1->W
+		PC->MDR	
+		MDR->M(MAR)
+		M->PC	
+		0->EINT									
+												</pre></dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No10">第十章：控制单元的设计</div></h3>
 												<dl>
-												<b>知识框架</b>
-												<dt align="center"><img src="images/CCP-10.jpg" alt=""></dt>
-												<dt><b>Q1:线性表上基本操作的实现</b></dt>
+												<dt><b>基本概念</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微命令：控制部件通过控制线向执行部件发出的各种控制命令。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微操作：执行部件接受命令后所进行的操作。微操作是执行部件的基本操作，分为相容性和相斥性两种
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微指令：一组实现一定操作功能的微命令的组合。一般微指令格式由操作控制和顺序控制两部分组成。
+													其操作控制部分产生各种控制信号，顺序控制部分产生下一条微指令的地址
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机器指令：由许多微指令组成的序列，即微程序
+												</dt>
+												<dt><b>安排微操作时序的原则</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原则一:微操作的先后顺序不得随意更改
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原则二:被控对象不同的微操作,尽量安排在一个节拍内完成
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原则三：占用时间较短的微操作，尽量安排在一个节拍内完成，
+													且允许有先后顺序									 
 												</dt>
 												</dl>
 											</section>
