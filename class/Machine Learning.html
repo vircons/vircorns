@@ -161,14 +161,29 @@
 											<section>
 												<h3><div id="No2">第二章：模型评估与选择</div></h3>
 												<dl>
-												<dt><h4>概念</h4></dt>
 												<dt><b>定义</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;误差：学习器的实际预测输出与样本的真实输出之间的差异
 												</dt>
-												<dt><b>目的</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;训练误差/经验误差：学习器在训练集上的误差
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛华误差：新样本上的误差
+												</dt>
+												<dt><b>评估方法</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留出法：将数据集划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T, 
+													在S上训练出模型后，用T来评估其测试误差，作为对泛化误差的估计.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交叉验证法：将数据D分为k个大小相似的互斥子集。每个子集都尽可能保持数据分布的 致性，
+													即从D中通过分层采样得到。然后，每次用k-1子集的并集作为训练集，余下的那个子集作为测试集;这样就可获得k组训练/测试集，从而可进行k次训练和测试，
+													最终返回的是k个测试结果的均值
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自助法：给定包含m个样本的数据集D，我们对它进行采样产生数据集D': 每次随机从D中挑选一个样本，
+													将其拷贝放入D'，然后再将该样本放回初始数据集D中，使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次
 												</dt>
 												</dl>
 											</section>
