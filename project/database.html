@@ -275,33 +275,825 @@
 												</dt>
 												<dt align="center"><img src="images/DB-19.jpg"></dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 insert into student(sno,sname,ssex,sclass) values(11,gulf, 男,1);实现元组插入；
 												</dt>
 												<dt align="center"><img src="images/DB-20.jpg"></dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 update student set sclass = 5 where sname = g;实现数据更新；
 												</dt>
 												<dt align="center"><img src="images/DB-21.jpg"></dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 update student set sclass = 11 and sname = aa where sname = a and sno = 1;实现多条件数据更新；
 												</dt>
 												<dt align="center"><img src="images/DB-22.jpg"></dt>
-
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 delete from student where sclass = 3;实现数据删除
+												</dt>
+												<dt align="center"><img src="images/DB-23.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 create view v3 as select * from sc;实现视图创建；
+												</dt>
+												<dt align="center"><img src="images/DB-24.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 SELECT sno FROM v3 WHERE sno = 1;实现视图查询；
+												</dt>
+												<dt align="center"><img src="images/DB-25.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入 create index student_no on student(sno);实现索引创建；
+												</dt>
+												<dt align="center"><img src="images/DB-26.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3></h3>
+												<h3>详细设计说明</h3>
 												<dl>
+												<h4>数据和元数据的组织</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataFrame是Python中Pandas库中一种数据结构，是一种二维表，他类似excel，其单元格可以存放数值字符串等。同时，DataFrame可以设置列名columns和行名index，可以通过位置获取数据，也可以通过列名和行名定位。
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，利用DataFrame建立数据字典，用于存储表、视图和索引的相关信息，简单且直观、方便。
+												</dt>
+												<dt><b>1.存储表元数据信息</b></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用列表list()存储表头和所有字段的解析含义，利用Python中csv文件，每一行为一条记录record，存入建好的info_path中
+												</dt>
+												<dt><pre>
+		path = r'%s\main\map\map.csv' % (dv.DATA_PATH)
+		tmp = token[1:3]
+		columns=['type', 'name']
+		df = pd.read_csv(path, index_col=0)
+		new_df = pd.DataFrame([tmp],columns=columns).fillna('null')
+		df = df.append(new_df, ignore_index=True)
+		df.to_csv(path, encoding='utf-8')												
+												</pre></dt>
+												<dt><b>2.存储表中的数据</b></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用列表list()和正则表达式存储表头和所有字段的解析含义，利用Python中csv文件，每一行为一条记录record，存入建好的data_path中
+												</dt>
+												<dt><pre>
+		path = r'%s\main\map\map.csv' % (dv.DATA_PATH)
+		tmp = token[1:3]
+		columns=['type', 'name']
+		df = pd.read_csv(path, index_col=0)
+		new_df = pd.DataFrame([tmp],columns=columns).fillna('null')
+		df = df.append(new_df, ignore_index=True)
+		df.to_csv(path, encoding='utf-8')
+		#keys_list存储table_header和所有字段的解析含义
+		keys_list = list()
+		label = []
+		keys_list.append(table_header)
+		for item in table_keys:
+			item.strip()
+			key_list = get_key(item)
+			label.append(key_list[0])
+			keys_list.append(key_list)
+		rwfile.write_to_csv(info_path, keys_list)
+		labels = list()
+		labels.append(label)
+		rwfile.write_to_csv(data_path, labels)												
+												</pre></dt>
+												<dt><b>3.存储视图元数据信息</b></dt>
+												<dt><pre>
+		#当前数据库绝对路径
+		db_path = base.get_database_path(dv.CURRENT_DB)
+		data_path = base.get_view_data_path(dv.CURRENT_DB, view_name)
+		info_path = base.get_view_info_path(dv.CURRENT_DB, view_name)
+		#检查视图是否存在
+		if not os.path.exists(info_path):
+			try:
+				tokens = string_to_token(child_select)
+				print(tokens)
+				#select返回查询值
+				data = select.parse(tokens, True)
+				print(data)
+				#将数据写入文件
+				data.to_csv(data_path, index = True, encoding = 'utf-8')
+				#写入创建视图定义
+				rwfile.write_to_txt(info_path, sql)
+				#将视图名写入view_name.txt
+				rwfile.write_to_txt(db_path + r'\view_name.txt', view_name)
+				print('CREATE VIEW ' + view_name + ' SUCCESSFUL')
+			except Exception as e:
+				print(e)
+		else:
+			print('VIEW ' + view_name + ' HAS EXIST')											
+												</pre></dt>
+												<dt><b>4.存储索引元数据信息</b></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用B+树进行存储
+												</dt>
+												<dt><pre>
+		def BPlusTree(path, data, degree=3):
+			b = BPTree(degree)
+			for k in range(0, len(data)):
+				b[k] = data[k]
+			n, x = b.search(b.root, 0)
+			data = list()
+			data.append(n)
+			while n.next:
+				data.append(n.next)
+				n = n.next
+			with open(path, 'w') as f:
+				for it in data:
+					f.write(str(it))											
+												</pre></dt>
+
+												<h4>建表功能</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解析、执行CREATE TABLE语句，实现建表功能
+												</dt>
+												<dt><pre>
+		#解析 creat table语句并执行
+		def parse_table(sql):
+			matchObj = re.search(r'^create table (.*) \(.*\);$', sql)
+			if matchObj:
+				table_name = matchObj.group(1)
+				index = sql.find('(')
+				#table_keys字段及其定义
+				table_keys = sql[index + 1 : -2]
+				table_keys = table_keys.split(',')
+				info_path = base.get_table_info_path(dv.CURRENT_DB, table_name)
+				data_path = base.get_table_data_path(dv.CURRENT_DB, table_name)
+				db_path = base.get_database_path(dv.CURRENT_DB)
+				#检查表是否存在
+				if not os.path.exists(info_path):
+					try:
+						table_header = ['key', 'type', 'primary key', 'foreign key', 'unique', 'not null', 'null', 'check']
+						#keys_list存储table_header和所有字段的解析含义
+						keys_list = list()
+						label = []
+						keys_list.append(table_header)
+						for item in table_keys:
+							item.strip()
+							key_list = get_key(item)
+							label.append(key_list[0])
+							keys_list.append(key_list)
+						rwfile.write_to_csv(info_path, keys_list)
+						labels = list()
+						labels.append(label)
+						rwfile.write_to_csv(data_path, labels)
+						#将表名添加到tables_name.txt
+						rwfile.write_to_txt(db_path + r'\tables_name.txt', table_name)
+						print('CREATE TABLE ' + table_name + ' SUCCESSFUL')
+					except Exception as e:
+						print(e)
+				else:
+					print('sql 语句格式错误')											
+												</pre></dt>
+
+												<h4>创建视图和索引</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解析、执行CREATE VIEW和CREATE INDEX语句，实现创建视图和索引功能
+												</dt>
+												<dt><b>1.创建视图</b></dt>
+												<dt><pre>
+		#解析create view语句并执行
+		def parse_view(sql):
+			matchObj = re.search(r'^create view (.*) as (.*)$', sql)
+			if matchObj:
+				view_name = matchObj.group(1)
+				child_select = matchObj.group(2)#子查询
+				#当前数据库绝对路径
+				db_path = base.get_database_path(dv.CURRENT_DB)
+				data_path = base.get_view_data_path(dv.CURRENT_DB, view_name)
+				info_path = base.get_view_info_path(dv.CURRENT_DB, view_name)
+				#检查视图是否存在
+				if not os.path.exists(info_path):
+					try:
+						tokens = string_to_token(child_select)
+						print(tokens)
+						#select返回查询值
+						data = select.parse(tokens, True)
+						print(data)
+						#将数据写入文件
+						data.to_csv(data_path, index = True, encoding = 'utf-8')
+						#写入创建视图定义
+						rwfile.write_to_txt(info_path, sql)
+						#将视图名写入view_name.txt
+						rwfile.write_to_txt(db_path + r'\view_name.txt', view_name)
+						print('CREATE VIEW ' + view_name + ' SUCCESSFUL')
+					except Exception as e:
+						print(e)
+				else:
+					print('VIEW ' + view_name + ' HAS EXIST')
+			else:
+				print('sql 语句格式错误')											
+												</pre></dt>
+												<dt><b>2.创建索引</b></dt>
+												<dt><pre>
+		#解析create index语句
+		def parse_index(sql):
+			matchObj = re.search(r'^create index (.*) on (.*)\((.*)\);$', sql)
+			if matchObj:
+				index_name = matchObj.group(1)
+				table_name = matchObj.group(2)
+				column_name = matchObj.group(3)
+				# 当前数据库绝对滤镜
+				db_path = base.get_database_path(dv.CURRENT_DB)
+				data_path = base.get_index_data_path(dv.CURRENT_DB, index_name)
+				info_path = base.get_index_info_path(dv.CURRENT_DB, index_name)
+				# 检查索引是否存在
+				if not os.path.exists(info_path):
+					try:
+						tokens = list()
+						tokens.append('select')
+						tokens.append(column_name)
+						tokens.append('from')
+						tokens.append(table_name)
+						tokens.append(';')
+						df = select.parse(tokens, True)
+						df = df.sort_values(column_name)
+						data_list = base.dataFrame_to_list(df)
+						data = []
+						for item in data_list:
+							for x in item:
+								data.append(x)
+						bptree.BPlusTree(data_path, data)
+						# 写入创建索引定义
+						rwfile.write_to_txt(info_path, sql)
+						# 将索引名写入indexex_name.txt
+						rwfile.write_to_txt(db_path + r'\indexes_name.txt', index_name)
+						print('CREATE INDEX ' + index_name + ' SUCCEDDFUL')
+					except Exception as e:
+						print(e)
+				else:
+					print('INDEX ' + index_name + ' HAS EXIST')
+			else:
+				print('sql语句格式错误')											
+												</pre></dt>
+
+												<h4>查询功能</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解析、执行SELECT语句，实现查询功能
+												</dt>
+												<dt><b>1.查询函数的接口</b></dt>
+												<dt><pre>
+		def isWhere(df, where):
+			length = len(where)
+			if where[1] != '=' and where[1] != '>' and where[1] != '<':
+				print('暂不支持此运算符')
+				return None
+			res = []
+			for i in range(df.shape[0]):
+				if where[1] == '=':
+					if df.loc[i, where[0]] == where[2]:
+						res.append(i)
+				elif where[1] == '<':
+					if df.loc[i, where[0]] < where[2]:
+						res.append(i)
+				elif where[1] == '>':
+					if df.loc[i, where[0]] > where[2]:
+						res.append(i)
+			k = 3
+			while k < length:
+				if where[k] == 'and':
+					k = k + 1
+					a = []
+					if where[k + 1] != '=' and where[k + 1] != '>' and where[k + 1] != '<':
+						print('暂不支持此运算符')
+						return None
+					for i in range(df.shape[0]):
+						if where[k + 1] == '=':
+							if df.loc[i, where[k]] == where[k + 2]:
+								a.append(i)
+						elif where[k + 1] == '<':
+							if df.loc[i, where[k]] < where[k + 2]:
+								a.append(i)
+						elif where[k + 1] == '>':
+							if df.loc[i, where[k]] > where[k + 2]:
+								a.append(i)
+					res = list(set(res).intersection(set(a)))
+				elif where[k] == 'or':
+					k = k + 1
+					o = []
+					if where[k + 1] != '=' and where[k + 1] != '>' and where[k + 1] != '<':
+						print('暂不支持此运算符')
+						return None
+					for i in range(df.shape[0]):
+						if where[k + 1] == '=':
+							if df.loc[i, where[k]] == where[k + 2]:
+								o.append(i)
+						elif where[k + 1] == '<':
+							if df.loc[i, where[k]] < where[k + 2]:
+								o.append(i)
+						elif where[k + 1] == '>':
+							if df.loc[i, where[k]] > where[k + 2]:
+								o.append(i)
+					res = list(set(res).union(set(o)))
+				else:
+					print('暂不支持此语法')
+					return False
+				k = k + 3
+			return res											
+												</pre></dt>
+												<dt><b>2.解析语句，调用接口函数</b></dt>
+												<dt><pre>
+		# 单表查询
+		def singleSelect(tokens):
+			try:
+				from_index=tokens.index('from')
+			except:
+				print('SQL 语法错误')
+				return False
+			columns=tokens[1:from_index]
+			table = tokens[from_index+1]
+			path = r'%s\main\map\map.csv' % (dv.DATA_PATH)
+			with open(path, "rt", encoding="utf-8") as csvfile:
+				reader = csv.DictReader(csvfile)
+				for row in reader:
+					if row['name'] == table:
+						type_name = row['type']
+			where=list()
+			group=None
+			if 'where' in tokens:
+				where_index=tokens.index('where')
+				where=tokens[where_index+1:]
+			if not check_permission(table,'select'):
+				if type_name == 'table':
+					print('本用户没有对表%s %s权限' % (table,'SELECT'))
+				elif type_name == 'view':
+					print('本用户没有对视图%s %s权限' % (table, 'SELECT'))
+				return False
+			if type_name == 'table':
+				path=get_table_data_path(dv.CURRENT_DB,table)
+			elif type_name == 'view':
+				path = get_view_data_path(dv.CURRENT_DB, table)
+			data=fop.select(path,columns,where,group)
+			return data
+
+		def nestedSelect(tokens):
+			try:
+				first_index=tokens.index('(')
+				final_index=tokens.index(')')
+			except:
+				print('SQL 语法错误')
+				return False
+			child_tokens=tokens[first_index+1:final_index]
+			if not child_tokens:
+				return False
+			where_values=singleSelect(child_tokens)
+			# dataFrame转化成二维list
+			where_values=dataFrame_to_list(where_values)
+			# 二维list转化一维list
+			where_values=[n for a in where_values for n in a]
+			return where_values
+
+		def parse(tokens, is_return = False):
+			tokens[-1]=tokens[-1][0:-1]
+			try:
+				from_index=tokens.index('from')
+			except:
+				print('SQL 语法错误')
+				return
+			group_index=-1
+			columns=tokens[1:from_index]
+			table=tokens[from_index+1]
+			path = r'%s\main\map\map.csv' % (dv.DATA_PATH)
+			#print(path)
+			with open(path, "rt", encoding="utf-8") as csvfile:
+				reader = csv.DictReader(csvfile)
+				for row in reader:
+					if row['name'] == table:
+						type_name = row['type']
+			where=list()
+			group=None
+			join_flag=False
+			if 'group' in tokens:
+				group_index=tokens.index('group')
+				group=tokens[group_index+2]
+			if 'where' in tokens:
+				where_index=tokens.index('where')
+				if group_index==-1:
+					where=tokens[where_index+1:]
+				else:
+					where=tokens[where_index+1:group_index+1]
+				if where_index-from_index>2:
+					join_flag=True
+			if not check_permission(table,'select'):
+				if type_name == 'table':
+					print('本用户没有对表%s %s权限' % (table, 'SELECT'))
+				elif type_name == 'view':
+					print('本用户没有对视图%s %s权限' % (table, 'SELECT'))
+				return
+			if type_name == 'table':
+				path = get_table_data_path(dv.CURRENT_DB,table)
+			elif type_name == 'view':
+				path = get_view_data_path(dv.CURRENT_DB, table)
+			# 嵌套查询
+			if 'select' in where:
+				where[1]='='
+				result=nestedSelect(where)
+				where=where[0:3]
+				if not result:
+					return
+				for item in result:
+					where[2]=item
+					data=fop.select(path,columns,where,group)
+					if data.empty:
+						print('未找到记录')
+					else:
+						print(data)
+			# 集合查询
+			# 并集
+			elif 'union' in tokens:
+				union_index=tokens.index('union')
+				select1=tokens[:union_index]
+				select2=tokens[union_index+1:]
+				data1=singleSelect(select1)
+				data2=singleSelect(select2)
+				result_df=pd.concat([data1,data2]).drop_duplicates()
+				result_df=result_df.reset_index(drop=True)
+				print(result_df)
+			# 交集
+			elif 'intersect' in tokens:
+				intersect_index=tokens.index('intersect')
+				select1=tokens[:intersect_index]
+				select2 = tokens[intersect_index + 1:]
+				data1 = singleSelect(select1)
+				data2 = singleSelect(select2)
+				result_df = pd.merge(data1, data2).drop_duplicates()
+				result_df = result_df.reset_index(drop=True)
+				print(result_df)
+			# 差集
+			elif 'except' in tokens:
+				except_index = tokens.index('except')
+				select1 = tokens[:except_index]
+				select2 = tokens[except_index + 1:]
+				data1 = singleSelect(select1)
+				data2 = singleSelect(select2)
+				column=data1.columns.values.tolist()
+				data1=data1.append(data2)
+				data1=data1.append(data2)
+				data1=data1.drop_duplicates(subset=column,keep=False)
+				print(data1)
+			# 连接查询
+			elif join_flag:
+				table1=where[0].split('.')[0]
+				table2=where[2].split('.')[0]
+				table1_path=get_table_data_path(dv.CURRENT_DB,table1)
+				table2_path=get_table_data_path(dv.CURRENT_DB,table2)
+				df1=fop.select(table1_path,['*'],[],[])
+				df2=fop.select(table2_path,['*'],[],[])
+				join_column=where[0].split('.')[1]
+				result_df=pd.merge(df1,df2,on=join_column)
+				if len(where)>3:
+					where=where[4:]
+					is_where=fop.isWhere(result_df,where)
+					result_df=result_df.loc[is_where]
+				result_df=result_df[columns]
+				print(result_df)
+			# 单表查询
+			else:
+				data=fop.select(path,columns,where,group)
+				if is_return:
+					return data
+				else:
+					if data is None:
+						print('SQL 语法错误')
+					else:
+						print(data)											
+												</pre></dt>
+												
+												<h4>表中数据的删改</h4>
 												<dt>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<h3>需求规定</h3>
+												<dt><b>sql模块</b></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.解析、执行INSERT、UPDATE和DELETE语句，实现表中数据的增删改功能
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.更新过程中需要检查更新后的数据表是否会违反参照完整性约束
+												</dt>
+												<dt><b>1.INSERT功能</b></dt>
+												<dt><pre>
+		def parse(sql):
+			if 'values' in sql:
+				matchObj=re.search(r'^insert into (.*)\((.*)\) values\((.*)\);$',sql)
+				if matchObj:
+					table_name=matchObj.group(1)
+					if not check_permission(table_name,'insert'):
+						print('本用户没有对表%s %s 权限' % (table_name,'INSERT'))
+						return
+					columns=matchObj.group(2).split(',')
+					values=matchObj.group(3).split(',')
+					c_v=dict(zip(columns,values))
+					data=list()
+					insert_data=[]
+					# 定义表时的列
+					define_columns=get_all_columns(table_name)
+					if check_constraint(table_name,c_v):
+						for column in define_columns:
+							if column in columns:
+								data.append(c_v[column])
+							else:
+								data.append('null')
+						insert_data.append(data)
+						path=get_table_data_path(dv.CURRENT_DB,table_name)
+						if fop.insert(path,define_columns,insert_data):
+							print('插入%s 表%s 成功' % (table_name,columns))
+						else:
+							print('插入%s 表%s 失败' % (table_name, columns))
+					else:
+						print('约束条件不满足')
+				else:
+					print('SQL 语法错误')
+			elif 'select' in sql:
+				matchObj = re.search(r'^insert into (.*)\((.*)\) values\((.*)\);$', sql)
+				if matchObj:
+					table_name = matchObj.group(1)
+					if not check_permission(table_name, 'insert'):
+						print('本用户没有对表%s %s 权限' % (table_name, 'INSERT'))
+						return
+					columns = matchObj.group(2).split(',')
+					child_select=matchObj.group(3)
+					child_select=string_to_token(child_select)
+					#  查询的结果 dataFrame
+					data=select.parse(child_select,True)
+					# 定义表时的列
+					define_columns = get_all_columns(table_name)
+					data_list=dataFrame_to_list(data)
+					for item in data_list:
+						c_v=dict(zip(columns,item))
+						if not check_constraint(table_name, c_v):
+							print('约束条件不满足')
+							return
+					path=get_table_data_path(dv.CURRENT_DB,table_name)
+					if fop.insert(path, define_columns, data):
+						print('插入%s 表%s 成功' % (table_name, columns))
+					else:
+						print('插入%s 表%s 失败' % (table_name, columns))
+				else:
+					print('SQL 语法错误')
+					return
+			else:
+				print('SQL 语法错误')
+				return											
+												</pre></dt>
+												<dt><b>UPDATE功能</b></dt>
 												<dt>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<h3>架构图</h3>
-												<dt align="center"><img src="images/jg.jpg"></dt>
+												<dt><pre>
+		def parse(sql):
+			if 'where' not in sql:
+				matchObj = re.search(r'^updata (.*) set (.*)$', sql)
+				if matchObj:
+					table_name = matchObj.group(1)
+					if not check_permission(table_name, 'update'):
+						print('本用户没有对表%s %s权限' % (table_name, 'UPDATE'))
+						return
+					path = get_table_data_path(dv.CURRENT_DB, table_name)
+					fop.update(path, None)
+				else:
+					print("SQL语法错误")
+			elif 'where' in sql:
+				matchObj = re.search(r'update (.*) set (.*) where (.*);$', sql)
+				if matchObj:
+					table_name = matchObj.group(1)
+					value = matchObj.group(2)
+					constraint = matchObj.group(3)
+					if not check_permission(table_name, 'update'):
+						print('本用户没有对表%s %s权限' % (table_name, 'UPDATE'))
+						return
+					path = get_table_data_path(dv.CURRENT_DB, table_name)
+					where = constraint.strip().split(' ')
+					set_value = value.strip().split(' ')
+					if fop.update(path, set_value, where):
+						print('更新成功')
+					else:
+						print('更新失败')
+				else:
+					print("SQL语法错误")
+			else:
+				print("SQL语法错误")											
+												</pre></dt>
+												<dt><b>DELETE功能</b></dt>
+												<dt><pre>
+		def parse(sql):
+			if 'where' not in sql:
+				matchObj = re.search(r'^delete from (.*);$', sql)
+				if matchObj:
+					table_name = matchObj.group(1)
+					if check_permission(table_name, 'delete'):
+						print('本用户没有对表%s %s权限' % (table_name, 'DELETE'))
+						return
+					path = get_table_data_path(dv.CURRENT_DB, table_name)
+					fop.delete(path, None)
+				else:
+					print("SQL语法错误")
+			elif 'where' in sql:
+				matchObj = re.search(r'delete from (.*) where (.*);$', sql)
+				if matchObj:
+					table_name = matchObj.group(1)
+					constraint = matchObj.group(2)
+					if not check_permission(table_name, 'delete'):
+						print('本用户没有对表%s %s权限' % (table_name, 'DELETE'))
+						return
+					path = get_table_data_path(dv.CURRENT_DB, table_name)
+					label = constraint.strip().split(' ')
+					if fop.delete(path, label):
+						print('删除成功')
+					else:
+						print('删除失败')
+				else:
+					print("SQL语法错误")
+			else:
+				print("SQL语法错误")											
+												</pre></dt>
+
+												<h4>权限管理</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解析、执行GRANT和REVOKE语句，实现数据库用户权限的授予和回收管理
+												</dt>
+												<dt><b>GRANT命令</b></dt>
+												<dt><pre>
+		# 授权解析
+def grant(sql):
+    if not is_grant():
+        print('本用户不是管理用户，没有授权权限')
+        return
+    matchObj=re.search(r'^grant (.*) on (table|view|index) (.*) to (.*);$',sql)
+    if matchObj:
+        permissions=matchObj.group(1)
+        dbobj_type=matchObj.group(2)
+        dbobj_names=matchObj.group(3).split(',')
+        users=matchObj.group(4).split(',')
+        existed_users=get_all_user()
+        path=get_permission_path()
+        result_permissions=[]
+        delete_rows=[]
+        for user in users:
+            if user not in existed_users:
+                print('用户%s不存在' % user)
+                continue
+            if user==dv.CURRENT_USER:
+                print('无法授予本用户权限')
+                continue
+            user_permission=get_user_permissions(user,dv.CURRENT_USER)
+            for dbobj_name in dbobj_names:
+                try:
+                    # 未存在user和CURRENT_DB的记录时
+                    if not user_permission:
+                        result_permissions.append([user,dv.CURRENT_DB,dbobj_type,dbobj_name,permissions])
+                    else:
+                        for item in user_permission:
+                            if (item[2]==dbobj_type or item[2]=='*') and (item[3]==dbobj_name or item[3]=='*'):
+                                delete_rows.append(item)
+                                delete_from_csv(path,delete_rows) # 删除权限记录
+                                # 计算授权权限之后的权限
+                                if item[4]=='*':
+                                    have_list=['select','insert','update','delete','create']
+                                else:
+                                    have_list=item[4].strip('\"').split(',')
+                                permissions=permissions.split(',')
+                                result_list=list(set(have_list)|set(permissions))
+                                result_string=','.join(result_list)
+                                # 授予权限之后的权限列表
+                                result_permissions.append([item[0],item[1],item[2],item[3],result_string])
+                            else:
+                                result_permissions.append([user,dv.CURRENT_DB,dbobj_type,dbobj_name,permissions])
+                    print('授权用户%s %s %s 的权限成功' % (user,dbobj_type,dbobj_name))
+                except:
+                    print('授权用户%s %s %s 的权限失败' % (user,dbobj_type,dbobj_name))
+        write_to_csv(path,result_permissions)
+    else:
+        print('SQL 语法错误')
+2.REVOKE命令
+def revoke(sql):
+    if not is_revoke():
+        print("本用户不是管理员用户，没有收权权限")
+        return
+    matchObj = re.search(r'^revoke (.*) on (table|view|index) (.*) from (.*);$', sql)
+    if matchObj:
+        permissions = matchObj.group(1).split(',')
+        dbobj_type = matchObj.group(2)
+        dbobj_names = matchObj.group(3).split(',')
+        users = matchObj.group(4).split(',')
+        existed_users = get_all_user()
+        result_permissions = [] 
+        delete_rows = [] 
+        path = get_permission_path()
+        for user in users:
+            if user not in existed_users:
+                print('用户%s不存在' % user)
+                continue
+            if user == dv.CURRENT_USER:
+                print('无法收回本用户权限')
+                continue
+            user_permission = get_user_permissions(user, dv.CURRENT_DB)
+            if not user_permission:
+                print('该用户在当前数据库没有权限')
+                continue
+            for dbobj_name in dbobj_names:
+                try:
+                    for item in user_permission:
+                        if (item[2] == dbobj_type or item[2] == '*') and (item[3] == dbobj_name or item[3] == '*'):
+                            delete_rows.append(item)
+                            #计算收回权限之后的剩余权限
+                            if item[4] == '*':
+                                have_list = ['select', 'insert', 'update', 'delete', 'create']
+                            else:
+                                have_list = item[4].strip('\"').split(',')
+                            result_list = set(have_list) - set(permissions)
+                            result_string = ','.join(result_list)
+                            #收回权限之后的权限列表
+                            result_permissions.append([item[0], item[1], item[2], item[3], result_string])
+                            print('收回用户%s %s %s 权限成功' % (item[0], item[2], item[3]))
+                except:
+                    print('授权用户%s %s %s 的权限失败' % (user, dbobj_type, dbobj_name))
+        delete_from_csv(path, delete_rows) 
+        write_to_csv(path, result_permissions) 
+    else:
+        print('SQL 语法错误')											
+												</pre></dt>
+												
+												<h4>用户权限验证</h4>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.实现用户登录数据库；
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.对数据库进行操作时权限验证。
+												</dt>
+												<dt><b>1.实现用户登录数据库；</b></dt>
+												<dt><pre>
+		print("请输入用户名和密码：")
+		username = input("username: ")
+		password = passwordbox("password: ")
+		if login(username, password):
+			dv.CURRENT_USER = username
+			print('-----------------------------------')
+			if username in dv.DATABASE_ADMIN:
+				print("Hello ADMIN %s" % dv.CURRENT_USER)
+			else:
+				print("Hello USER %s" % dv.CURRENT_USER)											
+												</pre></dt>
+												<dt><b>权限验证</b></dt>
+												<dt><pre>
+		def check_permission(table_name, permission):
+			permission = permission.lower()
+			#print(permission)
+			permission_path = get_permission_path()
+			data = rwfile.read_from_csv(permission_path)
+			permissions = []
+			for item in data:
+				if item[0] == dv.CURRENT_USER and (item[1] == dv.CURRENT_DB or item[1] == '*') and (item[2] == 'table' or item[2] == 'view' or item[2] == '*') and (item[3] == table_name or item[3] == '*'):
+					if item[4] == '*':
+						permissions = ['insert', 'select', 'update', 'delete']
+					else:
+						permissions = item[4].split(',')
+			if permission in permissions:
+				return True
+			else:
+				return False											
+												</pre></dt>
+
+												<h4>帮助信息</h4>
+												<dt><pre>
+		#输出所有的数据表、视图和索引的信息及其对象类型
+		if token[1] == 'database;':
+			tables_name = rwfile.read_from_txt(path + r'\tables_name.txt')
+			print('所有数据表：')
+			for table in tables_name:
+				print(table)
+			views_name = rwfile.read_from_txt(path +  r'\views_name.txt')
+			print('所有视图：')
+			for view in views_name:
+				print(view)
+			indexes_name = rwfile.read_from_txt(path +  r'\indexes_name.txt')
+			print('所有的索引：')
+			for index in indexes_name:
+				print(index)	
+		elif token[1] == 'table;':
+			tables_name = rwfile.read_from_txt(path +  r'\tables_name.txt')
+			for table in tables_name:
+				csv_path = base.get_table_info_path(dv.CURRENT_DB, table)
+				content = rwfile.read_from_csv(csv_path)
+				print(table + '表中所有属性的详细信息')
+				for x in content:
+					for y in x:
+						print('%20s' % y, end = '')
+					print()	
+		elif token[1] == 'view;':
+			views_name = rwfile.read_from_txt(path + r'\views_name.txt')
+			for view in views_name:
+				txt_path = base.get_view_info_path(dv.CURRENT_DB, view)
+				content = rwfile.read_from_txt(txt_path)
+				print(view + '定义语句：')
+				for item in content:
+					print(item)
+		elif token[1] == 'index;':
+			indexes_name = rwfile.read_from_txt(path + r'\indexes_name.txt')
+			for index in indexes_name:
+				txt_path = base.get_index_info_path(dv.CURRENT_DB, index)
+				content = rwfile.read_from_txt(txt_path)
+				print(index + '详细信息：')
+				for item in content:
+					print(item)											
+												</pre></dt>
+
 												</dl>
 											</section>
 											
