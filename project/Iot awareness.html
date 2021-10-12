@@ -105,85 +105,366 @@
 											</header>
 
 											<section>
-												<h3>设计方案</h3>
+												<h3>1、皮带启停控制系统</h3>
 												<dl>
+												<dt><h4>题目要求</h4></dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用单片机设计一皮带启停控制系统，如图1，分为ABCD四个皮带，A处是物料，需要通过皮带运送到D皮带末端。
+												为了防止在开机时皮带上物料堆积，关机时物料压迫皮带，有以下要求
 												</dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<h3>架构图</h3>
-												<dt align="center"><img src="images/jg.jpg"></dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.开机顺序：D→C→B→A;关机顺序：A→B→C→D
 												</dt>
 												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.开启、关闭延时时间可调，通过按键设置
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.设计上显示屏
+												</dt>
+												<dt align="center"><img src="images/IOT-1-0.jpg"></dt>
+												<dt><h4>设计思路</h4></dt>
+												<dt><b>硬件框图</b></dt>
+												<dt align="center"><img src="images/IOT-1-1.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考虑到Proteus里无法直接模拟出皮带的形状，为了简单直观的看出电机转动，选择了直流电机模拟皮带转动。
+												通过查阅资料以及和同学交流，选择了L298N作为驱动模块。考虑到需要显示的是各种英文等，因此选用液晶显示屏。本题可以利用AT89C51的P3的第二功能，通过将按钮接到P3.2外中断0和P3.3外中断1，通过中断进行模式的切换与实现。
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L298N是专用驱动集成电路，输出电流大，功率强，可以驱动大功率的直流电机。
+												根据其逻辑功能表可知，其使能端ENA接高电平2时才能转动，因此直接将ENA端接电源，由于本题的皮带运送方向是固定的，因此只需要顺时针转动，顺时针转动需要IN1 = 1,IN2=0,因此可以将IN2接地，通过控制IN1来控制电机的开启与停止，IN3和IN4同理。
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;显示屏选用LCD1602液晶显示屏，其RS为数据/命令选择端，RW为读/写选择端，EN为使能信号。其中常用的指令：38H显示模式设置，01H显示清屏，06H显示光标移动设置，0CH显示开及光标设置。
+												通过指令来控制显示屏显示英文。
+												</dt>
+												<dt><b>Proteus仿真图</b></dt>
+												<dt align="center"><img src="images/IOT-1-2.jpg"></dt>
+												<dt><b>原理图</b></dt>
+												<dt align="center"><img src="images/IOT-1-3.jpg"></dt>
+												<dt><b>PCB版图</b></dt>
+												<dt align="center"><img src="images/IOT-1-4.jpg"></dt>
+												<dt><h4>编程实现</h4></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本题的编程主要利用了外部中断0和外部中断1，当change键按下，即外部中断0，此时会去调用void Mode() interrupt 0这个中断处理函数，在此函数里，可以实现显示屏上字的切换，以及延时的调整；
+												当enter键按下，即外部中断1，此时会调用void control() interrupt 2这个中断处理函数，在此函数中，可以处理控制L298N芯片，以此来驱动电机的转动。
+												</dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体流程图如下
+												</dt>
+												<dt align="center"><img src="images/IOT-1-5.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于LCD液晶显示屏的控制，其相对流程如图，非常固定，其中使能端E是需要一个下降沿才能写入数据，因此需要先置1再置0
+												</dt>
+												<dt align="center"><img src="images/IOT-1-6.jpg"></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体代码如下
+												</dt>
+												<dt><pre>
+		#include <reg51.h>
+		#define uchar unsigned char
+		#define uint  unsigned int
+
+		sbit change = P1^5;
+		sbit clear = P1^6;
+
+		const uint cnt = 8;
+		uint t = 0; 
+		uint speed, distance;
+		uint flag = 1, set = 1;
+		uchar code table[16]={0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+
+		void delay(uchar m){
+			uchar i,y;
+			for(i = 0; i < m; i++)
+				for(y = 0; y < 110; y++);
+		}
+
+		void init(){
+			EX0 = 1;
+			PX0 = 1;
+			IT0 = 1;
+			TMOD = 0x11;
+			ET1 = 1;
+			TR1 = 1;
+			
+			TH1 = (65535 - 25000) / 256;   
+			TL1 = (65535 - 25000) % 256;
+			EA=1;  
+
+			distance = 0;	
+		}
+
+		void display(uint num){
+			if(num >= 0 && num < 10){
+				P2 = 0X08;
+				P0 = table[num];        
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 10 && num < 100){
+				P2 = 0X08;
+				P0 = table[num/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num % 10];
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 100 && num < 1000){
+				P2 = 0X08;
+				P0 = table[num / 100];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num%100/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X02;
+				P0 = table[num%100%10];
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 1000 && num < 10000){
+				P2 = 0X08;
+				P0 = table[num/1000];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num%1000/100];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X02;
+				P0 = table[num%1000%100/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X01;
+				P0 = table[num%1000%100%10];
+				delay(3);
+				P0 = 0XFF;
+			}
+		}
+
+		void TIME1() interrupt 3{
+			t++;
+		}
+
+		void main(){
+			init();
+			delay(10);
+			while(1){
+				speed = cnt * 2.2047 * 3.6;
+				distance = cnt * 2.2047 * t * 0.001;
+				if(change == 0){
+					flag = -flag;
+				}
+				if(clear == 0){
+					t = 0;
+					distance = 0;
+				}
+				if(flag == 1){
+					display(speed);
+				}
+				else{
+					delay(10);
+					display(distance);
+				}
+			}
+		}										
+												</pre></dt>
+												<dt><h4>系统演示</h4></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
+												</dt>
+												<dt align="center"><embed src="images/IOT-v1.mp4" height="550" width="960"/></dt>
+												<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
+												<dt>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本项目主要问题，就是之前所说的电机惯性问题，但在综合对比了步进电机，直流电机，伺服电机等，均无法消除惯性。
+												在和同学讨论过程，以及结合同学说的，惯性本身也是实际中一部分，在仿真中应该不去消除，因此，未做消除惯性的处理
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3>设计方案</h3>
+												<h3>2、广告牌设计</h3>
 												<dl>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<h3>架构图</h3>
-												<dt align="center"><img src="images/jg.jpg"></dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												</dl>
+													<dt><h4>题目要求</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本项目是基于实际生活中，公交车后挡玻璃上的电子报站牌，要求用单片机设计一点阵结构的广告牌，可以循环显示汉字，每次按键切换下一个显示
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在题目要求基础上设计了三个按键：Last：切换到上一个显示；Next：切换到下一个显示；RST：切回第一个；
+													</dt>
+													<dt><h4>设计思路</h4></dt>
+													<dt><b>硬件框图</b></dt>
+													<dt align="center"><img src="images/IOT-2-1.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt><b>Proteus仿真图</b></dt>
+													<dt align="center"><img src="images/IOT-2-2.jpg"></dt>
+													<dt><b>原理图</b></dt>
+													<dt align="center"><img src="images/IOT-2-3.jpg"></dt>
+													<dt><b>PCB版图</b></dt>
+													<dt align="center"><img src="images/IOT-2-4.jpg"></dt>
+													<dt><h4>编程实现</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体流程图如下
+													</dt>
+													<dt align="center"><img src="images/IOT-2-5.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt align="center"><img src="images/IOT-2-6.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体代码如下
+													</dt>
+													<dt><pre>
+			
+													</pre></dt>
+													<dt><h4>系统演示</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
+													</dt>
+													<dt align="center"><embed src="images/IOT-v2.mp4" height="1080" width="960"/></dt>
+													<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													</dl>
 											</section>
 
 											<section>
-												<h3>设计方案</h3>
+												<h3>3、汽车车速计</h3>
 												<dl>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<h3>架构图</h3>
-												<dt align="center"><img src="images/jg.jpg"></dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												</dl>
+													<dt><h4>题目要求</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt><h4>设计思路</h4></dt>
+													<dt><b>硬件框图</b></dt>
+													<dt align="center"><img src="images/IOT-3-1.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt><b>Proteus仿真图</b></dt>
+													<dt align="center"><img src="images/IOT-3-2.jpg"></dt>
+													<dt><b>原理图</b></dt>
+													<dt align="center"><img src="images/IOT-3-3.jpg"></dt>
+													<dt><b>PCB版图</b></dt>
+													<dt align="center"><img src="images/IOT-3-4.jpg"></dt>
+													<dt><h4>编程实现</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体流程图如下
+													</dt>
+													<dt align="center"><img src="images/IOT-3-5.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt align="center"><img src="images/IOT-3-6.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体代码如下
+													</dt>
+													<dt><pre>
+			
+													</pre></dt>
+													<dt><h4>系统演示</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
+													</dt>
+													<dt align="center"><embed src="images/IOT-v3.mp4" height="1080" width="960"/></dt>
+													<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													</dl>
 											</section>
 
 											<section>
-												<h3>设计方案</h3>
+												<h3>4、交通灯控制系统</h3>
 												<dl>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<h3>架构图</h3>
-												<dt align="center"><img src="images/jg.jpg"></dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												</dl>
+													<dt><h4>题目要求</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt><h4>设计思路</h4></dt>
+													<dt><b>硬件框图</b></dt>
+													<dt align="center"><img src="images/IOT-4-1.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt><b>Proteus仿真图</b></dt>
+													<dt align="center"><img src="images/IOT-4-2.jpg"></dt>
+													<dt><b>原理图</b></dt>
+													<dt align="center"><img src="images/IOT-4-3.jpg"></dt>
+													<dt><b>PCB版图</b></dt>
+													<dt align="center"><img src="images/IOT-4-4.jpg"></dt>
+													<dt><h4>编程实现</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体流程图如下
+													</dt>
+													<dt align="center"><img src="images/IOT-4-5.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt align="center"><img src="images/IOT-4-6.jpg"></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体代码如下
+													</dt>
+													<dt><pre>
+			
+													</pre></dt>
+													<dt><h4>系统演示</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
+													</dt>
+													<dt align="center"><embed src="images/IOT-v4.mp4" height="1080" width="960"/></dt>
+													<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</dt>
+													</dl>
 											</section>
-											
+
 										</article>
 
 								</div>
