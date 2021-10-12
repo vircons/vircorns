@@ -630,19 +630,21 @@
 												<dl>
 													<dt><h4>题目要求</h4></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本项目是基于实际生活中现有车速计，利用安装在车轮上的脉冲，计算显示出车速、公里数信息
 													</dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依据题目要求，设计了四位LED数码管显示屏，设计了两个功能按键，一个是change键，用来切换显示屏显示的是速度还是路程。
+													并且，为了更加清楚的区分显示，设置了两个LED提示灯，用来提示现在显示的是速度还是里程。另一个是clear键，用来清零路程，实现路程的计算
 													</dt>
 													<dt><h4>设计思路</h4></dt>
 													<dt><b>硬件框图</b></dt>
 													<dt align="center"><img src="images/IOT-3-1.jpg"></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这题的思路非常简单，主要是理解现有汽车车速计原理，其实利用车轮上的脉冲传感器，车轮没转一圈产生一个脉冲，利用1s内的脉冲数，得到车轮所转的圈数，通过计算速度；
+													并且，车辆计轮胎是固定规格的，即车辆周长可知，也就是说，轮胎转一圈走过的距离是固定的，通过脉冲数乘以周长即可得到里程数
 													</dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本设计选取了225/60 R17型轮胎，按照国际标准计算公式以及相关资料查找，此型号轮胎半径为35.09cm，周长约为220.47cm
 													</dt>
 													<dt><b>Proteus仿真图</b></dt>
 													<dt align="center"><img src="images/IOT-3-2.jpg"></dt>
@@ -652,33 +654,171 @@
 													<dt align="center"><img src="images/IOT-3-4.jpg"></dt>
 													<dt><h4>编程实现</h4></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本题流程也相对简单，主要是脉冲数目的读取，利用定时器，通过中断0得到脉冲信号为低电平的数目，每到1s时，中断数变量清零重新计算，最终得到脉冲数，通过计算公式计算出速度与里程
 													</dt>
 													<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体流程图如下
 													</dt>
 													<dt align="center"><img src="images/IOT-3-5.jpg"></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													</dt>
-													<dt align="center"><img src="images/IOT-3-6.jpg"></dt>
-													<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体代码如下
 													</dt>
 													<dt><pre>
+		#include <reg51.h>
+		#define uchar unsigned char
+		#define uint  unsigned int
+
+		sbit dis = P1^3;
+		sbit sp = P1^4;
+		sbit change = P1^5;
+		sbit clear = P1^6;
+
+		const uint cnt = 8;
+		uint t = 0; 
+		uint speed, distance;
+		uint pulse_time, pulse_cnt, pulse;
+		uint flag = 1, set = 1;
+		uchar code table[16]={0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+
+		void delay(uchar m){
+			uchar i,y;
+			for(i = 0; i < m; i++)
+				for(y = 0; y < 110; y++);
+		}
+
+		void init(){
+			EX0 = 1;
+			PX0 = 1;
+			IT0 = 1;
+			TMOD = 0x11;
+			ET1 = 1;
+			TR1 = 1;
+			TH1 = (65535 - 25000) / 256;   
+			TL1 = (65535 - 25000) % 256;//1.25ms
+			EA=1;  
+			distance = 0;	
+		}
+
+		void display(uint num){
+			if(num >= 0 && num < 10){
+				P2 = 0X08;
+				P0 = table[num];        
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 10 && num < 100){
+				P2 = 0X08;
+				P0 = table[num/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num % 10];
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 100 && num < 1000){
+				P2 = 0X08;
+				P0 = table[num / 100];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num%100/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X02;
+				P0 = table[num%100%10];
+				delay(3);
+				P0 = 0XFF;
+			}
+			if(num >= 1000 && num < 10000){
+				P2 = 0X08;
+				P0 = table[num/1000];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X04;
+				P0 = table[num%1000/100];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X02;
+				P0 = table[num%1000%100/10];
+				delay(3);
+				P0 = 0XFF;
+				
+				P2 = 0X01;
+				P0 = table[num%1000%100%10];
+				delay(3);
+				P0 = 0XFF;
+			}
+		}
+
+		void TIME1() interrupt 3
+		{
+			t++;
+			pulse_time++;
+			if(pulse_time == 40)  //1000ms(1s){
+					pulse_time = 0;   
+					pulse = pulse_cnt / 2;    
+					pulse_cnt=0;     
+					pulse = pulse - 2;
+				}
+		}
+
+		void IINT0() interrupt 0{
+			pulse_cnt++; 	
+		}
+
+		void main(){
+			init();
+			delay(10);
 			
+			while(1){
+				speed = pulse * 2.2047 * 3.6;
+				distance = pulse * 2.2047 * t * 0.001;
+				if(flag == 1){
+					sp = 1;
+					dis = 0;
+				}
+				else{
+					sp = 0;
+					dis = 1;
+				}
+				if(change == 0){
+					delay(5);
+					flag = -flag;
+				}
+				if(clear == 0){
+					t = 0;
+					distance = 0;
+				}
+				if(flag == 1){
+					//display(pulse);
+					display(speed);
+				}
+				else{
+					delay(5);
+					display(distance);
+				}	
+			}
+		}										
 													</pre></dt>
 													<dt><h4>系统演示</h4></dt>
 													<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
 													</dt>
-													<dt align="center"><embed src="images/IOT-v3.mp4" height="1080" width="960"/></dt>
+													<dt align="center"><embed src="images/IOT-v3.mp4" height="550" width="960"/></dt>
 													<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最开始不太熟悉脉冲等用法，相关资料也比较少，因此最开始错误的使用了信号发生器，导致一直出不来结果。
+													后期发现问题以后，发现读取的脉冲非常不稳，时常跳变，又通过延时，增加变量处理等使其显示平稳。后面又发现，得到的脉冲计算出的结果与实际不符，发现还是脉冲读取的问题，读取的脉冲数存在误差，
+													即使是存在1个误差，由于乘了轮胎周长和单位换算以后，使得误差变得非常大。后期的解决办法是，通过多组观察，发现读取出的脉冲数总是比实际多2，因此在计算前减去这个误差，即可得到准确的速度
 													</dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后面关于里程，最开始想用米做单位，充分显示里程的增加，发现增加的过快，导致四位数一直在变无法看清，因此只能用千米做单位，显示的结果略微不精确
 													</dt>
 													</dl>
 											</section>
@@ -688,10 +828,17 @@
 												<dl>
 													<dt><h4>题目要求</h4></dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用单片机设计交通灯控制系统，基本功能参考现有交通灯控制系统。
 													</dt>
 													<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在题目基础要求之上，增加了一些设计：
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.在红灯或绿灯最后五秒，灯会闪烁示意
+													</dt>
+													<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.设计了三个功能按键，一个是禁止通行按键，
+													按下以后四个路口都会变成红灯，再按一次恢复初态。第二个是南北通行按键，按下后会先变成黄灯缓冲，然后南北变为绿灯，东西变为红灯。第三个是东西通行按键，与南北同理
 													</dt>
 													<dt><h4>设计思路</h4></dt>
 													<dt><b>硬件框图</b></dt>
@@ -730,7 +877,7 @@
 													<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介绍视频如下
 													</dt>
-													<dt align="center"><embed src="images/IOT-v4.mp4" height="1080" width="960"/></dt>
+													<dt align="center"><embed src="images/IOT-v4.mp4" height="550" width="960"/></dt>
 													<dt><h4>本项目遇到的主要问题及解决方法</h4></dt>
 													<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
