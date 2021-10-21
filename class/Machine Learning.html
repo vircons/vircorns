@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -185,13 +186,79 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自助法：给定包含m个样本的数据集D，我们对它进行采样产生数据集D': 每次随机从D中挑选一个样本，
 													将其拷贝放入D'，然后再将该样本放回初始数据集D中，使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次
 												</dt>
+												<dt>
+													-----------------------------------------------------------------课后题-------------------------------------------------------------------------
+												</dt>
+												<dt><b>Q2.2:数据集包含100个样本，其中正、反例各一半，假定学习算法所产生的模型是将新样本预测为训练样本数较多的类别
+													(训练样本数相同时进行随机猜测)，试给出用10折交叉验证法和留一法分别对错误率进行评估所得的结果</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10折交叉验证法:由于每次训练正反例数目一样，所以结果判断为正反例的概率也是一样的，所以错误率的期望为50%
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留一法：如果留下的是正例，训练样本中反例的数目比正例多一个，所以留出的样本会被判断是反例；
+													同理，留出的是反例，则会被判断成正例，所以错误率是100%
+												</dt>
+												<dt><b>Q2.3：若学习器A的F1值比学习器B高，试析A的BEP值是否也比B高</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，BEP是平衡点的简称，即“查准率=查全率”时的取值；
+													F1度量公式为F1=2*P*R/(P+R)=2*TP/(样例总数+TP-TN)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若学习器A的F1值比学习器B高，则
+													2*PA*RA/(PA+RA)>2*PB*RB/(PB+RB)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于BEP，令PA=RA=BEPA,PB=RB=BEPB,则可以得到BEPA>BEPB
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故假设成立
+												</dt>
+												<dt><b>Q2.4：试述真正例率(TPR)、假正例率(FPR)与查准率(P)、查全率(R)之间的联系</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;真正例率是所有真实正例中真正例的比例；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假正例率是所有真实反例中假正例的比例；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查准率是所有预测正例中真正例的比例；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查全率是所有真实正例中真正例的比例；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以查全率与真正例率相等，R=TPR
+												</dt>
+												<dt><b>Q2.6：试述错误率与 ROC 曲线的联系.</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ROC曲线每个点对应了一个TPR与FPR，此时对应了一侧错误率。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `E_cost = ( m^+ × (1-TPR) × cost_01 + m^- × cost_10) / (m^+ + m^-)` 
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学习器会选择错误率最小的位置作为截断点
+												</dt>
+												<dt><b>Q2.7：试证明任意一条ROC曲线都有一条代价曲线与之对应，反之亦然.</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由定义知道TPR与FPR都是由0上升到1，那么FNR则是由1下降到0。
+													每条ROC曲线都会对应一条代价曲线，由于第一条代价线段的是(0,0),(1,1)，最后是(0,1),(1,0)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有代价线段总会有一块公共区域，这个区域就是期望总体代价，
+													而这块区域的边界线就是代价曲线，且肯定从(0,0)到(1,0)
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在有限个样本情况下，ROC是一条折线，
+													此时根据代价曲线无法还原ROC曲线。但若是理论上有无限个样本，ROC是一条连续的折线，代价曲线也是连续的曲线，
+													每个点的切线可以求出TPR与FNR，从而得到唯一的ROC曲线
+												</dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No1">第三章：线性模型</div></h3>
 												<dl>
-												<dt><h4>概念</h4></dt>
 												<dt><b>定义</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -249,6 +316,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>
