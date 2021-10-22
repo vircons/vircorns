@@ -363,20 +363,147 @@
 													若使银行的利润最大化，只需将所有金额分配给`(1-L_a)*R_i`，`(1-L_b)*R_j`和`(1-L_c)*R_k`中值最大的向所对应的信誉等级，而其余等级不与放贷。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过Python的运行，枚举出银行利润理想最大值为`Pft=0.04152393775150505*S，
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过Python的运行，枚举出银行利润理想最大值为`Pft=0.04152393775150505*S`，
 													即将全部金额分配给信誉等级为C的企业，收年利率为0.0585，其客户流失率为0.290189098264871。
 												</dt>
 												<dt><b>（2）金额均衡分配化</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于将全部金额分给一个等级并不切合实际，且有一定的风险。因此，为了让各个信用评级的企业都得到信贷金额，
+													记每组i,j,k对应确定的`(1-L_a)*R_i`，`(1-L_b)*R_j`和`(1-L_c)*R_k`分别为`C_a`，`C_b`和`C-c`。
+													令`P_a=C_a/(C_a+C_b+C_c)`，`P_b=C_b/(C_a+C_b+C_c)`，`P_c=C_c/(C_a+C_b+C_c)`，按照公式计算出银行利润，取银行利润最大的一组。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过Python的运行，求出在所有信誉等级均可得到贷款金额的情况下，银行的利润`Pft=0.04083862302221721*S`，各个信誉评级的用户的利率如表
 												</dt>
 												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
+												<dt><b>（3）两方案的最终信贷政策</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有以上可得不同信誉等级的贷款年利率，再利用前文所计算的信贷风险评分得出的额度分配的比例求出每个企业所分得的金额，部分金额如表
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
+												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题2要求在问题1的基础上，针对无信贷记录企业的数据，因此可以根据进项发票信息和销项发票信息，利用BP神经网络预测出对应中小型企业的“信誉等级”和“是否违约”。
+													然后里用问题一的方法，得出信贷风险评分。此外本题要求给出该银行在年度信贷总额为1亿元时对这些企业的信贷策略，因此需要在第一问的基础上加以年度信贷总额为1亿元的限制，从而确定信贷策略。
+												</dt>
+												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
+												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP 神经网络算法是模拟人类神经结构的一个机器学习算法。由于BP神经网络能够通过神经元之间的连接自动学习输入数据的内在规律，其实质是从输入经过非线性映射到达输出的问题，具有强大的自学习能力。
+													本题我们根据神经网络模型的基本原理预测出企业的信誉等级和是否违约，从而进一步用类似于问题一的方法解决信贷策略问题。
+												</dt>
+												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP 神经网络房价预测模型设置了一个经典的包含输入层，输出层，隐藏层的三层神经网络。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、输入层输出层：因为需要预测企业是否会违约和信誉等级，本题采用发票状态作为输入层，附件一中的结果输入进行训练。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、隐含层数：隐藏层数的增加，使准确度升高，错误变少。但隐藏层层数过多，也会产生很多不可避免的弊端。隐藏层层数过多，会导致需要很长的网络训练时间，也可能造成过分拟合，严重依赖波士顿数据集本身的现象。
+													因此本题采用两层隐藏层。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、隐藏层节点数：隐藏层节点数目过多，会导致网络学习结构变得十分复杂，学习速率大大降低，而且会导致在训练学习过程中产生局部极小化问题。如果隐藏层节点数目过少，也会造成许多的负面影响，譬如设置过于简单，不具备良好的学习能力和信息处理能力。
+													本题在输入层位两个结点，输出层一个结点，同时确定了隐含层数为二的情况下，我们选择第一层四个结点，第二层三个结点的结构。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;隐藏层节点数的确定方法有很多，目前仍然没有一个普遍适用的公认的确定方法。本题依据的是两个经验公式：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于输入层有2个节点，输出层为1层，所以结合①②两个公式，采用两层隐藏层，第一层节点数为4个，第二次节点数为6个，如图5.2.1所示。
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
+												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP神经网络算法本质包含两个阶段，分别是输入数据的正向传播和误差反馈反向传播两个阶段。信号正向传播。
+													输入信息通过输入层、隐藏层处理并计算每个神经单元的输出。
+													即根据输入已知的样本值，计算当前参数对应的神经网络模型的输出。
+													输入数据通过隐藏层节点处理后，发往输出层，将该数据与输出层预期数据作对比，
+													如果没有达到预期，则开始进行误差反馈反向传播阶段，将误差逆返回到隐藏层，
+													再由隐藏层进行向输入层进行返回，分配给输入层各层的所有单元。
+													所以输入层的每个单元都获得了误差反馈，从而对于个单位数据的修改供依据。
+													如此两大传播阶段来回反复地进行，直至达到误差符合期望为止。
+													实现过程流程图如图所示：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假设输入输出神经元为(N,M)，W<sub>ij</sub>表示该BP神经网络的输入层的第i个神经元与隐藏层的第j个神经元之间的连接权值,
+													使用W<sub>jk</sub>表示该BP神经网络的隐藏层中第j个神经元与输出层中的第k个神经元之间的连接权值。
+													使用a<sub>j</sub>表示该BP神经网络隐藏层的第j个神经元的阈值，使用b表示该神经网络输出层的第k个神经元的阈值。
+													则，隐藏层计算输出为：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，H<sub>j</sub>为隐藏层输出，f为激励函数。激励函数为
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出层计算输出如下，其中k=1,2,3..M，P<sub>k</sub>为输出层输出
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据已经得到的输出神经元和输出层输出，得到误差输出为：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，k=1,2,3...M，e<sub>k</sub>为误差，M<sub>k</sub>为已知的期望值。
+													然后，根据误差反向传播更新连接权值W<sub>ij</sub>和W<sub>jk</sub,实现连接权值的不断迭代更新：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而后，根据误差反向传播更新阈值a<sub>j</sub>和b<sub>k</sub>，其中j=1,2,3...L,k=1,2,3...M：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
+												<dt><b>5.2.2 信贷策略的提出</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据题目要求，银行对确定要放贷企业的贷款额度为10~100万元，同时，该银行的年度信贷总额为1亿。显然，放贷总额为1亿，银行的收益最大；而问题1中只给某一信誉等级的企业所以额度是不可取。
+													因此，只能采取金额分配均衡化策略，首先对各信誉等级进行梯度比例的划分。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，完全按照评分进行比例划分，会导致部分企业额度超出100万。所以，为了使银行的收益尽量大，把所有企业超出100万的部分分配给其他企业，企业排序的优先级为收益，其次为综合评分，
+													首先把优先级高的企业的金额补全100万，并从超出金额中扣除，再依次把剩余的金额分配给优先级低的企业，直到分完为止。若存在企业分得金额不为0且小于10万，则从优先级比该企业低的企业中依次分出金额，补满10万，若该企业的优先级最低，则将该企业的金额依次分配给优先级高的企业。
+												</dt>
+												<dt><b>5.2.3 模型的求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据以上的问题分析与模型建立，进行BP神经网络的模型求解。首先运行两次神经网络，分别对“信誉评级”和“是否违约”做出预测。神经网络前50轮训练的损失值变化如图。
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最终，通过BP神经网络预测出新增的302家企业的“信誉等级”和“是否违约”的结果如下表：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过BP神经网络预测出“信誉等级”和“是否违约”后，即可按照第一问的思路，求出企业的信誉得分与实力得分，最终计算出综合评分与排名，如表
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用问题一的熵值法和信贷策略求出各企业在两种策略下分得的金额，并检查是否都满足贷款额度为10~100万元的约束条件。
+													显然银行利润最大化的方案不可行，把所有金额都分给一个信誉评价的企业，会导致金额超出上限，因此采用均衡分配的方案。但此方案的运行结果中，有一家企业的金额为1480898.6659650055元，超出100万元，因此，将超出部分按照前文所述的收益最大化的原则分配，同样，信誉等级为D的不予放贷。最终结果如下表：
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
+												<dt><h4>1.1 问题背景</h4></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
+												<dt><b></b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><h4>1.1 问题背景</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b></b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><h4>1.1 问题背景</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b></b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
