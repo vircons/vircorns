@@ -483,61 +483,130 @@
 													显然银行利润最大化的方案不可行，把所有金额都分给一个信誉评价的企业，会导致金额超出上限，因此采用均衡分配的方案。但此方案的运行结果中，有一家企业的金额为1480898.6659650055元，超出100万元，因此，将超出部分按照前文所述的收益最大化的原则分配，同样，信誉等级为D的不予放贷。最终结果如下表：
 												</dt>
 												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本题在前两问的基础上，要求综合考虑信贷风险和可能的突发因素对各企业的影响。因此，需要重新考虑实力、信誉与突发因素的影响权重。本文采用层次分析法，确定各个量之间的相对重要程度，合理给出这三者的标准权数，利用权数求出各方案的优劣次序，最终确定调整方案
 												</dt>
-												<dt><b></b></dt>
+												<dt><b>5.3.1 层次结构模型的建立</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层次分析法，简称AHP，是指将与决策总是有关的元素分解成目标、准则、方案等层次，在此基础之上进行定性和定量分析的决策方法。决策问题按总目标、各层子目标、评价准则直至具体的备投方案的顺序分解为不同的层次结构，然后得用求解判断矩阵特征向量的办法，
+													求得每一层次的各元素对上一层次某元素的优先权重，最后再加权和的方法递阶归并各备择方案对总目标的最终权重。
 												</dt>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt><b>（1）层次模型的构建</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将有关的各个因素按照不同属性自上而下地分解成若干层次。最上层为目标层即决策的目的、要解决的问题；最低层即决策时的备选方案；中间层即考虑的因素、决策的准则。层次分析法所要解决的问题是关于最低层对最高层的相对权重的问题，按此相对权重可以对最低层中的各种方案、措施进行排序，从而在不同的方案中做出选择或形成选择方案的原则
 												</dt>
-												<dt><b></b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合题目要求，本文所构建的层次机构模型如图所示
 												</dt>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层次分析法中构造判断矩阵的方法是一致矩阵法，即，不把所有因素放在一起比较，而是两两相互比较；对此时采用相对尺度，以尽可能减少性质不同因素相互比较的困难，以提高准确度。从层次结构模型的第二层开始，对于从属于上一层每个因素的同一层诸因素，用成对比较法和1到9比较尺度构造成对比较阵。如下表所示
 												</dt>
-												<dt><b></b></dt>
+												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合实际，初步确定了影响影响企业发展的主要因素，根据上面比较尺度表格，确定三个因素之间的重要性关系如下
 												</dt>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从而建立正互反矩阵
 												</dt>
-												<dt><b></b></dt>
+												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将A的每一列向量归一化得后按行求和，得到W<sub>i</sub>，将得到的结果进行归一化，即为近似特征向量。计算最大特征根的近似值：
 												</dt>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于固定的能,随机构造成对比较阵A,其中a<sub>ij</sub>是从1,2,…,9,1/2,1/3,…,1/9中随机抽取的。这样的A是不一致的,取充分大的子样得到A的最大特征值的平均值，获取RI。
 												</dt>
-												<dt><b></b></dt>
+												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算`CR=CI/RI`。当`CR<0.1`时，判定成对比较阵A具有满意的一致性，或其不一致程度是可以接受的；
+													否则就调整成成对比较矩阵A，直到达到满意的一致性为止
 												</dt>
+												<dt><b>（3）得出金额</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为本题突发因素和企业类型未知，所以采用随机数确定突发因素影响值。通过三者的权重得出综合评分，最后用第二问的方法计算金额分配
+												</dt>
+												<dt><b>5.3.2 模型的求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用Python编译运行层次分析法程序，得出特征向量为[1.94384058 0.68961353 0.36654589]，CI=0.0018483339174426572，CR=0.0031867826162804438，CR<0.1，通过一致性检验，最终各个指标的权重如下表
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机计算出综合得分和分配比例，得出每家企业分配所得的金额。有28家企业不符合约束条件，再采用问题二的收益最大化的原则，调整金额，最终结果如下表
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No7" align="center">六、模型的评价与推广</div></h3>
 												<dl>
-												<dt><h4>1.1 问题背景</h4></dt>
+												<dt><h4>6.1 模型的评价</h4></dt>
+												<dt><b>6.1.1 问题一的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：在计算信贷风险使所用到的熵值法，能够深刻反映出指标信息熵值的效用价值，从而确定权重。而且，相较于其他主观赋权法，它是更具有客观性，能够更好地对结果进行解释，因而由它得出的指标权重值比主观赋权法具有较高的可信度和精确度。在制定信贷策略时所用到的枚举法，比较直观，易于理解。
 												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：熵值法缺乏各指标之间的横向比较，且权数随样本的变化额变化，权数依赖于样本；枚举法运算量比较大，效率低。
+												</dt>	
+												<dt><b>6.1.2 问题二的模型评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：本文采用了BP神经网络模型，其实质上实现了一个从输入到输出的映射功能；并且，BP神经网络有自学习和自适应能力，能够通过训练获取“合理规则”进行记忆；同时，其还有一定的容错能力，在其局部或者部分神经元受到破坏后对全局的训练结果不会造成很大的影响。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：从数学角度看，传统的BP神经网络有局部最小化问题，每次训练都会得到不同的结果，并且其收敛速度慢，可能出现“锯齿现象”，使得算法低效。
+												</dt>
+												<dt><b>6.1.3 问题三的模型评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：层次分析法具有很好的系统性和实用性，把定性与定量相结合，使复杂的系统分解，增加了决策的有效性。同时，它计算简便，结果明确，将度欧标、多准则的决策问题转化为多层次单目标问题，易于了解与掌握。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：层次分析法从建立层次结构模型到给出成对比较矩阵，主观因素对整个过程的影响很大，使得结果难以让所有的决策者接受。并且，其比较、判断以及结果的计算过程都是粗糙的。
+												</dt>
+												<dt><h4>6.2模型的推广</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过此次问题，我们综合应用了熵值法和层次分析法，建立了BP神经网络预测模型。熵权法是一种客观的赋权方法，够深刻反映出指标信息熵值的效用价值，一次具有很高的实用性；BP神经网络模型，通过学习和训练，能够较好的预测出需要的目标结果；层次分析法可处理决策、评价、分析、预测等模型，将复杂的多目标决策问题转为系统化，给出了相关因素的权重，为有关参与者与决策者提供了很好的参考价值。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这些模型的建立，都可以很好的应用到实际生活中去，这也体现了建模意义所在。并且银行对中小微企业的信贷风险的分析与信贷决策同样非常切合实际。
+												</dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No8" align="center">七、参考文献</div></h3>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1]王樰沫.运用python进行熵值法综合评价[CP/OL].2019-04-14.  https://blog.csdn.net/weixin_43196531/article/details/89297578
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2]Zhuhuaren.综合评价值熵值法[Z/OL].2020-06-30. https://blog.csdn.net/weixin_43425784/article/details/107047869
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3]我的她像朵花.层次分析法(AHP)详细步骤[Z/OL]. 2019-01-07. https://blog.csdn.net/mmm_jsw/article/details/84863416
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4]Sgoyi.AHP(层次分析法)附Python示例代码[Z/OL].2018-11-16. https://www.cnblogs.com/yhll/p/9967726.html
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5]平萍.C农村商业银行小微企业信用风险评价研究[D].西安石油大学,2020.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6]邢福皇.商业银行对中小企业信贷政策研究[J].现代营销(学苑版),2013(01):60.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7]于兆吉.基于信用级别的银行信贷优化模型[A].辽宁省哲学社会科学成果奖评审委员会办公室.辽宁省哲学社会科学获奖成果汇编[2007-2008年度][C].:辽宁省社会科学界联合会,2010:6.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8]吴齐丽.九江银行绿色信贷信用评估方案设计及应用[D].江西财经大学,2020.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9]陈璐.Q银行公司信贷风险管理研究[D].北京化工大学,2019.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
 												<dl>
 												</dl>
 											</section>
