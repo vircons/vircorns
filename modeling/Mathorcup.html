@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Mathorcup大学生数学建模挑战赛</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<div class="logo container">
+						<div>
+							<h1><a href="index.html" id="logo">建模-</a></h1>
+							<p>Mathorcup</p>
+						</div>
+					</div>
+				</header>
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="../index.html">Home</a></li>
+						<li>
+							<a href="#">Project</a>
+							<ul>
+								<li><a href="../project/energy-conservation.html">节能减排竞赛</a></li>
+								<li><a href="../project/Epidemic prediction system.html">软件杯</a></li>
+								<li>
+									<a href="#">课程设计</a>
+									<ul>
+										<li><a href="../project/Plane Wars.html">飞机大战</a></li>
+										<li><a href="../project/thermistor.html">热敏电阻传感器</a></li>
+										<li><a href="../project/TCP.html">TCP多线程简易聊天室</a></li>
+										<li><a href="../project/Iot awareness.html">物联网感知实习</a></li>
+										<li><a href="../project/database.html">数据库设计</a></li>
+										<li><a href="../project/Robert.html">智能小车自主驾驶</a></li>
+										<li><a href="../project/STM32-ZigBee.html">基于STM32和ZigBee的智能控锁系统</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">建模比赛</a>
+									<ul>
+										<li><a href="NCSMCM.html">国赛</a></li>
+										<li><a href="ACSMCM.html">美赛</a></li>
+										<li><a href="Mathorcup.html">Mathorcup</a></li>
+										<li><a href="EC.html">电工杯</a></li>
+										<li><a href="APMCM.html">亚太</a></li>
+										<li><a href="CC.html">认证杯</a></li>
+										<li><a href="ECC.html">华东杯</a></li>
+										<li><a href="WCMMC.html">华数杯</a></li>
+										<li><a href="DC.html">数维杯</a></li>
+										<li><a href="ZQ.html">中青杯</a></li>
+										<li><a href="51.html">五一</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Study</a>
+							<ul>
+								<li>
+									<a href="#">蓝桥杯</a>
+									<ul>
+										<li><a href="#">c/c++组</a></li>
+										<li><a href="#">嵌入式组</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">课程小结</a>
+									<ul>
+										<li><a href="../class/computer composition principle.html">计算机组成原理</a></li>
+										<li><a href="../class/operating system.html">操作系统</a></li>
+										<li><a href="../class/data structure.html">数据结构</a></li>
+										<li><a href="../class/computer network.html">计算机网络</a></li>
+										<li><a href="../class/database.html">数据库</a></li>
+										<li><a href="../class/Machine Learning.html">机器学习</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">科研成果</a></li>
+					</ul>
+				</nav>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 col-12-medium">
+								<div class="sidebar">
+
+									<!-- Sidebar -->
+
+										<!-- Recent Posts -->
+											<section>
+												<a href="../index.html" class="button alt">首页</a>
+											</section>
+
+										<!-- Something -->
+											<section>
+												<h2 class="major"><span>目录</span></h2>
+												<dt><h4><a href="#No1">摘要</a></h4></dt>
+												<dt><h4><a href="#No2">一、问题重述</a></h4></dt>
+												<dt><h4><a href="#No3">二、问题分析</a></h4></dt>
+												<dt><h4><a href="#No4">三、模型假设</a></h4></dt>
+												<dt><h4><a href="#No5">四、定义与符号声明</a></h4></dt>
+												<dt><h4><a href="#No6">五、模型的建立与求解</a></h4></dt>
+												<dt><h4><a href="#No7">六、灵敏度分析</a></h4></dt>
+												<dt><h4><a href="#No8">七、模型的评价与推广</a></h4></dt>
+												<dt><h4><a href="#No9">八、参考文献</a></h4></dt>
+											</section>
+								</div>
+							</div>
+							<div class="col-9 col-12-medium imp-medium">
+								<div class="content">
+
+									<!-- Content -->
+
+										<article class="box page-content">
+
+											<header>
+												<h2>无车承运人平台线路定价的研究</h2>
+												<ul class="meta">
+													<li class="icon fa-clock">2020.5.23</li>
+													<li class="icon fa-comments">by Vircorns</li>
+												</ul>
+											</header>
+
+											<section>
+												<h3><div id="No1" align="center">摘要</div></h3>
+												<dl>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为规范运输市场，国家交通运输部引入无车承运人行业，其承运线路的科学定价问题是众多无车承运人平台亟待解决的问题。
+													本文以分析影响线路价格的因素与承运路线价格的关系，研究承运线路的定价方法。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>针对问题1，</b>
+													我们首先对附件中所给数据特点进行分析，选取价格Y为被解释变量，
+													9个相关影响因子x<sub>i</sub>为解释变量。
+													之后将各指标量化，剔除相似度小的异常样本，并对数据进行无量纲化处理。
+													然后通过建立聚类分析综合定价模型，利用主成分分析法对原始变量进行降维，得到3个主成分因子，
+													即平台资源X<sub>1</sub>（总里程、车辆长度、线路总成本）、交易状态X<sub>2</sub>（业务类型、线路编码、调价比例、续签状态）和运输要求X<sub>3</sub>（需求类型、需求紧急程度）。
+													最后通过建立多元回归模型Y=0.976X<sub>1</sub>-0.034X<sub>2</sub>+0.002X<sub>3</sub>，研究各项指标之间的数量关系，并进一步进行定性分析。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>针对问题2，</b>
+													我们建立基于秩和比的综合评价模型，根据公式（5-3-2）计算各个货运线路定价的WRSR值，再由熵权法计算原始矩阵的权重系数以及加权秩次。最后根据计算结果，列出WRSR值的列表，确定分档排序的界限，
+													对各影响因素进行分档排序，确定分布直线回归方程WRSR=-0.1497+0.1300×Probit，对货运线路定价影响进行分级评估（分级情况见表5-3-2）。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>针对问题3，</b>
+													在问题1、2的基础上，建立多元回归模型，解释变量为模型分析完成之后的7个主要因子，被解释变量为定价，通过历史数据求得回归方程：
+													Y=178.989+5.996x<sub>1</sub>+220.983X<sub>2</sub>-36.783x<sub>3</sub>-2.140x<sub>4</sub>+49.649x<sub>5</sub>+0.830x<sub>6</sub>-11.126x<sub>7</sub>,
+													再将附件2中给出数据代入模型中进行计算，根据附件3给出的相关参数即可得到一次报价。然后，我们制定相关定价策略来确定合理的调价比例。
+													结合合理性策略，最大利润策略及薄利多销策略，通过二分法优化确定调价比例，从而算出来三次报价（见支撑材料）。
+													最后，我们再次利用秩和比评价模型对附件2所求得的线路定价进行评价
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>针对问题4，</b>
+													我们根据所建立模型以及相关文献的研究，结合道路未来货物运输市场的发展趋势对无车承运人平台作出中肯的评价和建议。
+													研究表明，无车承运人具有资源整合能力强，订单处理效率高，品牌效应广等优点，
+													可以在短时间内处理大量订单且定价合理。
+													并针对同时还存在缺乏合理担保机制，动态定价机制不成熟等问题作出薄利多销和调整管理制度等合理建议。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>关键词：基于马氏距离的数据剔除算法、聚类分析、多元回归分析、秩和比评价法、BP神经网络模型</b>
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No2" align="center">一、问题重述</div></h3>
+												<dl>
+												<dt><h4>1.1 问题背景</h4></dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													自国内公路运输市场开放以来，逐渐形成了“小，散，乱”的发展现状。为规范运输市场，国家交通运输部办公厅于2016年9月初步公布了 48 个无车承运人试点平台。
+													随着我国无车承运行业的逐步兴起，承运线路的科学定价问题成为众多无车承运人平台亟待解决的问题
+												</dt>
+												<dt><h4>1.2 问题重述</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本研究以无车承运人的视角，采用动态定价的形式，将需要承运的线路任务以一定价格提前发布到网络平台上供承运端司机浏览并决定是否承运该运输任务。而承运端的司机会根据发布的线路任务和价格判断是否接单，
+													若司机接单成功，此线路任务随即下架。若在给定的时间内，该任务没有司机接单，则该线路任务就可以进行调价，且每条线路任务最多允许2次调价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于以上背景，我们的团队需要根据附件给出的数据寻找科学的定价方案，通过数学建模的方法解决以下问题：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>问题一：</b>
+													通过定量分析的方法，研究并确定影响无车承运人平台进行货运线路定价的主要因素有哪些。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>问题二：</b>
+													根据附加1中的数据，通过建立评价模型，对已经成交货运线路历史交易数据中的定价进行评价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>问题三：</b>
+													建立关于线路定价的数学模型，通过对影响因素的分析，制定科学的调价策略，求出附加2的线路任务的三次报价以及总成本定价；通过评价模型，对我们给出的线路任务定价进行评价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>问题四：</b>
+													根据你们的研究，给无车承运人平台写一封建议信，帮助其科学定价。
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No3" align="center">二、问题分析</div></h3>
+												<dl>
+												<dt><h4>2.1 问题1的分析</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无车承运人平台进行货运线路定价的主要因素分析，一般选用因子分析、主成分分析与聚类分析等多元回归分析算法。
+													首先我们可以对附件中所给数据特点进行分析，选取价格为被解释变量而相关影响因子为解释变量。之后将各指标量化，并剔除相似度小的异常样本。然后将对于数据进行无量纲化处理，利用主成分分析法对原始变量进行降维。
+													最后可以通过建立多元线性回归模型对主要因素进行定性分析。
+												</dt>
+												<dt><h4>2.2 问题2的分析</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题2属于评价与决策类问题，此类问题一般用层次分析法、秩和比法等评价模型，其中层次分析法主观性较强。由于以上原因，我们可以建立基于秩和比的综合评价模型。
+													在基于秩和比的评价过程中，可以对评价的历史交易数据进行打分，根据得分的分数由高到低对历史成交数据进行排序，通过确定分档排序的界限，对货运线路定价影响进行分级评估。
+												</dt>
+												<dt><h4>2.3 问题3的分析</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线路定价的模型需要基于问题1、2的研究过程，我们可以建立多元回归模型，解释变量为模型分析完成之后的主要因子，被解释变量为定价，通过历史数据求得方程常数与变量系数。
+													再将附件2中给出数据代入模型中进行计算，根据附件3给出的相关参数即可得到一次报价。
+													然后，我们需要制定相关定价策略，即确定合理的调价比例。结合合理性策略，最大利润策略及薄利多销策略，通过二分法优化确定调价比例，从而算出来三次报价。
+												</dt>
+												<dt><h4>2.4 问题4的分析</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据模型研究的过程，进行总结，指出当前无车承运的优点和存在的问题，并给出合理的建议。
+												</dt>
+												</dl>
+											</section>
+											
+											<section>
+												<h3><div id="No4" align="center">三、模型假设</div></h3>
+												<dl>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.假设附件样本容量足够大，样本数据能够反映具体情况；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.假设文中所引用的文献和结论均正确可靠；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.假设各线路任务全部为固定车型的整车任务，不可拼接。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.假设某个确定的任务，三次报价中有一次成交，则后续价格将不再考虑。
+												</dt>
+												</dl>
+											</section>
+											
+											<section>
+												<h3><div id="No5" align="center">四、定义与符号声明</div></h3>
+												<dl>
+												<table border="2" cellspacing="0">
+													<tr><td>符号</td><td>符号意义</td></tr>
+													<tr><td>X</td><td>货运线路定价的影响因素</td></tr>
+													<tr><td>x<sub>i</sub></td><td>货运线路定价的影响因素i/td></tr>
+													<tr><td>X<sub>i</sub></td><td>影响货运线路定价的主成分因子i</td></tr>
+													<tr><td>P<sub>amount</sub></td><td>载荷矩阵</td></tr>
+													<tr><td>n</td><td>样本数量</td></tr>
+													<tr><td>m</td><td>变量数目（评价指标数目）</td></tr>
+													<tr><td>T<sub>i</sub></td><td>样本i的得分向量</td></tr>
+													<tr><td>D</td><td>样品到平均光谱的马氏矩阵</td></tr>
+												</table>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No6" align="center">五、模型的建立与求解</div></h3>
+												<dl>
+												<dt><h4>5.1 数据预处理</h4></dt>
+												<dt><b>5.1.1 指标体系的建立</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据附件的数据，货运线路定价的影响因素可以选取线路价格为被解释变量而相关影响因子为解释变量，
+													解释变量包括：里程数量、业务类型、调价比例、线路编码、续签状态、运输时间长短、需求状态也可以考虑外生变量如消费者偏好、国家政策扶持等等。将有关因素量化，并对其进行无量纲化处理即统一单位。
+												</dt>
+												<dt><b>5.1.2 基于熵值法的信贷风险量化分析</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对附件给出的上万条数据，显然需要进行一些预处理。我我们选择了PCA结合马氏举例法剔除红外异常样品。先利用主成分分词(PCA)将数据降维，以消除众多信息共存中相互重叠的信息部分。结合影响线路定价的因素，
+													利用得分数计算马氏距离，将相似度低的原样本进行剔除。具体方法如下：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先是计算得分，其中X为相关因子矩阵，P为载荷矩阵，n为样品数，m为变量数，N为主成分数。
+												</dt>
+												<dt align="center"><img src="images/M-1.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后计算校正集样品到平均光谱的马氏矩阵，其中M代表因子分析中得分阵的协方差阵，T<sub>i</sub>为样本i的得分向量。
+												</dt>
+												<dt align="center"><img src="images/M-2.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而后检验样品中奇异样品存在的阈值范围。
+												</dt>
+												<dt align="center"><img src="images/M-3.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/M-4.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-5.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-6.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-7.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-8.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-9.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-10.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（2）问题求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-11.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-12.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-13.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-14.jpg"></dt>
+												<dt><b>5.1.3 信贷策略的提出</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（1）银行利润最大化</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-15.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（2）金额均衡分配化</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
+												<dt><b>（3）两方案的最终信贷政策</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
+												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
+												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
+												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
+												<dt><b>5.2.2 信贷策略的提出</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>5.2.3 模型的求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
+												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>5.3.1 层次结构模型的建立</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（1）层次模型的构建</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>（3）得出金额</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>5.3.2 模型的求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No7" align="center">六、模型的评价与推广</div></h3>
+												<dl>
+												<dt><h4>6.1 模型的评价</h4></dt>
+												<dt><b>6.1.1 问题一的模型评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt><b>6.1.2 问题二的模型评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><b>6.1.3 问题三的模型评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><h4>6.2模型的推广</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No8" align="center">七、参考文献</div></h3>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dl>
+												</dl>
+											</section>
+										</article>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-12">
+
+								<!-- Contact -->
+									<section>
+										<h2 class="major"><span>More</span></h2>
+										<ul class="contact">
+											<li><a href="https://blog.csdn.net/weixin_43476037"><img src="images/csdn.jpg" alt=""><span class="label"></span></a></li>
+										</ul>
+									</section>
+
+							</div>
+						</div>
+
+						<!-- Copyright -->
+							<div id="copyright">
+								<ul class="menu">
+									<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+
+					</div>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
