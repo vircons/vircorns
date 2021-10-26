@@ -127,9 +127,9 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>基于熵值法的中小微企业信贷政策</h2>
+												<h2>基于三段启发式算法的网上订餐调度模型</h2>
 												<ul class="meta">
-													<li class="icon fa-clock">2021.1.19</li>
+													<li class="icon fa-clock">2020.4.30</li>
 													<li class="icon fa-comments">by Vircorns</li>
 												</ul>
 											</header>
@@ -138,26 +138,21 @@
 												<h3><div id="No1" align="center">摘要</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近年来，网上订餐市场的巨大潜力。我们以网上订餐为背景，以订单履行中最重要 的生产和配送环节做研究对象，来解决生产配送联合调度优化问题
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于对问题的理解，我们初步认为此问题是即时模式下的在线调度问题。以最小化 订单平均服务时间为目标，提出了基于分区配送的混合时间窗在线分批策略，构建三阶 段启发式在线调度算法。
+													由此，我们认为此模型能够很好符合题目要求，减少总配送时 间。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后，我们基于对实际情况的考虑，对模型进行了优化，综合考虑了预定模式下的 离线调度问题，从联合调度视角出发，同时考虑多车多任务配送方式和顾客时间窗约束， 构建并行机生产－带时间窗的多车多路径配送联合调度型，最小化订单总配送延迟时间。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过此次建模，我们针对网上订餐背景下的离线和在线生产配送联合调度问题，提 高了网上订餐订单履行效率。此研究可为订餐高峰期商家进行订单处理提供决策支持
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题1，</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题2，</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题3，</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>关键词：熵值法、BP神经网络、层次分析法、贪心</b>
+													<b>关键词：网上订餐；生产配送联合调度；多车多任务配送；三阶段启发式算法</b>
 												</dt>
 												</dl>
 											</section>
@@ -165,32 +160,10 @@
 											<section>
 												<h3><div id="No2" align="center">一、问题重述</div></h3>
 												<dl>
-												<dt><h4>1.1 问题背景</h4></dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt><h4>1.2 问题重述</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题一：</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题二：</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题三：</b>
-													
+													订餐配送的迅速发展使其出现了订单分布不均的现象，可能会在短时间内出现大量 的订单。在根据餐厅的外卖提供能力、配送人员的数量、配送餐食的地点及时间有限的 实际情况下，需要对订单制作和运送环节制定合理的规划和调度方案，使其在时间有限、 送餐地点分散、送餐份数不固定的特殊情况下能够最合理的调度人员。
+													给出的配送方案 切合实际且能够提高送餐的效率，以应对订单激增等特殊情况
 												</dt>
 												</dl>
 											</section>
@@ -198,17 +171,8 @@
 											<section>
 												<h3><div id="No3" align="center">二、问题分析</div></h3>
 												<dl>
-												<dt><h4>2.1 问题1的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><h4>2.2 问题2的分析</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><h4>2.3 问题3的分析</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本题是外卖背景下的在在线生产配送联合调度问题，通过将多车多路径配送和时间 窗约束引入生产配送联合调度模型中，并给出对订单生产配送调度问题的算法，将处理后的订单环境数值进行计算和分析，建立数学模型求出能够优化订单高峰期的订单生产 配送问题的方案。
 												</dt>
 												</dl>
 											</section>
@@ -217,16 +181,22 @@
 												<h3><div id="No4" align="center">三、模型假设</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.假设订单地址在商家配送范围之内；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.假设商家原材料能够满足所有订单生产要求；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.假设不考虑生产准备、打包、装卸时间；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.假设每个顾客对应一个订单，且只包含一种餐品，快餐包装规格相同为单位体积；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.假设每个订单作业不中断，且厨师在同一时刻最多只能生产一个订单；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.假设车辆数有限，每辆车在工作周期内需承担多次配送任务。
 												</dt>
 												</dl>
 											</section>
@@ -234,45 +204,36 @@
 											<section>
 												<h3><div id="No5" align="center">四、定义与符号声明</div></h3>
 												<dl>
-												<table border="2" cellspacing="0">
-													<tr><td>符号</td><td>符号意义</td></tr>
-													<tr><td>I<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>I<sub>value</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>R</td><td>	</td></tr>
-													<tr><td>L<sub>i</sub></td><td>	</td></tr>
-													<tr><td>P<sub>i</sub></td><td>	</td></tr>
-													<tr><td>B<sub>eff</sub></td><td>	</td></tr>
-													<tr><td>B<sub>all</sub></td><td>	</td></tr>
-													<tr><td>L</td><td>	</td></tr>
-													<tr><td>N</td><td>	</td></tr>
-													<tr><td>M</td><td>	</td></tr>
-												</table>
+												<dt align="center"><img src="images/ECC-1.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No6" align="center">五、模型的建立与求解</div></h3>
 												<dl>
-												<dt><h4>5.1 问题1模型的建立与求解</h4></dt>
+												<dt><h4>5.1 遗传算法</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遗传算法是通过模拟生物进化论中的自然选择和基于遗传机理的生物进化过程演 化而来的一种随机搜索算法。首先将问题的每个可能的解按某种形式进行编码，再选择 染色体中适应值高的部分进行复制，
+													接着通过选择、交叉、变异这些遗传算子来产生对 环境更加适应的种群。如此循环通过不断的繁殖和进化，最终能够收敛至一个对环境最适应的个体上，从而求得问题的最优解。算法基本流程如图 1 所示。
+												</dt>
+												<dt align="center"><img src="images/ECC-2.jpg"></dt>
+												<dt><b>5.1.1 基于遗传算法的网上订餐调度模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;A.问题编码
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们采用排序问题中通常使用的互换编码方式。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;B.初始群体生成
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们初始种群通过随机方法产生的，具体生成方法为:随机选择一个订单将其放置 到随机选取的厨师的工作序列中，重复此操作至所有的订单都分配至相应的生产序列。 同样，随机选取一个订单和一个车辆，将订单放置车辆所负责的路径的配送序列中，
+													但必须确保路径订单数不超过车容量，重复此操作至所有订单都有对应的配送序列位置。
+												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>5.1.1 指标体系的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-1.jpg"></dt>
-												<dt><b>5.1.2 基于熵值法的信贷风险量化分析</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-2.jpg"></dt>
-												<dt><b>（1）模型的建立</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
