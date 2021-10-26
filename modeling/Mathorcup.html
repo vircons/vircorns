@@ -630,75 +630,214 @@
 												</dt>	
 												<dt><b>5.4.1.2 模型检验</b></dt>
 												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们可以通过拟合优度检验，F检验和t检验来验证此回归方程显著性。经过前文中的计算，各项常规检验统计量的值如下表
+												</dt>
+												<dt align="center"><img src="images/M-39.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中`R^2=0.9791`，说明该模型对样本的拟合程度非常好。
+													之后进行F检验，首先提出假设H0：`β_1=β_2=β_3=0`，给定显著性水平`α=0.05`，
+													在F检测表中可以查出自由度为k-1和n-k的临界值为`F_α(k-1,n-k)`（n为样本数量，k为自变量个数），
+													由表5-2-12可以得出`F=107300.008>F_α(k-1,n-k)`，所以拒绝原假设，说明回归方程显，即自变量因子对因变量的影响显著。
+													t检验是用于对给变量系数显著性检验的，我们计算得到的`p<0.05`，说明我们选取的自变量对因变量解释性很强。
+												</dt>
+												<dt><b>5.4.2 定价策略</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三次报价，相当于平台与承运司机的一个价格博弈，报价高虽然会给平台带来更大的利润，
+													但任务未被承运的风险也会加大；报价低虽然能最快速促进成交，但可能会有较高的承运成本。我们认为，三次报价可以遵循以下策略：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）合理性策略
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合理性策略指的是价格制定要合理，这要求我们的定价能够符合相关影响因素的调节，不能出现某次价格与我们前文所讨论的影响因素无关的情况。
+													因此，我们可以选取前文中，我们通过七个影响因素建立的多元回归模型，是比较理想与合理的报价，我们可以将其作为第二次报价。这样的选择更稳妥，且调节空间更大。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）最大利润策略
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是博弈中经常用的方法，在初期指定在司机心理预估范围内的最低价格，以达到己方的最大利润。
+													我们结合线路报价历史数据中的调价比例，计算出调价比例的均值为1.1796倍，最小调价比例为0.5379倍。显然，我们不可能选取最小调价比例作为我们第一次报价的计算系数。
+													因此，我们考虑在最小值与平均值之间找到一个比例，使得报价尽可能低且不会低出司机的底线。结合二分法优化，我们选取了两者之间第一次二分的结果，即0.8588倍。将第二次的理想报价结果乘以此调价比例，即得到第一次最大利润报价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）薄利多销策略
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于最多只能三次报价，任务未被承运会带来一定损失。因此，我可以考虑在第三次报价时，稍微提高价格，以此提升司机接单的概率同时是自己的成本不至于过高。
+													我们同样结合历史数据中的调价比例，其中最大调价比例为3.2129倍。显然，我们不可能选取这个最大调价比例作为，这回使我们的成本过高。因此，我们同样结合二分法优化，经过多次实验，我们选取了最大值与平均值之间第五次二分的结果，即1.2431倍。将第二次的理想报价结果乘以此调价比例，即得到第三次薄利多销的报价结果
+												</dt>
+												<dt><b>5.4.3 评价所求出的附件2的线路任务的定价。</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在第二问中已经说明了一种基于秩和比法的定价评价模型，我们在此直接利用此方法，对我们通过多元线性回归方程所求出的线路价格进行评价，其贡献率直方图如图5-4-2。
+												</dt>
+												<dt align="center"><img src="images/M-40.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们根据第二问计算公式，可以计算得到WRSR值，以及WRSR对应的概率单位。
+												</dt>
+												<dt align="center"><img src="images/M-41.jpg"></dt>
+												<dt align="center"><img src="images/M-42.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型相关系数为0.9408接近于1，说明其线性拟合程度较高。经F检验，F=23647.801，P=0<0.05，说明具有统计意义
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将附件2的货运线的定价情况分档，根据常用的分档数对应的百分位数及概率单位表，将数据分成了3档，
+													分别为`P<15.871%，Probit<4.00`；`15.871%<=P<=84.128%，4.00<=Probit<=6.00`；`P>84.128%，Probit>6.00`。
+													因此，定价分档如表5-4-2。
+												</dt>
+												<dt align="center"><img src="images/M-43.jpg"></dt>
+												<dt><h4>6.1 模型的评价</h4></dt>
+												<dt>
+													致无车承运人平台：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好！
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据我们对模型分析和文献查阅可知，总里程、业务类型、需求类型、线路编码、续签状态、需求紧急程度和车辆长度这七个影响因素对定价有着直观的影响，
+													政策因素和消费者偏好从整体方面对价格产生影响，此外报价制度和也影响到平台的经济效益，即最多只能三次报价，任务未被承运会带来一定损失，据此我们总结出现有无车承运人平台在效率、定价等角度的优缺点，并以此提出了几条中肯的发展建议。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.拥有先进的现代物流理念和丰富的运营管理经验。无车承运人是集知识密集和技术密集于--体的现代服务企业，知识驱动型的发展模式使其形成了先进的物流发展理念和丰富的管理经验，为现代物流的发展打下了良好的基础。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.能够系统整合和集成社会零散物流资源，提高了运输组织效率.无车承运人拥有发达的信息化网络，掌握庞大的货源信息，了解当地的运力结构和产品类型，通过对实体资源的有效整合,从而实现虚拟与实体网络的有效结合，
+													实现了物流的网络化和规模化运营，提高了物流运作的整体效率。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.拥有较强的低成本扩张能力，能够快速地扩大服务范围。由于无车承运人无需购买运输车辆，轻资产运营的特点一方面降低了企业规模扩张的成本，另一方面企业可以将有限的资金商效的用于信息资源的获取环节，扩大无车承运业务的辐射范围，增强企业的核心竞争力。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前，国内无车承运人平台发展尚未成熟，存在制约无车承运人发展的瓶颈。由于无车承运人其特有的“无车承运"模式与中国既有的“有车承运"管理制度相冲突。不仅使其难以获得合法的经营资格,而且在税收、异地设点等方面存在诸多障碍。且由上述分析可知，企业若想获取道路运输许可证必须自备运营车辆。这就决定了无车承运入并不具备办理道路运输经营许可证的条件。而是否具有经营资质往往是货主考虑是否与企业合作的重要因素。
+													由此可见，运输经营资质获取难将成为无车承运人发展的程惜。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，基于前文的分析研究，我们对无车承运人平台发展提出几点建议。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一、建立责任保险制度。无车承运人可以经营所有类型的陆上运输、多式联运和物流服务，承担从发货地到目的地的全部责任。原有的保证金制度很难达到防范风险的效果，对于货主的损失大多数情况也是无力偿还。因此推广建立责任保险制度比保证:金制度应该更为有效,更易于被企业所接受。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二、目前我国的保险公司在无船/车承运人责任险方面尚属空白，建议出台相关规定，明确承保范围、费率标准、责任风险分担等具体规定,解决目前保费高、责任范围窄、责任限额苛刻，承运人不愿意投保问题。这样一来，才能承运的思路，资本金可以不用来购买车辆,进而转变为对委托人权利的保护，大力发展无车承运。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三、调整既有的管理制度，从单纯注重运力管理,转向注重物流运输承运人的管理，促进“无车承运人”发展。对货运代理、无车承运人实行分类管理，根据业务运作模式的差异，对各自的准入退出条件、服务规范及标准、承担的法律责任、市场诚信及保险制度进行详细规定。
+												</dt>	
+												<dt align="right">数学建模团队
+												</dt>	
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No7" align="center">六、灵敏度分析</div></h3>
+												<dl>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;灵敏度分析是研究与分析一个系统（或模型）的状态或输出变化对系统参数或周围条件变化的敏感程度的方法。在最优化方法中经常利用灵敏度分析来研究原始数据不准确或发生变化时最优解的稳定性。通过灵敏度分析还可以决定哪些参数对系统或模型有较大的影响。我们利用MATLAB对多元回归模型进行灵敏度分析以进一步检验模型效果。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，我们进行的单因素方差分析，结果如下表
+												</dt>	
+												<dt align="center"><img src="images/M-44.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同时，我们可以画出标准化残差的直方图和正态概率图，如图:
+												</dt>	
+												<dt align="center"><img src="images/M-45.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;灵敏度分析包括局部灵敏度分析和全局灵敏度分析。局部灵敏度分析只检验单个参数的变化对模型结果的影响程度；全局灵敏度分析则检验多个参数的变化对模型运行结果总的影响。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对本题的多元回归模型，我们选取了定性全局灵敏度分析法中的多元回归法。
+													其基本原理为：若一个模型具有n个参数，而每一个参数的概率分布都分成m个区间，
+													那么将有`n^m`个取样组合。而实际上，只是取m个样。
+													其做法是：把n个参数的取值排列成一个n×m的矩阵，把矩阵每一列元素的次序随机打乱，就得到了所有参数的m个输入。
+													矩阵的每一行作为各个参数的输入值，运行模型获得模型的模拟结果。用模拟结果与各输入参数的多元回归系数或偏相关系数表示各参数的灵敏度大小。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多元回归灵敏度分析表明，在七个影响因素中，总里程的灵敏度最高，业务类型和紧急程度的灵敏度较低，需求类型、线路编码、续签状态和车辆长度灵敏度中等
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们同样可以利用逐步回归的方法确定各参数的灵敏度大小，其得到的结果同上文基本一致，在此不多赘述
+												</dt>	
+												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No7" align="center">六、模型的评价与推广</div></h3>
+												<h3><div id="No8" align="center">七、模型的评价与推广</div></h3>
 												<dl>
-												<dt><h4>6.1 模型的评价</h4></dt>
-												<dt><b>6.1.1 问题一的模型评价</b></dt>
+												<dt><h4>7.1 模型的评价</h4></dt>
+												<dt><b>7.1.1 问题1的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：聚类回归模型的优点就是直观，结论形式简明。
+													根据主成分分析分析可以把九个变量归位三类主成分因子，分别为客服沟通状态、平台资源数量和支付结算需求，使其在因子分析后并不是对原有变量的取舍，
+													而是根据原始变量的信息进行重新组合，找出影响变量的共同因子，化简数据。同时它通过旋转使得因子变量更具有可解释性，根据模型检验得出的共同因子进行多元回归的准确性较高。总体回归清晰性高。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：在样本量较大时，要获得聚类结论有一定困难。
+													由于相似系数是根据被试的反映来建立反映被试间内在联系的指标，而实践中有时尽管从被试反映所得出的数据中发现他们之间有紧密的关系，但事物之间内在联系不大。
 												</dt>	
-												<dt><b>6.1.2 问题二的模型评价</b></dt>
+												<dt><b>7.1.2 问题2的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：秩和比法是一非参数法为基础，对指标的选择无特殊要求，始于各种评价对象；测方法计算用的数值是秩次，可以消除异常值的干扰，它融合了参数分析的方法，
+													结果别单纯采用非参数法更为精确，既可以直接排序，又可以分档排序，使用范围广泛。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：秩和比法是的排序主要依据是利用原始数据的秩次，最终算出的RSR值反映的是综合秩次的差距，而与原始数据的顺位间的差距程度大小无关，
+													这样在指标转化秩次时会失去一些原始数据的信息，如原始数据的大小差别等等。
 												</dt>
-												<dt><b>6.1.3 问题三的模型评价</b></dt>
+												<dt><b>7.1.3 问题三的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：多元线性回归是多元回归最基础、简单的一种，且实际意义更大。且运用回归模型，通过标准的统计方法可以计算出唯一的结果。在制定报价策略时，考虑了价格策略中定价目标和估计成本因素，
+													运用了心理定价等定价方法，能够代表一定程度上司机与平台的价格博弈。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：多元线性归回模型在自变量较多时，无论有无统计学意义，决定系数的值都会变大，这样会使检验的效率变低。同时，我们所制定的三次报价策略并不完全能体现平台与司机的价格博弈，司机接受的报价还有更多方面的影响因素。
 												</dt>
 												<dt><h4>6.2模型的推广</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们选取了神经网络多元线性回归来改进我们第三问的多元线性回归模型
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP神经网络模型由输入层。隐含层和输出层组成，隐含层和输出层可以一层或多层构成。训练过程中输入信号从输入层通过作用函数，逐层向隐含层、输出层传播，如果得不到期望输出，则转入反向传播，不断修改各层神经元连接权值，从而训练出最优神经网络模型
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于一般模式的识别问题，3层网络可以很好地解决，这其中，隐含层神经元个数与输入层神经元个数之间的近似关系为。我们选用了输入层神经元为7个，输出层神经元为1，因此，隐含层神经元个数可以选择为15个。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们建立神经网络多元线性回归，其神经网络训练拟合度如图。可以看出，拟合效果非常好
+												</dt>
+												<dt align="center"><img src="images/M-46.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其均方误差图如图
+												</dt>
+												<dt align="center"><img src="images/M-47.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们发现，神经网络多元线性回归模型中`R^2`为0.9985，对比多元线性回归的`R^2`为0.9791，其精度有了明显提高，说明BP神经网络整体拟合度要高于多元回归模型。
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No8" align="center">七、参考文献</div></h3>
+												<h3><div id="No9" align="center">八、参考文献</div></h3>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1] 袁丙，大样本的异常数据剔除方法[N]，农业环境科学学报，10：24-25，1984。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2] 张文彤，SPSS统计分析高级教程[M]，高等教育出版社：2013。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3] 王霞，包启挺，聚类回归分析(CLR)在市场细分研究中的应用[J]，数理统计与管理，27(2)：338-346，2008。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4] 周琪琪，邵振国，林韩，基于秩和比综合评价法的用户谐波危害分级评估[J]，电力电容器与无功补偿，39(5)：119-121，2018。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5] 方慧敏，无车承运人平台服务质量因素研究[D]，南京大学：53-57，2017。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6] 徐崇刚，胡远满，常禹，生态模型的灵敏度分析[A]，中国科学院沈阳应用生态研究所，15(6)：1056-1062，2004。
 												</dt>
 												<dl>
 												</dl>
