@@ -410,175 +410,228 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													综上所述，经过降维后共得到3个主成分，这3个主成分分别从不同方面代表了原始的9个变量指标，降维效果良好。各原始变量指标在3个主成分上的成分得分系数矩阵如表5-2-6所示。将提取出的主成分作为下一步聚类分析的输入变量。
 												</dt>
-												<dt><b>5.2.1.2 样本聚类</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过原始变量降维得到主成分因子之后，下一步是对影响无车承运人平台进行货运线路定价的主要因素进行聚类。聚类分析主要有两步聚类、快速聚类和层次聚类三种方法。考虑到样本观测量较大，本研究选择处理速度更快的快速聚类法（K-means）进行聚类分析。
 												</dt>
 												<dt align="center"><img src="images/M-14.jpg"></dt>
-												<dt><b>5.1.3 信贷策略的提出</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以3个主成分因子作为分类变量，通过SPSS软件中的K-means聚类法实施聚类。结合样本量因素，设置聚类数方面，这里拟将处理后样本分成3类。设置最大迭代次数100次，经过迭代运算后，SPSS输出的最终聚类中心表如表5-2-7所示。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;各最终聚类中心间的距离如表5-2-8所示
+												</dt>
+												<dt align="center"><img src="images/M-15.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为保证个细分子类之间的差异性，聚类过程中同时进行了ANOVA统计量分析（方程分析），其结果如表5-2-9所示
+												</dt>
+												<dt align="center"><img src="images/M-16.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从类间均方程、类内误差均方差以及Sig值来看，此聚类过程效果理想，各子类间差异显著。最终的聚类分析结果中，各子类的样本数量如表5-2-10所示。
+												</dt>
+												<dt align="center"><img src="images/M-17.jpg"></dt>
+												<dt><b>5.2.1.3 细分影响无车承运人平台进行货运线路定价的主要因素的描述</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;完成影响无车承运人平台进行货运线路定价的主要因素分类后，还需要进一步面熟个子类定价影响因素中的顾客特征的分布情况，从而得到各子类定价印象因素的总体特征。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用快速聚类（K-means）分析方法，从上表可知：聚类类别群体对于所有研究项均呈现出显著性(P<0.05),意味着聚类分析得到的3类群体，在研究项上的特征具有明显的差异性。
+													且标准化的系数F在合理的范围内表明各个因子之间的关联性造成的影响较小，使结论的误差在合理的范围内。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过样本聚类，在因子1中，总里程、车辆长度、线路总成本分别占0.867、0.899、0.870，均为正比例且远高于其他变量对因子1的影响，因子1易随三组自变量发生改变，
+													故因子1可根据三种变量的影响可命名为平台资源因子以描述三个自变量对价格的影响以及三种自变量互相的影响。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在因子2中，业务类型、线路编码、调价比例、续签状态占比远高于其他变量，因子2的变化可近似描述三组自变量的变化，同理可将因子二命名为交易状态代替四个自变量的影响。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在因子3中，需求类型，需求紧急程度占比分别为0.818、0.817，故因子三命名为运输要求因子来近似表述两自变量。通过样本聚类，平台资源因子，
+													运输要求因子和交易状态因子基本代表全部案例数，聚类效果理想。
+												</dt>
+												<dt><b>5.2.2 基于回归分析的货运线路定价影响因素的研究</b></dt>
+												<dt><b>5.2.2.1 构建多元线性回归模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了更全面分析3类因素对无车承运人平台进行货运线路定价的影响，本文将聚类得到的3个主成分作为自变量，线路价格作为因变量，建立多元回归模型：
+												</dt>
+												<dt align="center"><img src="images/M-18.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，`X_i(i=1,2,3)`为选取的3类影响因素的主成分，`β_i(i=1,2,3)`为相应的系数，`ε~N(0,σ^2)`表示随机误差。此基础上研究各项指标之间的数量关系，并进一步确定回归方程进行预测及分析
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用SPSS软件作为统计分析工具，将聚类后的数据输入软件对多元回归模型各项参数的数据进行处理，进行最小二乘估计，得到参数估计值和各项常规检验统计量值等数据。
+												</dt>
+												<dt align="center"><img src="images/M-19.jpg"></dt>
+												<dt align="center"><img src="images/M-20.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据表5-2-13的结果，可得到初步的多元线型回归方程：
+												</dt>
+												<dt align="center"><img src="images/M-21.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过标准化处理后，得到多元线型回归方程：
+												</dt>
+												<dt align="center"><img src="images/M-22.jpg"></dt>
+												<dt><b>5.2.2.2 结果分析与模型检验</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）拟合优度检验和F检验。根据表5-2-12的结果显示，R方等于0.954，修正后的R方等于0.954，两项数据说明该模型对样本的拟合程度非常好。
+													之后进行F检验，首先提出假设H0：`β_1=β_2=β_3=0`，给定显著性水平`α=0.05`，在F检测表中可以查出自由度为k-1和n-k的临界值为`F_α(k-1,n;k)`（n为样本数量，k为自变量个数），
+													由表5-2-12可以得出`F=109877.005>F_α(k-1,n-k)`，所以拒绝原假设，
+													说明回归方程显著，即里物理条件因子`X_1`，运输要求因子`X_2`，交易状态因子`X_3`的组合对无车承运人平台进行货运线路定价的影响是显著的。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）回归系数的显著性检验。回归方程中已选取回归效果较强的自变量组，但总体回归效果不能说明每个自变量`x_i(i=1,2,3)`对因变量Y都是重要的。
+													需要通过系数`β_i`的取值来判定每个自变量`x_i(i=1,2,3)`是否显著。
+													检验假设H0：`β_i(i=1,2,3)`，根据多次检查输出的参数估计结果，我们发现，
+													在F分布表中可查得临界`F_X(1,n-m-1)<F_i`。
+													说明所选自变量对Y有重要作用，保留变量`x_i(i=1,2,3)`并继续进行检验，直到各个自变量均显著为止。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）通过对回归系数的分析，平台资源`X_1`、交易状态`X_2`与最终定价（不含税）成正相关状态，运输要求`X_3`与最终定价（不含税）成负相关状态。
+												</dt>
+												<dt><h4>5.3 问题2的解答</H4></dt>
+												<dt><b>5.3.1 基于秩和比法的定价评价模型</b></dt>
+												<dt><b>5.3.1.1秩和比评价法原理及步骤</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秩和比综合评价法进行评价指标参数辨识的基本原理为针对每类评价指标构成的一个行列数据矩阵，首先通过秩转换，获得其无量纲统计量RSR或WRSR。然后运用参数统计分析的概念和方法，
+													研究RSR或者WRSR的分布，以其对评价对象的优劣直接排序或分档排序，从而综合评价各评价指标下相关因子对线路定价。其过程如下：
+												</dt>
+												<dt align="center"><img src="images/M-23.jpg"></dt>
+												
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.编秩
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对每类评价指标中n个线路任务m个线路价格评价指标构成的数据矩阵，
+													编出各个线路价格对各个线路任务的秩，运用非整次秩和比法将定量的指标值转换为半定量的秩次，所编的秩次除了最大指标值和最小指标值为整数外，其余为非整数，如公式（5-3-1）
+												</dt>
+												<dt align="center"><img src="images/M-24.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中，R为秩次，n为样本数，X为原始指标值，X<sub>min</sub>、X<sub>max</sub>分别为最小原始指标值和最大原始指标值。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.计算加权秩和比WRSR
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提出加权秩和比指标WRSR，计算各因素的加权秩和比WRSR
+												</dt>
+												<dt align="center"><img src="images/M-25.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，W<sub>j</sub>为j个指标的权重系数，表现典型评价指标中各因素对货运线路定价的不同影响程度。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.编秩WRSR频率分布表，计算各组累计频数
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算概率单位，编秩WRSR频率分布表，列出各组频数f，计算各组累计频数；
+													确定各组WRSR秩次范围R和平均秩次，计算累计频率P=AR/n；将百分率p转换为概率单位Probit，Probit为百分率p对应的标准正态离差i加5，
+													一般按照查询百分数与概率单位对照表，最后向下的累计频率按照1-1/4×n估计。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.计算货运线路定价分布直线回归方程
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以累计频率所对的概率单位Probit为自变量，以WRSR值为因变量，计算直线回归方程，即WRSR=a+b×Probit，其中a、b为计算得到的常系数。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.分档排序
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将货运线路定价分档排序：依据各分档情况下概率单位Probit值，按照回归方程推算所对应WRSR估计值，
+													然后根据常用的分档数对应的百分位数及概率单位表，对评价对象分档排序，实现货运线路定价分级。
+												</dt>
+												<dt><b>5.3.1.2 熵权法计算评价指标的权重系数</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现有n个待评价项目，m个评价指标，构成原始数据矩阵
+												</dt>
+												<dt align="center"><img src="images/M-26.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求取各个指标值权重的过程为：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）先求取m个指标值的第i个项目的指标值的比重P<sub>ij</sub>为
+												</dt>
+												<dt align="center"><img src="images/M-27.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）计算第j个指标的熵值e<sub>j</sub>为
+												</dt>
+												<dt align="center"><img src="images/M-28.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）计算第j个指标的熵权W<sub>j</sub>为
+												</dt>
+												<dt align="center"><img src="images/M-29.jpg"></dt>
+												<dt><b>5.3.1.3基于秩和比综合评价法的影响因素分级</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秩和比综合评价法首先利用秩和比加权法确定了各因素的影响程度，为了对已经成交货运线路历史交易数据中的定价进行评价，
+													选取相关因素直方参数重构原始评价矩阵，其形式为
+												</dt>
+												<dt align="center"><img src="images/M-30.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于各因素评价指标为高优指标，因此定义了秩和比指标值WRSR整体描述了货运线路定价影响程度程度。
+													根据公式（5-3-2）计算各个货运线路定价的WRSR值。再由熵权法计算原始矩阵的权重系数以及加权秩次。最后根据计算结果，列出WRSR值的列表，确定分档排序的界限，对各影响因素进行分档排序，确定分布直线回归方程，对货运线路定价影响进行分级评估。
+												</dt>
+												<dt><b>5.3.2 对已经成交货运线路历史交易数据中的定价进行评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合前文所述的评估原理，对附件2中已经成交货运线路历史交易数据中的定价进行评价。首先进行主成分分析，各主成分的特征量、单个贡献率、累计贡献率见前文表5-2-3（总方差解释）。其贡献了直方图如图5-3-2。
+												</dt>
+												<dt align="center"><img src="images/M-31.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选取3个主成分代表原始8维指标，进行模糊聚类分析。聚类的最佳分类数据根据评价准则V<sub>xb</sub>确定，原始数据分类数与V<sub>xb</sub>的关系如图所示。
+												</dt>
+												<dt align="center"><img src="images/M-32.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据图5-3-2表明，在分类数为3时，取值最小，故将原始数据划分成3类主成分。根据主成分绘制数据的各项参数，分析附件2中成交货运线路历史交易数据中的定价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主成分分析后3类成分的数值作为评价矩阵K，利用公式（5-3-2）计算其RSR矩阵，之后计算原始矩阵R的权重系数，
+													再根据公式（5-3-4）计算原始矩阵每类主成分评价指标的加权秩次比WRSR，取平均值做为每一项货运线路定价的WRSR值，按照WRSR从大到小顺序列写表5-3-1，并分别计算每日WRSR对应的概率单位。
+												</dt>
+												<dt align="center"><img src="images/M-33.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据表5-3-1的数据，以Probit值为自变量，WRSR值为因变量，计算一元直线回归方程。计算结果为
+												</dt>
+												<dt align="center"><img src="images/M-34.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型相关系数为0.9408接近于1，说明其线性拟合程度较高。经F检验，F=23647.801，
+													P=0<0.05，说明具有统计意义
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将附件2的货运线的定价情况分档，根据常用的分档数对应的百分位数及概率单位表，将数据分成了3档，
+													分别为`P<15.871%，Probit<4.00`；`15.871%<=P<=84.128%，4.00<=Probit<=6.00`；`P>84.128%，Probit>6.00`。因此，定价分档如表5-3-2。
+												</dt>
+												<dt align="center"><img src="images/M-35.jpg"></dt>
+												<dt><h4>5.4 问题3的解答</h4></dt>
+												<dt><b>5.4.1 多元线性回归方程的建立</b></dt>
+												<dt><b>5.4.1.1 指标选取</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在第一问中，我们经过降维和聚类分析最终确定了九个相关因子。但结合附件二中给出的数据与本题实际要求，其中的调价比例和线路总成本虽然影响最终报价，
+													但此题要求给出三次报价，我们首先需要确定下一次报价，才能够去确定调价比例以及总成本。
+													因此，我们选取总里程`x_1`、业务类型`x_2`、需求类型`x_3`、线路编码`x_4`、续签状态`x_5`、需求紧急程度`x_6`和车辆长度`x_7`这七个影响因素作为自变量，并进一步确定回归方程进行预测和分析。
+												</dt>
+												<dt><b>（5.4.1.2 模型构建与求解</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过前文分析，我们建立线路价格与七个影响因素的多元回归模型：
+												</dt>
+												<dt align="center"><img src="images/M-36.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据上述模型，将附件一中处理后的数据代入进行计算，得到`β_i(i=0,1,2...7)`的值，即构建了多元线性回归方程：
+												</dt>
+												<dt align="center"><img src="images/M-37.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其拟合结果如图所示
+												</dt>
+												<dt align="center"><img src="images/M-38.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由图可见，拟合效果较好，模型成立。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之后，将附件2中的数据代入已构建好的多元线性回归方程，计算出线路报价。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而关于总成本的定价计算同理，建立与七个变量的多元线性回归方程，利用历史数据求解，代入新数据计算，所求结果见附件3。
+												</dt>	
+												<dt><b>5.4.1.2 模型检验</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>（1）银行利润最大化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-15.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）金额均衡分配化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
-												<dt><b>（3）两方案的最终信贷政策</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
-												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
-												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
-												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
-												<dt><b>5.2.2 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.2.3 模型的求解</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
-												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.1 层次结构模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）层次模型的构建</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（3）得出金额</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.2 模型的求解</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
 												</dl>
 											</section>
 
