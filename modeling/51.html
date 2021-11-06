@@ -318,121 +318,123 @@
 												<dt align="center"><img src="images/51-8.jpg"></dt>
 												<dt><h4>5.2 基于灰色 BP 神经网络的煤炭价格预测模型</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据变量筛选结果建立灰色BP神经网络模型对未来煤炭价格进行预测。灰色BP神经网络模型是将灰色预测模型和BP神经网络结合的预测方法，综合了灰色模型预测未来变化趋势定性分析的优点和BP神经网络适合于非线性的样本定量分析的优点。
+													灰色预测模型是用过少量不完全的信息对未来一段时间的数据进行预测。BP神经网络模型通过构建多个分线性的神经元组成的并行互联的网络，可以有效地分析非线性的数据样本，而且灰色预测模型优化了BP神经网络输入层随机的缺点，两者的结合可以有效地完成一定时间范围内对煤炭价格的预测。
 												</dt>
 												<dt><b>5.2.1 灰色预测模型</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设X<sup>(0)</sup>(k)为一非负单调的原始时间序列第k期的值。
+													首先，我们采用依次累加的方法弱化原始时间序列的随机性，从而得到X<sup>(1)</sup>,对X<sup>(1)</sup>建立如下一阶线型微分方程：
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-9.jpg"></dt>
+												<dt align="center"><img src="images/51-9.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得到灰色模型GM(1,1)，求解预测值
+												</dt>
+												<dt align="center"><img src="images/51-10.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在模型预测的过程中，我们将原始数据进行累加处理，求解得到的是累加后的预测值，
+													所以若想求得真是的预测值，则需要在进行累减处理，将GM(1,1)模型所求得的数据X<sup>(1)</sup>(k+1)进行累减，还原为真实的预测值X<sup>(0)</sup>(k+1)，则
+												</dt>
+												<dt align="center"><img src="images/51-11.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上述步骤可以求出各个影响煤炭价格的指标序列的预测结果，但预测结果的精确性需要对比后验差模型精度表来进行衡量。
+													通过计算原始序列X<sup>(0)</sup>和残差的方差之比C（后验差比），来衡量模型的预测精度，
+													值越小表明预测值和实际的差异越小，精度越高。根据后验差检验判别表得知，当值时，表明模型拟合效果好；当值在区间内时，模型拟合效果合格；当值在区间内时，模型拟合效果基本合格；当值时，表明拟合效果差，需要采用其他方法进行预测。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为尽量避免由于随机因素对灰色预测模型带来的误差影响，我们对不同解释的变量采用了不同的预测过程，对碳效率指数、欧盟碳价格、国内煤炭期货价格及天然气价格采用直接建立灰色预测模型；
+													对于极端天气这一虚拟变量采用首先分别预测日最高气温和日最低气温，然后根据极端天气的规则进行判别是否为极端天气的方法。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用上述方法求得的灰色预测模型中煤炭价格影响因素的精度如下表所示：
+												</dt>
+												<dt align="center"><img src="images/51-12.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从上表可以看出，保留下来的各个因素的C值均在合理范围内，表明此模型的误差较小，精度较高，是比较理想的预测未来各因素数值的模型。其中，极端天气和国内天然气期货价格受随机影响因素影响较大，
+													预测精度较其他影响因素较小，误差较大。
+													而碳效率指数、欧盟煤炭价格和国内煤炭期货价格预测效果较好。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，我们将处理过的过去一年或两年的数据分别以天、周、月为单位代入上述灰色预测模型中，求得了未来31天、35周、36个月影响煤炭价格的各因素的预测值。具体拟合程度见下图
+												</dt>
+												<dt align="center"><img src="images/51-13.jpg"></dt>
+												<dt><b>5.2.2 灰色BP神经网络预测模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们已经用灰色预测模型求出影响煤炭价格的各因素的预测值，并解决了传统BP神经网络输入层存在随机性的问题。之后，我们根据BP神经网络模型的模拟过程建立神经元的输入输出关系，
+													模拟煤炭市场中重要影响因子与煤炭价格之间的复杂关系。把历史数据代入输入层和输出层，对此BP神经网络模型进行训练。对于训练完成的BP神经网络，我们对其输入层输入重要影响因子的预测值，经过隐含层的处理后输出预测结果，即所需要的煤炭价格的预测结果。
+													BP神经网络的基本思想如图所示：
+												</dt>
+												<dt align="center"><img src="images/51-14.jpg"></dt>
+												
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其具体实现过程如下：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据输入：在(0,1)区间内随机初始化网络中所有节点的连接权ω<sub>ij</sub>和节点的阈值θ<sub>ij</sub>，读入经过处理的重要影响因子的样本x<sub>k</sub>和煤炭价格y<sub>k</sub>。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.模型训练：根据已知参数计算当前的煤炭价格y<sub>k</sub>，并计算出输出层神经元的梯度项g<subi</sub>和影藏层神经元的梯度项e<sub>h</sub>，计算各层神经元节点的误差信号，反向传播误差，
+													修正权值和阈值，不断重复上述步骤，直到此神经网络的输出值达到要求的误差范围。我们以31天预测为例，训练数据、测试数据和验证数据分别占比70%、15%、15%，隐层神经元个数为12，经过多次训练，得到的误差较小的满意结果：
+												</dt>
+												<dt align="center"><img src="images/51-15.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们采用的是梯度下降算法，先初始化一个解，在这个解的基础上，确定一个搜索方向和一个移动步长，使初始解根据这个方向和步长移动后，能使目标函数的输出下降。 然后将它更新为新的解，再继续寻找下一步的道移动方向的步长，
+													这样不断的迭代下去，目标函数也不断下降，最终就能找到一个解，使得目标函数比较小。
+												</dt>
+												<dt align="center"><img src="images51-16.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图中gradient曲线，是我们借助梯度来更好的确定目标函数下降方向，其可以理解为单变量时的导专数。图中的mu是一个超参数，用来表明梯度方面，可以看做是在是在最初选取的样本方向是增加加速度来修正下降方向。
+													val fail代表检验失败次数，可以看到基本检验成功。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图为回归结果中，r代表相关系数，其绝对值越接近1，代表相关性越大，这四幅图分别代表训练样本、验证样本、测试样本和全部样本的回归及其相关系数。可以看出，拟合效果非常好。
+												</dt>
+												<dt align="center"><img src="images/51-17.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在对数据进行标准化、剔除和筛选等处理的基础上，利用附件所给的数据和收集到的数据进行神经网络模型的训练，经过多次学习和训练，得到训练完成的BP神经网络预测模型，结合上面图示及分析，
+													能够很好的拟合和预测结果。然后输出我们得到的预测值
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出预测值：因为BP神经网络具有较强的适用性和容错能力，所以利用历史数据建立训练模型，把灰色预测的数据结果带入训练好的模型中，就可以求出充分考虑历史信息的预测结果。其结果如下表所示：
+												</dt>
+												<dt align="center"><img src="images/51-18.jpg"></dt>
+												<dt><h4>5.3 煤炭价格预测的复合小波神经网络模型</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小波神经网络是结合小波变换和人工神经网络的思想构成的，它是通过对小波分解进行平移和伸缩变换后而得到的级数，具有小波分解的一般逼近函数的性质。
+													并且，因为小波神经网络引入了两个新的参变量，即伸缩因子和平移因子，所以小波神经网络比小波分解具有更多的自由度，从而使它具有更有效灵活的函数逼近能力，经过筛选恰当的各参数，通过较少的级数项组成的小波神经网络就能达到优良的逼近效.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了更加准确地预测秦皇岛港动力煤价格，我们依据题目，考虑可能的突发事件会引起的煤炭价格随机波动，进一步建立秦皇岛煤炭价格综合预测模型，使其具有更高灵活性，更适用于一般情况。
+												</dt>
+												<dt><b>5.3.1 小波及小波变换</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;满足<img src="images/51-19.jpg">的平方可积函数<img src="images/51-20.jpg">为基本小波或母小波。
+													其中为的Fourier变换。令
+												</dt>
+												<dt align="center"><img src="images/51-21.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将φ<sub>ab</sub>(t)称为由母小波φ产生的依赖于参数a，b的连续小波，
+													也称为小波基。设非线性时间序列变化函数，则小波变换为
+												</dt>
+												<dt align="center"><img src="images/51-22.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上式可知，小波基中参数b变化具有平移作用，参数a的变化不仅改变小波基的频谱结构，
+													而且改变其窗口的形状和大小，因此，a与b分别被称为φ<sub>ab</sub>(t)的伸缩因子和平移因子。
+													对于函数f(t)，其局部结构的分辨可以通过调节参数a和b，即调剂小波基窗口的大基，以此来构造级数和逼近信号函数。而
+													不同的是，小波基是通过平移和伸缩构成的，具有良好的局部化性质，依据小波理论达到最佳的函数逼近能力。
+												</dt>
+												<dt><b>5.3.2 复合小波神经网络预测模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;复合小波神经网络是基于小波分析而构成的具有神经网络思想的模型，即用非线性小波基取代了通常的非线性Sigmoid函数。
+													我们把非线性时间序列通过对所选取的非线性小波基进行线性叠加来实现，即同小波级数的有限项来逼近时间序列函数。
+													实际上，用小波基φ<sub>ab</sub>(t)拟合时间序列s(t)的过程就是信号分解的过程，所以我们把待分析的信号s(t)近似分解成若干正交归一化的基本小波φ<sup>(n)</sup>(t)（其中n是小波信号）作离散位移b<sub>k</sub>和尺度伸缩a<sub>k</sub>后的加权和，即：
+												</dt>
+												<dt align="center"><img src="images/51-23.jpg"></dt>
+												<dt align="center"><img src="images/51-24.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-10.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）问题求解</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-11.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-12.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-13.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-14.jpg"></dt>
-												<dt><b>5.1.3 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）银行利润最大化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-15.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）金额均衡分配化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
-												<dt><b>（3）两方案的最终信贷政策</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
-												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
-												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
-												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
+												<dt align="center"><img src="images/51-25.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
