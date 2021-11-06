@@ -127,9 +127,9 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>基于熵值法的中小微企业信贷政策</h2>
+												<h2>基于灰色系统的小波神经网络预测煤炭价格</h2>
 												<ul class="meta">
-													<li class="icon fa-clock">2021.1.19</li>
+													<li class="icon fa-clock">2020.5.1</li>
 													<li class="icon fa-comments">by Vircorns</li>
 												</ul>
 											</header>
@@ -138,26 +138,37 @@
 												<h3><div id="No1" align="center">摘要</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近年来，随着经济的迅速腾飞，工业生产制造对于煤炭资源的消耗明显加快，完善的煤炭的交易和配额机制是煤炭市场发展的必要条件。
+													我们通过分析秦皇岛历史煤价格，建立了基于灰色系统的小波神经网络模型来预测煤炭价格。最终根据结果做出决策和评价，提出了有效方案。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题1，</b>
-													
+													<b>针对问题一，</b>
+													我们经查阅相关文献，结合有关知识进行分析，初步确立了八种影响因素。然后在各数据库寻找相应数据，经过预处理后，通过建立多元回归模型，分析相关系数来比较权重，
+													以此对指标进行筛选和评估，最终确定确立了5种指标作为影响煤炭价格的重要因素。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题2，</b>
-													
+													<b>针对问题二，</b>
+													我们考虑到数据不完全性，首先建立了灰色预测模型对未来一段时间数据进行预测，
+													并通过求后验差比值确定精度。然后建立了灰色BP神经网络预测模型，将历史数据代入模型进行训练，最后将各影响因素的预测值代入训练完成的神经网络模型中，求出题目所要求的未来煤炭价格的预测值。我们通过误差直方图和相关系数的计算，
+													验证了该模型精度高，误差合理，是比较理想的预测煤炭价格的方法。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>针对问题3，</b>
-													
+													<b>针对问题三，</b>
+													我们考虑到小波变换常用来处理异常情况，因此，我们将其与人工神经网络相结合，建立了复合小波神经网络预测模型，来进行实际因素情况下的价格预测，此模型具有更高的灵活度及精确性。
+													通过多次训练，最后求出误差较小的煤炭价格预测值。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>关键词：熵值法、BP神经网络、层次分析法、贪心</b>
+													<b>针对问题四，</b>
+													我们根据问题三的模型以及相关文献的研究，结合未来煤炭市场的发展趋势对政府的政策作出评价和建议。研究表明，经济因素是碳交易价格的最主要影响因素，市场因素和气候变化是碳交易价格的主要影响因素，
+													能源价格对碳交易价格也有一定的影响，但影响效果不明显。在此基础上本文提出了我国应将产“、“运”、“需”相结合，确定合理的碳配额总量以及以免费为主，有偿为辅的分配方式，逐步推行跨期储备制度的政策建议。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>关键词：多元回归分析；灰色预测；人工神经网络；小波分析；煤价格预测</b>
 												</dt>
 												</dl>
 											</section>
@@ -165,32 +176,22 @@
 											<section>
 												<h3><div id="No2" align="center">一、问题重述</div></h3>
 												<dl>
-												<dt><h4>1.1 问题背景</h4></dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt><h4>1.2 问题重述</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;煤炭属于大宗商品，煤炭价格受到政府监管和市场环境的影响。除此之外，煤炭价格还受气候变化、经济发展、国家政策、能源价格等多方面的影响。
+													分析影响因素，预测煤炭价格对企业和国家都有重要的意义。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题一：根据量化分析的数学方法，建立模型来确定影响煤炭价格的主要因素，并以此模型的分析结果为依据，将影响秦皇岛港动力煤价格的主要因素的按照影响程度排序。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题一：</b>
-													
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题二：结合所给数据和第一问的求出的影响煤炭价格的主要因素，建立煤炭价格预测模型，分别以天、周、月为单位，预测未来31天、35周、36个月的煤炭价格，并完成表格。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题二：</b>
-													
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题三：结合第一问的主要影响因素第二问预测的煤炭价格数据，综合考虑未来各种情况所引起的煤炭价格影响因素在结构性和重要性方面的变化情况，并确定量化影响，
+													建立贴合实际煤炭价格综合预测模型，并进一步准确地求出煤炭价格的预测结果。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>问题三：</b>
-													
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题四：基于问题三的实际预测模型和预测结果结果，综合各种实际情况对影响煤炭价格因素的作用大小，对政府部门提出切实可行的建议，以促进我国未来煤炭市场的平稳发展。
 												</dt>
 												</dl>
 											</section>
@@ -198,17 +199,24 @@
 											<section>
 												<h3><div id="No3" align="center">二、问题分析</div></h3>
 												<dl>
-												<dt><h4>2.1 问题1的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;找出影响煤炭价格的因素并预测煤炭价格属于数据处理和关联分析问题，通过搜集和预处理相关数据并进行相关计算，建立相关的多元回归模型以及灰色BP神经网络预测模型，求出影响因素以及预测结果。最终根据结果作出决策和评价，并向公司提出符合实际且有效可控的方案。
 												</dt>
-												<dt><h4>2.2 问题2的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于问题一，本题属于数据处理和关联分析问题，对于解决此类问题一般用 数据分析和多元回归分析的数学方法。由于以上原因，我们收集相关数据并进行 预处理，然后将处理后的数据带入回归模型计算出 R 和相关系数，
+													以此判断不同因素对动力煤价格的关联度和影响大小，来对指标进行筛选和排序。
 												</dt>
-												<dt><h4>2.3 问题3的分析</h4></dt>
+												<dt align="center"><img src="images/51-1.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于问题二，本题属于分析预测和深度学习问题。对于解决此类问题一般用灰色预测和建立BP神经网络的数学方法。由于以上原因，我们首先建立了灰色预测模型，求得影响煤炭价格的因素的预测值和精度，然后建立了灰色BP神经网络预测模型，将历史数据代入模型进行训练，最后将各影响因素的预测值代入训练完成的神经网络模型中，求出未来煤炭价格的预测值。
+												</dt>
+												<dt align="center"><img src="images/51-2.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于问题三，本题属于模型优化与综合分析预测问题。对于解决此类问题一般用的小波变换与人工神经网络的思想，来进行实际因素情况下的价格预测。由于以上原因，我们基于小波分析而构成的具有神经网络思想，建立了复合小波神经网络预测模型，将突发事件的影响作用在各个自变量上，进而作用于煤炭价格。最后求出误差较小的煤炭价格预测值。
+												</dt>
+												<dt align="center"><img src="images/51-3.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于问题四，本题属于评价与决策类问题。首先我们根据问题三的模型以及给出的实际预测数据，然后结合未来煤炭市场的发展趋势以及各个影响因素因此可能发生的变化，对政府部门提出效果明显且切实可行的政策建议。
 												</dt>
 												</dl>
 											</section>
@@ -217,16 +225,19 @@
 												<h3><div id="No4" align="center">三、模型假设</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.假设题目所给的数据真实可靠；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.假设文中所引用的文献和结论均正确可靠；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.假设选定的具体指标基本可以代表我们选取的影响因素；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.假设各因素间无相互影响；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.假设秦皇岛煤炭价格仅受长期趋势和短期的影响。
 												</dt>
 												</dl>
 											</section>
@@ -234,76 +245,82 @@
 											<section>
 												<h3><div id="No5" align="center">四、定义与符号声明</div></h3>
 												<dl>
-												<table border="2" cellspacing="0">
-													<tr><td>符号</td><td>符号意义</td></tr>
-													<tr><td>I<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>I<sub>value</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>R</td><td>	</td></tr>
-													<tr><td>L<sub>i</sub></td><td>	</td></tr>
-													<tr><td>P<sub>i</sub></td><td>	</td></tr>
-													<tr><td>B<sub>eff</sub></td><td>	</td></tr>
-													<tr><td>B<sub>all</sub></td><td>	</td></tr>
-													<tr><td>L</td><td>	</td></tr>
-													<tr><td>N</td><td>	</td></tr>
-													<tr><td>M</td><td>	</td></tr>
-												</table>
+												<dt align="center"><img src="images/51-4.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No6" align="center">五、模型的建立与求解</div></h3>
 												<dl>
-												<dt><h4>5.1 问题1模型的建立与求解</h4></dt>
+												<dt><h4>5.1 煤炭价格的影响因素和排序</h4></dt>
+												<dt><b>5.1.1 煤炭价格的影响因素的确立</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于已有文献中关于煤炭价格的影响因素的研究，并结合环境学和经济学等理论知识，我们选取了初步认为对煤炭价格影响较大的指标，
+													并综合考虑可获取性等因素，总结出以下四个方面影响因素及具体指标：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.经济因素：经济的发展水平直接影响着社会的需求和和消费，煤炭价格的变化离不开市场经济，宏观经济波动必然会给煤炭价格的涨跌带来影响。
+													根据已有研究和文献，我们选择对国内经济与金融煤炭交易市场最密切的上证180炭效率作为国内企业煤炭经营效益的指标，其反映了煤炭排放公司的绩效表现。对于国内外宏观经济方面，
+													我们选取了上证指数和道琼斯工业指数作为国内外宏观经济对于国内煤炭市场冲击的指标。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.能源价格：Bunn &Fezzi（2007）通过构造VAR模型，得到了煤炭价格与电价和天然气价格存在密切关系的结论，并其验证了煤炭价格与能源价格之间的关系是正相关的。
+													基于此研究，我选取了原油价格、煤炭价格、天然气价格作为能源方面的重要因素。其中，对于原油，我们选择了全球原油的定价基准德克萨斯原油价格作为原油价格的指标；
+													对于煤炭，我们选择国内煤炭期货的每日收盘价作为煤炭价格的典型代表指标；对于天然气，我们选择国内天然气期货的每日收盘价来作为天然气价格的指标。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.气候环境：Considine 通过对美国能源需求的研究，得出炎热和寒冷的天气对能源消费和温室气体排放有较大的影响这一结论。
+													当处于炎热和或寒冷的天气时，人们会增加使用制冷设备或热力系统的频率，导致能源需求上升，二氧化碳排放量增加，因此决定煤炭价格。基于上述结论，我们主要考虑空气中的碳含量和极端天气对于煤炭价格的影响。
+													对于极端天气，我么从天气网收集了对应地区的日最高温度、日最低温度数据作为衡量指标。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.市场环境：陈晓红等学者认为煤炭价格的影响因素大致分为供给、需求和市场影响三个方面。市场因素主要有：未来价格、政策和炭交易市场参与者的数量，
+													以及各方运用市场力量的能力等市场结构性因素决定。我们根据已有的研究，认为国际煤炭市场是煤炭价格的重要影响因子，所以选取欧盟碳价格作为衡量市场环境的重要指标
+												</dt>
+												<dt><b>5.1.2 数据的处理</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们分别从不同数据源，获取了我们初步分析认为的自变量的数据。为了避免汇率的影响，我们统一货币计量单位，分别对国外原油、国外煤炭价格用原始数据乘以汇率计算得到。
+													针对极端天气这一指标，采用通用认定当日最高温度在35℃以上称为高温天气，当日最低温度低于0℃称为低温天气。
+													设定虚拟变量，当气温高于35℃或低于0℃时，设为1，其余设为0。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对来自各数据源的数据中有有的存在部分缺失的情况，我们采用插值法进行填充。并且，为了避免煤炭价格相关性中存在异常的情况，我们基于马氏距离进行异常检验，剔除了部分异常样本，
+													实现数据总体有效且更为准确
+												</dt>
+												<dt><b>5.1.3 利用回归模型对指标进行筛选和排序</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在对数据进行合理的处理后，我们设秦皇岛动力煤的价格为`y`，
+													影响煤炭价格的各种因素的指标为`x_i(i=1,2,...,m)`，建立因变量y与自变量`x_1`,`x_2`,…,`x_m`之间的回归模型。
+												</dt>
+												<dt align="center"><img src="images/51-5.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中回归系数`β_i(i=1,2,...,m)`表示各个指标对秦皇岛动力煤的影响程度；
+													`|β_i|`越大，`x_i`对`y`的影响程度越大。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们将处理后的数据代入模型中，利用最小二乘法求出每个`β_i(i=1,2,...,m)`的所有估计值`β_j(j=1,2,...,m)`，并选取`β_j'(j=1,2,...,m)`，使得当时`β_j=β_j'(j=1,2,...,m)`，误差平方和
+												</dt>
+												<dt align="center"><img src="images/51-6.jpg"></dt>
+												<dt>
+													达到最小。之后，我们将求出的β代回原回归模型得到y的估计值yˆ，这组数据的拟合值为`Y=Xβ`，拟合误差`e=Y-Y'`残差，可作为随机误差ε的估计，而`Q(β)`即为残差平方和。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之后，我们利用回归分析判断每个自变量`x_i(i=1,2,...,m)`, 对y的影响的显著 性，通常认为当`R^2>=0.25`时，对应自变量与因变量有较强的相关性。
+													我们将显著性较小的指标剔除，从而对指标进行筛选，并得到以下结果：
+												</dt>
+												<dt align="center"><img src="images/51-7.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由表 1 可以看出，碳效率指数、天然气价格、国内天然气期货价格、欧盟碳 价格、国内煤炭期货价格具有很强的相关性；而其他因素相关性较弱，将其剔除。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过对保留下来的指标的系数的绝对值`|β_i|`进行比较，我们得到了影响秦皇岛港动力煤价格的主要因素按影响程度从大到小的排序，如下表所示：
+												</dt>
+												<dt align="center"><img src="images/51-8.jpg"></dt>
+												<dt><h4>5.2 基于灰色 BP 神经网络的煤炭价格预测模型</h4></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>5.1.1 指标体系的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-1.jpg"></dt>
-												<dt><b>5.1.2 基于熵值法的信贷风险量化分析</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-2.jpg"></dt>
-												<dt><b>（1）模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-3.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-4.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-5.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-6.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-7.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-8.jpg"></dt>
+												<dt><b>5.2.1 灰色预测模型</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
