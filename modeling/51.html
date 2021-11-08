@@ -114,8 +114,9 @@
 												<dt><h4><a href="#No4">三、模型假设</a></h4></dt>
 												<dt><h4><a href="#No5">四、定义与符号声明</a></h4></dt>
 												<dt><h4><a href="#No6">五、模型的建立与求解</a></h4></dt>
-												<dt><h4><a href="#No7">六、模型的评价与推广</a></h4></dt>
-												<dt><h4><a href="#No8">七、参考文献</a></h4></dt>
+												<dt><h4><a href="#No7">六、模型检验</a></h4></dt>
+												<dt><h4><a href="#No8">七、模型的评价与推广</a></h4></dt>
+												<dt><h4><a href="#No9">八、参考文献</a></h4></dt>
 											</section>
 								</div>
 							</div>
@@ -370,7 +371,7 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其具体实现过程如下：
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据输入：在(0,1)区间内随机初始化网络中所有节点的连接权ω<sub>ij</sub>和节点的阈值θ<sub>ij</sub>，读入经过处理的重要影响因子的样本x<sub>k</sub>和煤炭价格y<sub>k</sub>。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.数据输入：在(0,1)区间内随机初始化网络中所有节点的连接权ω<sub>ij</sub>和节点的阈值θ<sub>ij</sub>，读入经过处理的重要影响因子的样本x<sub>k</sub>和煤炭价格y<sub>k</sub>。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.模型训练：根据已知参数计算当前的煤炭价格y<sub>k</sub>，并计算出输出层神经元的梯度项g<subi</sub>和影藏层神经元的梯度项e<sub>h</sub>，计算各层神经元节点的误差信号，反向传播误差，
@@ -381,7 +382,7 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们采用的是梯度下降算法，先初始化一个解，在这个解的基础上，确定一个搜索方向和一个移动步长，使初始解根据这个方向和步长移动后，能使目标函数的输出下降。 然后将它更新为新的解，再继续寻找下一步的道移动方向的步长，
 													这样不断的迭代下去，目标函数也不断下降，最终就能找到一个解，使得目标函数比较小。
 												</dt>
-												<dt align="center"><img src="images51-16.jpg"></dt>
+												<dt align="center"><img src="images/51-16.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图中gradient曲线，是我们借助梯度来更好的确定目标函数下降方向，其可以理解为单变量时的导专数。图中的mu是一个超参数，用来表明梯度方面，可以看做是在是在最初选取的样本方向是增加加速度来修正下降方向。
 													val fail代表检验失败次数，可以看到基本检验成功。
@@ -432,157 +433,155 @@
 												<dt align="center"><img src="images/51-23.jpg"></dt>
 												<dt align="center"><img src="images/51-24.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图中给出了复合小波神经网络的结果，仅含有一个输入一个输出节点。此时 的sˆ(t)实际上使母小波位移和伸缩后的加权和。
+													如果每个母小波都满足容许条件<img src="images/51-27.jpg">，则它们的加权之和也当然满足容许条件。所以 sˆ(t)本身也可以 看作小波，称为复小波。
+													它本身也同样可再作位移和伸缩，他是和待分析信号最匹配的小波。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们通过确定网络参数`w_k`,`a_k`,`b_k`和`n`，使得`s(t)`与`sˆ(t)`之间的误差的平方和最小，即：
 												</dt>
 												<dt align="center"><img src="images/51-25.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
-												<dt><b>5.2.2 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为达到这个目的，我们采用共轭梯度法或随机梯度法寻优。但不论采用哪种方法都需要知道对，，的偏导数。例如当n=1且采用Morlet小波时，存在<img src="images/51-28.jpg">。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;令`t^'=(t-b_k)/a_k`，则偏导数分别为：
 												</dt>
-												<dt><b>5.2.3 模型的求解</b></dt>
+												<dt align="center"><img src="images/51-26.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
-												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.1 层次结构模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）层次模型的构建</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递推寻优时，`b_k`的初始值对收敛性能影响很大，需要做比较准确的预估计。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于n的确定，我们使用逐步检验法。我们对非线性时间序列的拟合误差事先给出了一个界限，设拟合误差小于D，则n从取1开始，计算得出`ε_1`,
+													若`ε_1 < D`,则`n=1`，否则n增加取2；若`ε_2 < D`，则`n=2`，否则继续逐步下去，直到时`n=n^*`，使ε<sup>*</sup><sub>n</sub> < D`，从而求的模式数`n`的最优值为`n^*`。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
+												<dt><b>5.3.3 利用复合小波神经网络综合模型预测煤炭价格</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们根据处理后的历史数据和灰色预测模型所求数据，应用复合小波神经网 络模型对煤炭价格进行了预测，经过多次训练，我们选取了拟合程度最优的预测 结果，其结果见图 10 所示；
+													误差大小与拟合度见图 10，即由 6个隐形节点进行 预测即可达到精度非常高的拟合。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
+												<dt align="center"><img src="images/51-29.jpg"></dt>
+												<dt align="center"><img src="images/51-30.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上图可以看出，小波神经网络的拟合性能很好，网络训练到 2500 次左右 的时候，误差基本保持不变了。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
+												<dt><h4>5.4 基于实际预测模型向政府部门的政策建议</h4></dt>
+												<dt><b>5.4.1 结论</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过对已有数据的研究处理以及各种影响因素的分析，最终得出影响煤炭价格的主要因素为经济因素、能源价格、气候环境和市场环境。并由此构建了企业碳交易价格影响因素结构方程模型，
+													并根据根据相关研究假设对煤炭价格影响因素的作用机理进行了简要的分析。因为受所研究问题的复杂性以及相关数据准确性和一般性的影响，本文尚不能从完全准确地解释煤炭价格的内在影响机制，
+													但是通过对本领域相关数据的研究分析依然可以得出一些有效结论，对进一步推进我国未来煤炭市场的平稳发展提供借鉴。通过前文分析，至少可以得出以下结论：
+
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.影响煤炭价格的主要因素。经济因素是煤炭价格的最主要的影响因素，市场环境和气候环境是煤炭价格的主要影响因素，能源价格对碳交易价格也有一定的影响，但影响效果不明显。
+													然而不少国内外学者对欧盟碳交易价格进行研究时发现能源价格对欧盟碳价具有显著的影响。这可能是因为欧盟碳排放权交易市场是一个成熟稳定的碳市场，碳市场参与者众多，大量存在各种投资机构，对能源价格的变化更加敏感，提前做出“囤聚”碳配额等行为，从而导致对碳价有显著的影响。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.各个影响因素之间存在相互影响和制约作用。气候环境通过影响经济因素、市场环境、能源价格间接影响煤炭价格；经济因素通过影响市场环境和能源价格间接影响煤炭价格；市场环境通过影响能源价格间接影响煤炭价格。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
+												<dt><b>5.4.2 向政府部门的政策建议</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过前文的分析研究可知，经济因素是煤炭价格的最主要影响因素，市场因素和气候变化是煤炭交易价格的主要影响因素。因此，将从这三方面对煤炭价格机制提出如下建议：
 												</dt>
-												<dt><b>（3）得出金额</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 逐步推行煤炭跨期储备制度。跨期储备制度，主要指煤炭排放权在一定时间或空间内的储备和借贷。跨期储备制度在一定程度上能够弱化由于气候剧烈变化导致的对煤炭排放权的需求变化，进而导致煤炭价格的发生剧烈波动以及所产生的负面影响，
+													同时也能减少企业的煤炭减排的成本。一个成熟的煤炭交易市场应该允许跨期储备制度的存在。因此，我国在全面建设煤炭交易体系的过程中，为了保证煤炭价合理有序的运行，可以考虑逐步推行跨期储备制度，以避免一些不可控因素对煤炭市场的干扰。
 												</dt>
-												<dt><b>5.3.2 模型的求解</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.“产“、“运”、“需”相结合。2020年《“十三五”规划纲要》明确提出我国将以大型煤炭基地为重点，统筹资源禀赋、开发强度、市场区位、环境容量、输送通道等因素。优化煤炭生产布局，达到“产”、“运”、“需”基本平衡，使我国煤炭市场更加成熟，从而形成稳定的煤炭价格机制。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 确定合理的煤炭配额总量以及以免费分配为主、有偿分配为辅的分配方式。若煤炭配额总量过多，将会使得煤炭价格过低，严重损害企业节能减排进行煤炭交易的积极性，从而导致煤碳交易机制发挥不出应有的效果。煤炭配额总量过低，将会使得煤炭价格过高，大大提高企业的生产成本，
+													影响企业的生产连续性，不利于企业的长远发展。因此，确定合理的煤炭配额总量至关重要。实现煤炭总量控制的命令控制手段体现总量减排目标和配额消费核查及处罚方面，经济刺激手段体现在燃煤用户可以通过交易来满足燃煤减量的配额需求。煤炭配额交易制度将促使企业灵活减煤、降低燃煤用户的减量成本和政府的管理成本、激励超量减煤，
+													从而实现资源配置的帕累托次优状态。政府在总量控制与配额交易的过程中仅仅扮演市场监督者与配额核查责任者的角色，无需干预配额交易市场的具体细节。使得企业逐渐适应并接纳，从而保证煤炭市场交易价格平稳有序的运行。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No7" align="center">六、模型的评价与推广</div></h3>
+												<h3><div id="No7" align="center">六、模型检验</div></h3>
 												<dl>
-												<dt><h4>6.1 模型的评价</h4></dt>
-												<dt><b>6.1.1 问题一的模型评价</b></dt>
+												<dt><h4>6.1 问题二模型检验</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于灰色预测模型，以碳效率指数为例，均方根误差为 13.9944，均方误差 为 3.767，百分绝对误差为 6.7941%，后验差比值C 为 0.26918，判断其预测精度较好。其余影响因素的后验差比值均以算出，在表 3 中给出。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt><b>6.1.2 问题二的模型评价</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于灰色神经网络预测模型，我们可以得到误差直方图，如图 12 所示。我 们可以看到，训练集与测试集基本均在零误差线附近，虽有少量测试集拟合效果 不佳，但总体准确性较高，
+													能够较为准确的反映出灰色神经网络的预测结果。
 												</dt>
-												<dt><b>6.1.3 问题三的模型评价</b></dt>
+												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>	
+												<dt><h4>6.2 问题三模型检验</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小波神经网络的拟合性能很好，网络训练到 2500 次左右的时候，误差基本 保持不变且非常小，目标值与网络仿真值也逐渐趋于相似，具体流程如下图所示。
 												</dt>
-												<dt><h4>6.2模型的推广</h4></dt>
+												<dt align="center"><img src="images/51-32.jpg"></dt>
+												</dl>
+											</section>
+
+											<section>
+												<h3><div id="No8" align="center">七、模型的评价与推广</div></h3>
+												<dl>
+												<dt><h4>7.1 模型的评价</h4></dt>
+												<dt><b>7.1.1 模型的优点</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.激活函数采用 Sigmoid 函数，收敛较快，梯度不会消失。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.采用灰色 BP 神经网络预测模型，解决了传统输入层所存在的随机性问题， 更精确的展现复杂关系。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.小波神经网络有更多的自由度，更灵活有效的函数逼近能力。
+												</dt>
+												<dt><b>7.1.2 模型的缺点</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.使用的激活函数不是完全理想的模型，输出均值不接近零。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.灰色预测模型中，部分数据拟合灰度较大，神经网络也具有局部极小值收 敛缺陷，使其精度难以进一步提高。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.运输成本对煤炭价格有举足轻重的影响，尤其是煤炭运输的瓶颈问题，这 是影响煤炭市场的重要因素。但是由于运输成本数据难以获得，本文未能对此进行分析。
+												</dt>
+												<dt><h4>7.2模型的推广</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过此次问题，我们建立了回归方程、灰色 BP 神经网络预测模型和小波神 经网络模型。回归方程作为经典回归分析方法，在其他问题中也有很广泛的应用，本次借助相关系数比较权重，
+													在实际中也有多次运用；灰色 BP 神经网络模型， 经过我们预测结果表明，其能够准确描述秦皇岛煤价格的变化趋势；小波神经网 络充分考虑了突发情况，能够及时捕捉煤价格的随机波动，为有关参与者与决策 者提供了很好的参考价值。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这些模型的建立，都可以很好的应用到实际生活中去，这也体现了建模意义 所在。并且秦皇岛作为我国煤炭重要产出地，通过对其煤价格的研究，不仅丰富 了碳交易市场的研究，
+													还能更好的引导相关投资，推动相关市场的良性发展。
+												</dt>
+												<dt><h4>7.3 模型改进</h4></dt>
+												<dt><b>7.3.1 运输成本作为影响因素</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更全面地考虑影响煤炭价格的因素，将运输成本作为一环加入模型中，运输 成本对煤炭价格有举足轻重的影响，尤其是煤炭运输的瓶颈问题，这是影响煤炭 市场的重要因素。
+												</dt>	
+												<dt><b>7.3.2 基于 Levenberg-Marquardt 算法的模型改进</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了提高模型预测的精度和计算速度，本部分采用另一种 BP 神经网络模型 求解算法，致力于减少残差和减少迭代次数。LM 算法根据迭代结果动态调整阻 尼因子，使误差函数的值在每次迭代时减小。它是梯度下降法和牛顿法的结合， 收敛速度快。
 												</dt>
 												</dl>
 											</section>
 
 											<section>
-												<h3><div id="No8" align="center">七、参考文献</div></h3>
+												<h3><div id="No9" align="center">八、参考文献</div></h3>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1] 金林，马忠芸，王红红，基于灰色 BP 神经网络碳排放交易价格预测[J]，河 北环境工程学院学报：2020，30（1），27-32+41。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2] 赵立祥，胡灿，我国碳排放权交易价格影响因素研究——基于结构方程模型 的实证分析[J]，价格理论与实践：2016，7，101。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3] 洪涓，陈静，我国碳交易市场价格影响因素分析[J]，价格理论与实践： 2009(12)。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4] 陈晓红，王陟昀，欧洲碳排放权交易价格机制的实证研究[J]，科技进步与 对策：2010(19)。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5] 杨福生，小波变换的工程分析与应用[M]，北京：科学出版社，1999。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6] 宁云才，煤炭需求预测的复合小波神经网络模型[J]，煤炭学报：2003， 108-110。
 												</dt>
 												<dl>
 												</dl>
