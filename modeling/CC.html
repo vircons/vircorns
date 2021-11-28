@@ -593,18 +593,65 @@
 												<dt><b>5.5.2调度需求模型实例模拟</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													取车辆最高续航里程L=120km；车辆充电速度=18km·h<sup>-1</sup>；站点之间单位里程调度成本c<sub>ij</sub>=1元·km<sup>-1</sup>；用户用车时，每公里收益ω<sub>ij</sub>=1元·km<sup>-1</sup>；
+													取L-∆l=30km；站点车辆数目限制∆k=2。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													将30min划分为一个周期，1天共计48个周期，根据这5个站点的运营数据，订单主要集中在7：00am～8：00am之间，占总订单数的95.9%，
+													为简化计算，本文忽略10：00pm～7：00am 之间的订单。因此，1天共计30个周期，M=30。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													采用MATLAB语言编写程序实现算法，根据数据规模，相关参数如下：取群体个数为20，最大遗传代数100，设置不同的交叉概率值和变异概率值，运行结果显示，交叉概率Pc0.8，
+													变异概率Pm=0.01计算结果最优。根据模型求出空车调度需求方案如表所示，该模型是基于在周期内全部满足用户104个订单的求解结果，共调度25次。
+													若不采用调度方案，从M=5时刻开始站点B就会出现用户无法还车的情况。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
+												<dt align="center"><img src="images/CC-37.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为使模型灵敏，再设定参数：种群大小为 40，迭代代数为2000。根据图7各地点的相对位置，设立地点的二维坐标。
+													为使车辆路径必须包括订单需求路径，在程序中用11个订单点代替18个地点，订单点坐标为其起终点的中点。订单点之间的连线表示订单间的车辆移动路径。其中关于车辆调度路径仿真结果如下图所示。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
+												<dt align="center"><img src="images/CC-38.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过276次迭代可以得到最优或接近最优的仿真结果，得出实际需要车辆数为2，车辆固定成本与变动成本总和为335元。
+													由仿真结果可得到各车辆负责的订单，将订单涉及的地点展开后可得到更为清晰具体的车辆路径，如图所示，不同颜色分别对应图6中的车辆1与车辆2，其中箭头表示车辆的行驶方向。
+												</dt>
+												<dt align="center"><img src="images/CC-39.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由调度结果可知，两辆车执行文中订单任务时车辆总成本最小，这两辆车经过地点的先后顺序与空车调度具体数据如表所示
+												</dt>
+												<dt align="center"><img src="images/CC-40.jpg"></dt>
+												<dt><b>5.5.3调度路径优化模型实例模拟</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调度路径优化模型采用Lingo11编写程序，模型输入参数。
+													假设调度员驾驶折叠电动自行车的行驶速度为v<sup>n</sup>＝20km·h<sup>-1</sup> ；车辆最高续航里程L=120km；设调度员月工资为8000元，故每个调度员1d的工时费C=267元；
+													共享汽车回收成本C<sup>'</sup>=1000元；每个调度任务的收益Re<sub>r</sub>=15.6元。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据上表所示调度需求方案，通过计算，采用2个调度员可以完成调度任务的88%，同时满足收益最大化要求。两个调度员的具体调度路径分别为：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)O-A-C-C-A-D-A-E-A-C-A-B-A-B-C-C-A-D-A-C-A-O；
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)O-B-D-A-D-B-A-D-A-D-A-D-A-B-A-C-B-C-A-B-C-O.
+												</dt>
+												<dt><b>5.5.4收益分析</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过对比采用调度策略和扩大车辆、车位规模这两种方式，分析成本投入，以及各自带来的收益变化，
+													均以年作为计算投入与收益的时间范围。相关参数说明及取值如下表所示
+												</dt>
+												<dt align="center"><img src="images/CC-41.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过计算，得到了增设车辆和车位、采用调度策略以及保持原状3种策略下的成本支出与订单收益，如图所示。
+												</dt>
+												<dt align="center"><img src="images/CC-42.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在用户用车需求增长的情况下，不增设停车位和车辆数目而采用人工调度优化策略，同比可以提升60%的订单服务量，订单收入增加89.4%，
+													虽然订单收入较增设停车位和车辆数目后的实际情况略有减少12%，但是相比增设停车位和车辆数目可以节约62.4%的成本投入。由此可见，运营公司采取人工调度策略的方式，
+													而非增设停车位和车辆数目的方式可为运营公司节约成本，增加公司收益。
+												</dt>
 												</dl>
 											</section>
 
@@ -613,29 +660,32 @@
 												<dl>
 												<dt><h4>6.1 模型的评价</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过对比采用调度策略和扩大车辆、车位规模这两种方式，分析成本投入，以及各自带来的收益变化，均以年作为计算投入与收益的时间范围。
+													通过计算，得到了增设车辆和车位、采用调度策略以及保持原状3种策略下的成本支出与订单收益，如图所示
 												</dt>	
+												<dt align="center"><img src="images/CC-42.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在用户用车需求增长的情况下，不增设停车位和车辆数目而采用人工调度优化策略，同比可以提升60%的订单服务量，订单收入增加89.4%，
+													虽然订单收入较增设停车位和车辆数目后的实际情况略有减少12%，但是相比增设停车位和车辆数目可以节约62.4%的成本投入。
+													由此可见，运营公司采取人工调度策略的方式，而非增设停车位和车辆数目的方式可为运营公司节约成本，增加公司收益。
 												</dt>
 												<dt><h4>6.2 灵敏度分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为展示此优化方案的优越性，现将依据相同订单数据且满足订单用车需求的其他方案与优化结果进行对比，如表所示。其
+													中方案1至4为相同数据下，给定车辆数后按照算法求解的最优值。
 												</dt>	
+												<dt align="center"><img src="images/CC-43.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上表可知，对比以上五种方案，在相同订单数据下，本文方案在不确定车辆数与人员数的情况下，利用改进的遗传算法优化车辆与人员的联合调度路径，
+													可得到最适宜或较适宜的车辆数与人员数，进而达到总成本最低的目的。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了对比本文算法的优越性，在相同车辆数与车辆路径的情况下，分别用改进突变算子树的多染色体遗传算法与未做改动的多染色体遗传算法对人员数求解。
+													得到的仿真最优值收敛曲线的对比如图所示。
+												</dt>	
+												<dt align="center"><img src="images/CC-44.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上图可知，改进过突变算子树的多染色体遗传算法迭代更快，结果更优。
 												</dt>
 												</dl>
 											</section>
@@ -669,19 +719,23 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们选取了神经网络多元线性回归来改进我们多元线性回归模型
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP神经网络模型由输入层。隐含层和输出层组成，隐含层和输出层可以一层或多层构成。训练过程中输入信号从输入层通过作用函数，
+													逐层向隐含层、输出层传播，如果得不到期望输出，则转入反向传播，不断修改各层神经元连接权值，从而训练出最优神经网络模型。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于一般模式的识别问题，3层网络可以很好地解决，这其中，隐含层神经元个数b与输入层神经元个数a之间的近似关系为b=2a+1。
+													我们选用了输入层神经元为7个，输出层神经元为1，因此，隐含层神经元个数可以选择为15个。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们建立神经网络多元线性回归，其神经网络训练拟合度如图11。可以看出，拟合效果非常好
 												</dt>
+												<dt align="center"><img src="images/CC-45.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其均方误差图如下图所示。
 												</dt>
+												<dt align="center"><img src="images/CC-46.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们发现，神经网络多元线性回归模型中`R^2`为0.9985，对比多元线性回归`R^2`的为0.9791，其精度有了明显提高，说明BP神经网络整体拟合度要高于多元回归模型。
 												</dt>
 												<dt><h4>7.3模型的推广</h4></dt>
 												<dt>
