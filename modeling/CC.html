@@ -360,97 +360,160 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)在任何时刻车辆续驶里程均大于零，即
 												</dt>
 												<dt align="center"><img src="images/CC-14.jpg"></dt>
-												<dt><b>5.1.3 信贷策略的提出</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：lv<sub>k</sub>(t)表示t时刻车辆的续航里程。
+													t时刻，车辆有两种状态：车辆停在站点充电时lv<sub>k</sub>(t)=lv<sub>k0</sub>(t)；
+													车辆从站点i行驶至站点j时lv<sub>k</sub>(t)=lv<sub>kij</sub>(t)（包括用户用车和空车调配）。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)整个运营系统中，各时段各站点车辆总数守恒，即
+												</dt>
+												<dt align="center"><img src="images/CC-15.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：A<sub>ti</sub>={a<sub>ti1</sub>,a<sub>ti2</sub>,a<sub>ti3</sub>,...a<sub>tii</sub>,...a<sub>tin</sub>},
+													a<sub>tij</sub>表示有载客需求从站点i到站点j并且在t时段起运的任务数；
+													s<sub>it</sub>表示站点i在t时刻车辆集合，s<sub>it</sub>={v<sub>1</sub>,v<sub>2</sub>,...,v<sub>k</sub>}，
+													且初始时刻站点i所停车辆已知。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)假设本系统中的车辆最大续航里程大于任意两站点之间的距离，即
+												</dt>
+												<dt align="center"><img src="images/CC-16.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：L表示车辆最高续航里程。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)各时段各站点车辆数目小于该站点停车位容量p<sub>i</sub>为
+												</dt>
+												<dt align="center"><img src="images/CC-17.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：Card(s<sub>it</sub>)表示在t时刻停在站点i车辆数目。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5)车辆在站点之间通行的时间为
+												</dt>
+												<dt align="center"><img src="images/CC-18.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(6)车辆从站点i到达站点j时，保证站点j有足够的可用停车位p<sub>tj</sub>，即
+												</dt>
+												<dt align="center"><img src="images/CC-19.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(7)车辆在行驶时，车辆续航里程的表达式为
+												</dt>
+												<dt align="center"><img src="images/CC-20.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：e表示车辆在充电时，车辆电量在达到满电前，车辆单位时间增加的续航里程；
+													v表示车辆行驶的平均速度，假设无论空车调配还是用户驾驶，车辆均匀速行驶，且行驶速度相同。
+												</dt>
+												<dt><b>5.2.5补充约束</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于本模型而言，车辆的用车决策是无法约束的，为简化计算，做如下假设：
+													用户用车时优先使用满电车辆，车辆被使用后，若站点车数目大于∆k，则车辆充电至满电后方可使用；
+													若站点车辆数小于∆k，则需充电至车辆续航里程能够覆盖任意站点间距离且有一定余量后方可使用，保证站点有一定车辆，避免站点出现无车的情况。
+													例如，当初始时刻，车辆k从站点1到站点2后，车辆k续航减少d<sub>12</sub>，站点2多一辆续航为L-d<sub>12</sub>的车辆，
+													此时站点2满电车辆足够，则车辆k充电至满电后方可再次使用。若站点2无足够满电车辆，则充电至续航为L-∆l方可使用，且优先使用满电车辆。
+													该假设能够保证用户所驾驶车辆续航足够，并且符合用户实际使用情况。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，补充约束条件如下：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(1)系统中车辆续航大于可用续航L-∆l方可成为可使用车辆，且可用续航需大于系统中任意两站点距离，即
+												</dt>
+												<dt align="center"><img src="images/CC-21.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													(2)车辆被使用后，再次成为可用车辆所需时间如下：
+												</dt>
+												<dt align="center"><img src="images/CC-22.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：s<sup>'</sup><sub>it</sub>表示站点i在t时刻满电的车辆集合，
+													s<sup>'</sup><sub>it</sub>={v<sup>'</sup><sub>1</sub>,v<sup>'</sup><sub>2</sub>,...v<sup>'</sup><sub>k</sub>}，
+													Card(s<sup>'</sup><sub>it</sub>)表示站点i在t时刻停在站点i的满电车辆数目；∆k表示站点满电车辆数目限制。
+												</dt>
+												<dt><b>5.2.6目标规划模型建立</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据上述分析，我们得到目标规划模型为
+												</dt>
+												<dt align="center"><img src="images/CC-23.jpg"></dt>
+												<dt><h4>5.3 基于遗传算法对平台调度模型的求解</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文的车辆调度问题是NP-Hard难解问题，即本文所建立的目标规划模型求解复杂程度较高，求解存在不确定性，无法在有限时间内利用精确求解算法。
+													并且随着车辆规模的增加，求解难度程几何级增长。对于此类NP-Hard问题，根据共享汽车调度问题的特征和对算法计算速度的高要求，本文采用遗传算法求解该问题。
+													并且，遗传算法求解过程不依赖梯度信息，通过模拟自然界的进化过程来搜索最优解，是一种高效、并行、全局的搜索方法。遗传算法的运算过程如图所示。
+												</dt>
+												<dt align="center"><img src="images/CC-24.jpg"></dt>
+												<dt><b>5.3.1染色体编码与解码</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据车辆调度特点，本文中染色体编码包括被优化参数。设染色体的基因序列为，其由７部分构成，其中：表示车辆的平均行驶速度；表示车辆平均充电速度；表示站点距离；表示空车调配启动时刻；表示空车调配启动数量；表示空车调配起始站点；表示空车调配的目的站点。
+												</dt>
+												<dt><b>5.3.2初始化种群</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在满足编码的前提下，随机产生个个体，组成初始种群，记为
+												</dt>
+												<dt align="center"><img src="images/CC-25.jpg"></dt>
+												<dt><b>5.3.3 约束处理与适度函数</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常见约束处理方法有３种：① 直接处理约束条件，在编码过程中加入约束条件；②计算过程中通过约束条件进行校验；③通过惩罚函数处理约束。
+													根据模型特点，本文采用直接处理约束的方法，以目标函数作为适度函数。
+												</dt>
+												<dt><b>5.3.4 遗传操作</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>Step1.选择</b>
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													选择是遗传算法中“适者生存”的进化现象，是对种群个体的评价方式，在很大程度上能够决定遗传算法的效果和收敛速度。
+													本文采用的是最佳个体保留的方案，采用轮盘赌的选择策略．先求得当前染色体的适度值fit(i)，再将所有染色体的适度值求和sumfit(i)=∑fit(i),
+													计算染色体的选择概率p(i)=fit(i)/sumf；计算各个染色体的累计概率p<sub>s</sub>(i)=fit(i)/sumf.
+													[0,1]中产生一个随机实数r，如果p<sub>s</sub>(i)>r就选择第一条染色体，否则选择满足p<sub>s</sub>(i-1) < r < p<sub>s</sub>(i)的第i条染色体。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>Step2.交叉</b>
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用启发式的交叉算子．设置交叉概率p<sub>e</sub>，在父代种群中随机产生两个个体，然后在区间(0，1)中生成随机数p。
+													若p>p<sub>e</sub>，父代染色体不进行交叉，反之，染色体交叉。
+													在交叉过程中，随机确定一个交叉点k，(1≤k≤n)，则在片段k之后，父代染色体进行交叉，k之前染色体保持不变．
+													该交叉方法指只改变了染色体n-k的部分，保留了片段，既能继承父代的优良基因，也体现了种群进化的思想。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>Step3.变异</b>
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用的是单片段变异方法．设种群的变异概率是p<sub>m</sub>，然后在区间(0,1)中生成随机数p<sup>'</sup>，
+													若p<sup>'</sup>>p<sub>m</sub>，父代染色体不进行变异，不会产生新个体，反之，染色体变异。
+													产生一个随机整数f(1≤f≤n)，表示染色体的第f个片段进行变异。
+													将染色体的第f个片段重新进行编码，通过替换原来染色体片段而产生新染色体。
+												</dt>
+												<dt><b>5.3.5 终止准则</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遗传算法计算前必须设计终止算法准则，遗传算法是一种随机并行搜索算法，需要设计终止准则来终止循环，停止迭代，常见的终止算法有3种：
+													①达到预先设定目标；② 种群中最优个体在迭代中没有改进；③达到预先设定的进化代数。
+													预先设定进化代数能够很好地控制算法的求解精度和运行时间．综合考虑，本文采用预先设定进化点数，循环达到最大代数即停止迭代。
+												</dt>
+												<dt><h4>5.4 基于混合整数规划算法的共享汽车调度优化模型</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文根据电动共享汽车的特点，提出区域调度的模式，调度员利用拖车或驾驶的方式在站点之间通行。
+													建立以运营公司收益最大为目标函数的混合整数规划模型，优化模型，并采用分支定界法求解模型。
+												</dt>
+												<dt><b>5.4.1决策变量</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设站点空移车数tij决策变量，表示在时间结点时，站点的空移车数。
+												</dt>
+												<dt><b>5.4.2目标函数</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>（1）银行利润最大化</b></dt>
+												<dt align="center"><img src="images/CC-26.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-15.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）金额均衡分配化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
-												<dt><b>（3）两方案的最终信贷政策</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
-												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
-												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
-												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
-												<dt><b>5.2.2 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
+												<dt><b>5.4.2目标函数</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
