@@ -503,82 +503,100 @@
 												</dt>
 												<dt><b>5.4.1决策变量</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设站点空移车数tij决策变量，表示在时间结点时，站点的空移车数。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设站点空移车数x<sub>tij</sub>决策变量，表示在时间结点t时，站点ij的空移车数。
 												</dt>
 												<dt><b>5.4.2目标函数</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目标函数为运营公司最大收益函数，有
 												</dt>
 												<dt align="center"><img src="images/CC-26.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：i∈p表示某站点i在某时间需要调离电动汽车至别的站点；
+													j∈D表示某站点j在某时间需要调配电动汽车到该站点；s为调度员编号，S表示调度人员数量；
+													Re<sub>r</sub>表示每个调度任务的收益；x<sub>ijs</sub>=1表示调度员s从取车点i取车前往送车点j，否则x<sub>ijs</sub>=1=0；
+													O表示调度中心；C表示每班每个调度人员的工时费。
 												</dt>
-												<dt><b>5.4.2目标函数</b></dt>
+												<dt><b>5.4.3约束条件</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)调度员s从集合点出发，一个调度员只能有一个调度路径，即
+												</dt>
+												<dt align="center"><img src="images/CC-27.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)每个调度任务只能执行一次，即
+												</dt>
+												<dt align="center"><img src="images/CC-28.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)站点的访问时间是由其上一站点的访问时间加上调度时间的总和，即
+												</dt>
+												<dt align="center"><img src="images/CC-29.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：W表示每班调度人员的工作时长
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4)调度员取送车时间约束为
+												</dt>
+												<dt align="center"><img src="images/CC-30.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：t<sub>is</sub>为连续时间变量；
+													ι<sub>i</sub>表示取车任务站点i的服务时间；ι<sub>j</sub>表示送车任务点j的服务时间。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5)电动汽车在行驶过程中，行驶距离与所耗电量呈线性关系：
+												</dt>
+												<dt align="center"><img src="images/CC-31.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中：p<sub>r</sub>表示调度任务r所需电量;
+													e表示电动汽车充电时单位时间增加的电量。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(6)调度员在调度过程中电动汽车电量满足续航要求，有
+												</dt>
+												<dt align="center"><img src="images/CC-32.jpg"></dt>
+												<dt><b>5.4.4综合调度路径模型优化</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该模型是一个混合整数线性规划模型，根据调度需求可以求解调度人员调度路径。
+													但是，在该模型中每个调度员的路线可以与其他调度员的路线交换，因此，该混合整数线性规划模型在可行域中包含多个最优解，
+													对应不同x<sub>ijs</sub>和t<sub>is</sub>的值，不易求解，并且CPU会耗费更多的时间来求最优解。为了防止出现这种情况，对目标函数增加约束条件：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定路线分配给调度人员，不允许调度员之间交换路线，则
+												</dt>
+												<dt align="center"><img src="images/CC-33.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;显示最大满足需求的上限，则
+												</dt>
+												<dt align="center"><img src="images/CC-34.jpg"></dt>
+												<dt><b>5.4.5分支定界法求解模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过分析，关于调度人员的调度路径优化问题是一个混合整数规划模型，通常采用分支定界法（Branch and Bound）求解该模型。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分支定界法的核心思想是将求解问题分解成若干子问题，再将子问题分解，直到无法对子问题进行分解，分解子问题的过程称为分支。
+													分支的过程是估算目标值的界限，这个过程称为定界，定界可以预测解的趋势，判定分支的有效性和求出不能判定的分支。
+													将超出已知可行解集目标值的子问题删除，这个过程称为剪支，剪支可提高计算效率，加速收敛速度。
+													分支定界法的步骤包含分支、定界、再到剪支，将该过程循环进行，就是分支定界法的基本步骤。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分支定界法的计算前提是以深度优先为目标，估算目标函数在分支结点的上、下界。再将该估算的解与已求得的最优解进行比较，删除超过最优解的决策，从而提高最优解的求解速度。
+												</dt>
+												<dt><h4>5.3.2 模型的求解</h4></dt>
+												<dt><b>5.5.1仿真取样</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们对题目中数据进行人工调度策略优化分析，一般我们在近似计算时，将1经度和1纬度相差距离都估为111km。
+													因此，根据我们划分的五个区域中心点经纬度，可以得到各共享站点间的距离，如下表所示：
+												</dt>
+												<dt align="center"><img src="images/CC-35.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于用户出行的目的各不相同，各站点间的距离不能直接作为实际行驶距离。我们将这五个站点不同时刻的车辆列表进行合并，根据这5个站点中各车辆的移动27147条有效数据，换算出各站点间的实际行驶距离，如表2所示。
+												</dt>
+												<dt align="center"><img src="images/CC-36.jpg"></dt>
+												<dt><b>5.5.2调度需求模型实例模拟</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>5.2.3 模型的求解</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
-												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.1 层次结构模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）层次模型的构建</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（3）得出金额</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.2 模型的求解</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
@@ -594,28 +612,25 @@
 												<h3><div id="No7" align="center">六、模型检验与灵敏度分析</div></h3>
 												<dl>
 												<dt><h4>6.1 模型的评价</h4></dt>
-												<dt><b>6.1.1 问题一的模型评价</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>	
-												<dt><b>6.1.2 问题二的模型评价</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>6.1.3 问题三的模型评价</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><h4>6.2模型的推广</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><h4>6.2 灵敏度分析</h4></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>	
@@ -629,62 +644,80 @@
 												<h3><div id="No8" align="center">七、模型评价与推广</div></h3>
 												<dl>
 												<dt><h4>7.1 模型的评价</h4></dt>
-												<dt><b>7.1.1 问题一的模型评价</b></dt>
+												<dt><b>7.1.1模型的优点</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-模型考虑全面，尤其是在目标规划模型中，没有单方面考虑成本直接将路口归属于据其最近的平台，
+													而是企业最优的目标下综合考虑了调度车辆数、调度距离、成本最小及任务量均衡度最优的目标，所求方案比一般方案更加优良。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-对于目标规划模型遗传算法求解过程不依赖梯度信息，通过模拟自然界的进化过程来搜索最优解，是一种高效、并行、全局的搜索方法。
 												</dt>	
-												<dt><b>7.1.2 问题二的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-分支定界法能够在计算过程中保证精度的前提下加快计算速度，减少计算量，通过剪支舍去没有希望的解从而求得问题的最优解，方便计算求解。
+												</dt>
+												<dt><b>7.1.2模型的缺点</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-模型在分配给平台时，只考虑了成本因素和任务量均衡因素，没有损耗率、人员选择、技术发展等其他因素，无法完全衡量企业利润和其他各个方面；
+													目标规划模型中，构成调度体系的各指标种类可以更加全面，可以构成更好的实际应用性。
 												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-建立的调度路径模型是基于收益最大化的调度方案，因此在一些情况下并不能完全满足出现的调度需求，即无法满足所有的订单的用车需求。
+													在未来的研究中可以考虑采用激励用户的方法进行基于用户激励的自适应调度策略，作为对调度员人工调度的补充，进一步提高车辆利用效率和降低调度成本。
+												</dt>
+												<dt><h4>7.2 模型改进</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们选取了神经网络多元线性回归来改进我们多元线性回归模型
+												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>7.1.3 问题三的模型评价</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><h4>7.2模型的推广</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												</dt>
+												<dt><h4>7.3模型的推广</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未来研究可基于运营数据，建立电动汽车用车需求预测模型，根据预测数据，提前规划共享站点位置、配置车辆和车位数。
+												</dt>	
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No9" align="center">八、参考文献</div></h3>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1] DROR M, FORTIN D, ROUCAIROL C. Redistribution of self-service electric cars: a case of pickup and delivery[D]. Le Chesnay: Institut National de Recherche en Informatique et en Automatique, INRIA, 1998.
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2] HAFEZ N, PARENT M, PROTH J M. Managing a pool of self service cars[J]. Journal of Intelligent Manufacturing, 1997, 8(5): 459.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3] LI X, MA J, CUI J, et al. Design framework of large-scale one-way electric vehicle sharing systems: a continuum approximate model[J]. Transportation Research Part B: Methodological, 2016, 88: 21.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4] WANG H, LI Z, ZHU X, et al. A Full Service Model for Vehicle Scheduling in one-way electric vehicle car-sharing systems[C]// International Conference on Internet of Vehicles. Chengdu: Springer International Publishing, 2015: 25-36.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5] FANTI M P, MANGINI A M, PEDRONCELLI G, et al. Apetri net model for fleet sizing of electric car sharing systems[C]// 2016 13th International Workshop on Discrete Event Systems(WODES). Xi’an: IEEE, 2016: 51-56.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6] SHAHEEN S, MARTIN E W, BANSAL A. Zero-and low-emission vehicles in U.S. carsharing fleets: impacts of exposure on member perceptions [R]. Berkeley Transportation Library, 2015.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7] MATTHEW B, SUSAN S, TUENJAIF, et al. Carsharing and station cars in asia: an overview of japan and singapore[j]. Transportation Research Record Journal of the Transportation Research Board, 2005, 1986(1445386): 106.
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8] CORREIA G H D A, ANTUNES A P. Optimization approach to depot location and trip selection in one-way carsharing systems [J ]. Transportation Research Part E: Logistics and Transportation Review, 2012, 48(1): 233.
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9] SHAHEEN S A, COHEN A P. Carsharing and personal vehicle services: worldwide market developments and emerging trends[J]. International Journal of Sustainable Transportation, 2013, 7(1): 5.
 												</dt>
 												<dl>
 												</dl>
