@@ -541,37 +541,132 @@
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其具体实现过程如下：
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.数据输入：在区间内随机初始化网络中所有节点的连接权和节点的阈值，读入经过处理的重要影响因子的样本和各方案的股票价格。
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.数据输入：在(0,1)区间内随机初始化网络中所有节点的连接权w<sub>ij</sub>和节点的阈值θ<sub>ij</sub>，
+													读入经过处理的重要影响因子的样本x<sub>k</sub>和各方案的股票价格y<sub>k</sub>。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.模型训练：根据已知参数计算当前的各方案的股票价格，并计算出输出层神经元的梯度项和影藏层神经元的梯度项，
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													2.模型训练：根据已知参数计算当前的各方案的股票价格y<sub>k</sub>，并计算出输出层神经元的梯度项g<sub>j</sub>和影藏层神经元的梯度项e<sub>k</sub>，
 													计算各层神经元节点的误差信号，反向传播误差，修正权值和阈值，不断重复上述步骤，直到此神经网络的输出值达到要求的误差范围。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													5.3.1.2 GCS-BP 神经网络 
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-35.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传统的 BP 神经网络的初始连接权值和阈值是随机选取的，
+													这样选取的初始连接权值和阈值易使网络陷入局部最优，针对这一缺点，考虑用基于全局搜索能力较强的加高斯扰动的布谷鸟搜索算法（GCS）优化其网络初始连接权值和阈值的改进算法。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于高斯扰动的布谷鸟BP神经网络算法（GCS-BP）的步骤： 
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）产生n个随机鸟巢X<sup>(0)</sup>=[X<sub>1</sub><sup>(0)</sup>,X<sub>2</sub><sup>(0)</sup>,...,X<sub>n</sub><sup>(0)</sup>]<sup>T</sup>，
+													每个鸟巢代表 BP 神经网络的一组初始连接权值和阈值，按[W<sub>ij</sub>,φ<sub>ij</sub>,θ<sub>j</sub>,γ<sub>k</sub>]顺序编码。
+													中鸟巢的维数为：输入层节点数隐层节点数+隐层节点数+隐层节点数输出层节点数+输出层节点数。
+													将[W<sub>ij</sub>,φ<sub>ij</sub>,θ<sub>j</sub>,γ<sub>k</sub>]解码，计算每组鸟巢的适应度值，即每组鸟巢对应的预测误差，
+													得到当前最优的鸟巢位置X<sub>j</sub><sup>(0)</sup>,j=1,2,...,n及最小适应度f。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）经过t次迭代后保留最优鸟巢位置，根据X<sub>i</sub><sup>(t+1)</sup>=X<sub>i</sub><sup>(t)</sup>+α⊕L(λ),i=1,2,...,n，
+													对其他鸟巢进行更新。每得到一组新的鸟巢位置，对其进行测试，与上一代的鸟巢位置X<sup>(t)</sup>=[X<sub>1</sub><sup>(t)</sup>,X<sub>2</sub><sup>(t)</sup>,...,X<sub>n</sub><sup>(t)</sup>]<sup>T</sup>进行比较，
+													用适应度值小的鸟巢位置替换适应度值大的鸟巢位置，从而得到一组较优的鸟巢位置X<sup>(t+1)</sup>=[X<sub>1</sub><sup>(t+1)</sup>,X<sub>2</sub><sup>(t+1)</sup>,...,X<sub>n</sub><sup>(t+1)</sup>]<sup>T</sup>。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）产生一组随机数r(r∈[0,1])，与淘汰概率P<sub>a</sub>进行比较，保留X<sup>(t+1)</sup>中被发现概率较小的鸟巢。
+													同时对其他鸟巢按位置用更新公式进行更新，得到一组新的鸟巢位置，对新鸟巢位置进行测试，与上一代的鸟巢位置X<sup>(t)</sup>=[X<sub>1</sub><sup>(t)</sup>,X<sub>2</sub><sup>(t)</sup>,...,X<sub>n</sub><sup>(t)</sup>]<sup>T</sup>进行比较，
+													用适应度值小的鸟巢位置替换适应度值大的鸟巢位置，从而得到一组较优的鸟巢位置X<sup>(t+2)</sup>=[X<sub>1</sub><sup>(t+2)</sup>,X<sub>2</sub><sup>(t+2)</sup>,...,X<sub>n</sub><sup>(t+2)</sup>]<sup>T</sup>。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）对鸟巢X<sup>(t+2)</sup>按照式子X<sup>(t+1)</sup>=X<sup>(t+1)</sup>+ε进行高斯扰动，得到新的鸟巢位置，
+													并与X<sup>(t+2)</sup>进行比较，得到从而得到一组较优的鸟巢位置X<sup>(t+3)</sup>=[X<sub>1</sub><sup>(t+3)</sup>,X<sub>2</sub><sup>(t+3)</sup>,...,X<sub>n</sub><sup>(t+3)</sup>]<sup>T</sup>。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）在X<sup>(t+3)</sup>中寻找适应度f最小的最优鸟巢位置X<sub>i</sub><sup>(t+3)</sup>，判断f的误差是否达到要求的精度。
+													如果满足，则停止搜索，输出全局最优值f以及对应的最优鸟巢位置。
+													否则，返回步骤（2）继续搜索，满足算法跳出条件时终止。
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（6）将最后得到的最优解进行解码，作为 BP 神经网络的初始连接权值和阈值。
+												</dt>
+												<dt>
+													5.3.1.3 神经网络的结构设计
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网络拓扑结构的设计主要包括以下几个方面：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）输入层和输出层的设计
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于股票价格受到多个指标的影响，所以先利用第1问中主成分分析对输入数据进行降维，由10维数据得到2个主成分。然后根据得到的2个主成分确定输入神经元的数目。
+													用第一天的主成分作为神经网络的输入，第二天的收盘价作为网络的输出。对股票进行预测，常用到的预测方法有单步预测、多步预测和滚动预测，本文用的是单步预测。 
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）隐层的设计
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实验过程中，我们经常用到的是“试凑法”。方法是先取一个比较小的隐含层节点数，对网络进行训练，并记录相应的误差值．然后对节点数调整，依次增加，
+													对同一样本集进行反复的训练，直到误差满足精度要求，误差值最小的时候对应的隐层节点数即为所求。这种方法直观简单，所以本文用试凑法来确定隐层的节点数。经过多次试凑，隐层的节点数取 18。 
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）初始值的选取
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文用具有较强跳出局部极值能力的GCS 算法对 BP 神经网络的初始连接权值和阈值进行优化。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）学习率的确定
+												</dt>	
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BP 网络的学习率以成正比的关系决定了网络权值阈值的修正速度．学习率的选择比较大的话,可能会导致网络发生震荡;
+													学习率选择比较小的话，网络的训练周期很有可能被拉长,甚至可能导致网络训练不收敛．我们通常会选择一个较小的学习率，因为较小的学习率有助于使得网络误差值不会跳出误差曲面表面，从而获得最小误差。
+													通常在[0.01,0.8]这个范围之间进行取值,网络仿真时取学习效率为0.05。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）误差的选择
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票预测模型好与差的的判断标准是该模型的运行时间和精确度．在进行网络仿真的时候，误差是一个很重要的指标，
+													通过误差可以直观地了解到网络的预测性能。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（6）激活函数的设置
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入层到隐含层的传递函数设定为logsig，隐含层到输出层的传递函数设定为purelin。
+												</dt>
+												<dt><b>5.3.2 基于PCA的GCS-BP网络仿真</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-36.jpg"></dt>
+												<dt align="center"><img src="images/ZQ-35.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中W和B<sub>1</sub>分别为输入层与隐层之间的连接权值和阈值，V和B<sub>2</sub>分别为隐层与输出层之间的连接权值和阈值。
+													取值与预测结果见附件，预测效果见下图
 												</dt>
-												<dt><b>（3）得出金额</b></dt>
+												<dt align="center"><img src="images/ZQ-36.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从图4-1可以看出，相比于PCA-BP算法的预测值来说，基于PCA-GCS-BP算法的股价预测值与实际股价的误差要小，更接近于实际股价，预测的精度有所提高。
+													仿真结果表明：基于PCA 的GCS-BP 神经网络的股票价格预测模型较PCA-BP模型具有较高的预测精度．加高斯扰动的布谷鸟算法GCS与BP神经网络相结合对股价进行预测有很好的效果，可以对股价在一定误差范围内进行预测。
 												</dt>
-												<dt><b>5.3.2 模型的求解</b></dt>
+												<dt align="center"><img src="images/ZQ-37.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图5-3-2中gradient曲线，是我们借助梯度来更好的确定目标函数下降方向，其可以理解为单变量时的导专数。图中的mu是一个超参数，用来表明梯度方面，可以看做是在是在最初选取的样本方向是增加加速度来修正下降方向。
+													val fail代表检验失败次数，可以看到基本检验成功。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-37.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图回归结果中，r代表相关系数，其绝对值越接近1，代表相关性越大，这四幅图分别代表训练样本、验证样本、测试样本和全部样本的回归及其相关系数。
+													可以看出，拟合效果非常好。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-38.jpg"></dt>
+												<dt align="center"><img src="images/ZQ-38.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在对数据进行标准化、剔除和筛选等处理的基础上，利用附件所给的数据和收集到的数据进行神经网络模型的训练，
+													经过多次学习和训练，得到训练完成的BP神经网络预测模型，结合上面图示及分析，能够很好的拟合和预测结果。然后输出我们得到的预测值。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输出预测值：因为BP神经网络具有较强的适用性和容错能力，
+													所以利用历史数据建立训练模型，把灰色预测的数据结果带入训练好的模型中，就可以求出充分考虑历史信息的预测结果。其结果如附件所示。
+												</dt>
 												</dl>
 											</section>
 
@@ -581,31 +676,35 @@
 												<dt><h4>6.1 模型的评价</h4></dt>
 												<dt><b>6.1.1 问题一的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：聚类回归模型的优点就是直观，结论形式简明。根据主成分分析分析可以把九个变量归位三类主成分因子，分别为客服沟通状态、平台资源数量和支付结算需求，使其在因子分析后并不是对原有变量的取舍，
+													而是根据原始变量的信息进行重新组合，找出影响变量的共同因子，化简数据。同时它通过旋转使得因子变量更具有可解释性，根据模型检验得出的共同因子进行多元回归的准确性较高。总体回归清晰性高。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：在样本量较大时，要获得聚类结论有一定困难。由于相似系数是根据被试的反映来建立反映被试间内在联系的指标，而实践中有时尽管从被试反映所得出的数据中发现他们之间有紧密的关系，
+													但事物之间内在联系不大。
 												</dt>	
 												<dt><b>6.1.2 问题二的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）优点：秩和比法是一非参数法为基础，对指标的选择无特殊要求，始于各种评价对象；测方法计算用的数值是秩次，可以消除异常值的干扰，它融合了参数分析的方法，
+													结果别单纯采用非参数法更为精确，既可以直接排序，又可以分档排序，使用范围广泛。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）缺点：秩和比法是的排序主要依据是利用原始数据的秩次，最终算出的RSR值反映的是综合秩次的差距，而与原始数据的顺位间的差距程度大小无关，
+													这样在指标转化秩次时会失去一些原始数据的信息，如原始数据的大小差别等等。
 												</dt>
 												<dt><b>6.1.3 问题三的模型评价</b></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优点：基于PCA的GCS-BP神经网络算法兼备了CS 算法中选用参数少，搜索路径优，全局优化能力强的特点，
+													且在迭代过程中使其在得到一组较优的鸟窝位置之后，通过一个高斯扰动函数增加鸟窝位置的可搜寻范围，增强其活力。
 												</dt>	
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
 												<dt><h4>6.2模型的推广</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过此次问题，我们利用了主成分分析聚类、灰色预测、秩和比评价模型、BP神经网络预测模型。主成分分析可以有效减少变量个数；秩和比模型是经典的评价类模型；
+													灰色BP神经网络模型，经过我们预测结果表明，其能够准确描述变化趋势；
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这些模型的建立，都可以很好的应用到实际生活中去，这也体现了建模意义所在。
+													分析引起市场波动的成因，是证券市场理论研究和实证分析的重要内容，也可以 为投资者、监管者和上市公司等提供有迹可循的依据，还能更好的引导相关投资，推动相关市场的良性发展。
 												</dt>
 												</dl>
 											</section>
@@ -613,32 +712,25 @@
 											<section>
 												<h3><div id="No8" align="center">七、参考文献</div></h3>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1] 张文彤，SPSS统计分析高级教程[M]，高等教育出版社：2013。
 												</dt>	
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2] 王霞，包启挺，聚类回归分析(CLR)在市场细分研究中的应用[J]，数理统计与管理，27(2)：338-346，2008。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3] 周琪琪，邵振国，林韩，基于秩和比综合评价法的用户谐波危害分级评估[J]，电力电容器与无功补偿，39(5)：119-121，2018。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4] 李永强，宋威，基于BP算法的股票价格趋势预测[J]，北方工业大学学报，25(1)：11-17，2013
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5] 陈俏，梁利利，谢丽娟，股票预测的研究进展[J]，学术探讨，10(6)：311-312，2012。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6] 张德丰，神经网络应用设计[M]，北京，机械工业出版社： 3-4，2009。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7] 李永强，宋威，基于BP算法的股票价格趋势预测[J]，北方工业大学学报，25(1)：11-17，2013。
 												</dt>
 												<dl>
 												</dl>
