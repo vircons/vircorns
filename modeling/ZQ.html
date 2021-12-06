@@ -408,104 +408,145 @@
 													编出各个方案的总成交量对各个选股方案和投资组合方案的秩，运用非整次秩和比法将定量的指标值转换为半定量的秩次，所编的秩次除了最大指标值和最小指标值为整数外，
 													其余为非整数，如公式（5-2-1）。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
+												<dt align="center"><img src="images/ZQ-21.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
-												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
-												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）设计 BP 神经网络学习模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式中，R=(R<sub>ij</sub>)<sub>n×m</sub>为秩次，n为样本数，X为原始指标值，
+													X<sub>min</sub>、X<sub>max</sub>分别为最小原始指标值和最大原始指标值。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.计算加权秩和比WRSR
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提出加权秩和比指标WRSR，计算各因素的加权秩和比WRSR
+												</dt>
+												<dt align="center"><img src="images/ZQ-22.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，W<sub>j</sub>为j个指标的权重系数，表现典型评价指标中各因素对方案的总成交量的不同影响程度。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												
-												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												
-												
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-24.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-25.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-26.jpg"></dt>
-												<dt><b>5.2.2 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.编秩WRSR频率分布表，计算各组累计频数
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.2.3 模型的求解</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-27.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-28.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-29.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-30.jpg"></dt>
-												<dt><h4>5.3 问题3模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>5.3.1 层次结构模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）层次模型的构建</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算概率单位，编秩WRSR频率分布表，列出各组频数f，计算各组累计频数；
+													确定各组WRSR秩次范围和平均秩次，计算累计频率P=AR/n；
+													将百分率转换为概率单位Probit，Probit为百分率对应的标准正态离差加5，
+													一般按照查询百分数与概率单位对照表，最后向下的累计频率按照1-1/4×n估计。
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.计算货运线路定价分布直线回归方程
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-31.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以累计频率所对的概率单位Probit为自变量，
+													以WRSR值为因变量，计算直线回归方程，即WRSR=a+b×Probit，其中a、b为计算得到的常系数。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-32.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.分档排序
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-33.jpg"></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将选股方案和投资组合方案分档排序：依据各分档情况下概率单位Probit值，
+													按照回归方程推算所对应WRSR估计值，然后根据常用的分档数对应的百分位数及概率单位表，对评价对象分档排序，实现选股方案和投资组合方案分级。
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-34.jpg"></dt>
+												<dt>
+													5.2.1.2 熵权法计算评价指标的权重系数
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现有n个待评价项目，m个评价指标，构成原始数据矩阵R=(r<sub>ij</sub>)<sub>n×m</sub>。
+												</dt>
+												<dt align="center"><img src="images/ZQ-23.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求取各个指标值权重的过程为：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）先求取m个指标值的第i个项目的指标值的比重P<sub>ij</sub>为
+												</dt>
+												<dt align="center"><img src="images/ZQ-24.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）计算第j个指标的熵值e<sub>j</sub>为
+												</dt>
+												<dt align="center"><img src="images/ZQ-25.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）计算第m个指标的熵权W<sub>j</sub>为
+												</dt>
+												<dt align="center"><img src="images/ZQ-26.jpg"></dt>
+												<dt>
+													5.2.1.3基于秩和比综合评价法的影响因素分级
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秩和比综合评价法首先利用秩和比加权法确定了各因素的影响程度，为了对选股方案和投资组合方案进行评价，
+													选取相关因素直方参数重构原始评价矩阵，其形式为
+												</dt>
+												<dt align="center"><img src="images/ZQ-27.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于各因素评价指标为高优指标，因此定义了秩和比指标值WRSR整体描述了货运线路定价影响程度程度。
+													根据公式（5-2-2）计算各个方案成交量的WRSR值。再由熵权法计算原始矩阵的权重系数以及加权秩次。最后根据计算结果，列出WRSR值的列表，确定分档排序的界限，对各影响因素进行分档排序，确定分布直线回归方程，对方案成交量影响进行分级评估
+												</dt>
+												<dt><b>5.2.2 选股方案和投资组合方案进行评价</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合前文所述的评估原理，对附件中各方案中股票历史交易数据的成交量进行评价。首先进行主成分分析，各主成分的特征量、单个贡献率、累计贡献率见前文表5-2-3（总方差解释）。其贡献了直方图如图5-2-2。
+												</dt>
+												<dt align="center"><img src="images/ZQ-28.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选取3个主成分代表原始10维指标，进行模糊聚类分析。
+													聚类的最佳分类数据根据评价准则V<sub>xb</sub>确定，原始数据分类数与V<sub>xb</sub>的关系如图5-2-3所示。
+												</dt>
+												<dt align="center"><img src="images/ZQ-29.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据图5-3-2表明，在分类数为2时，取值最小，故将原始数据划分成2类主成分。根据主成分绘制数据的各项参数，
+													分析附件中各方案的股票历史交易数据的成交量。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主成分分析后2类成分的数值作为评价矩阵K，利用公式（5-2-2）计算其RSR矩阵，之后计算原始矩阵R的权重系数，
+													再根据公式（5-2-4）计算原始矩阵每类主成分评价指标的加权秩次比WRSR，取平均值做为每一个方案的总成交量的WRSR值，按照WRSR从大到小顺序列写表5-3-1，
+													并分别计算每日WRSR对应的概率单位。
+												</dt>
+												<dt align="center"><img src="images/ZQ-30.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据表5-2-1的数据，以Probit值为自变量，WRSR值为因变量，计算一元直线回归方程。计算结果为
+												</dt>
+												<dt align="center"><img src="images/ZQ-31.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;模型相关系数为0.9736接近于1，说明其线性拟合程度较高。经F检验，F=10257.5，P=0 < 0.05，说明具有统计意义。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将附件2的货运线的定价情况分档，根据常用的分档数对应的百分位数及概率单位表，将数据分成了3档，
+													分别为`P < 15.714%,Probit < 4.00`；`15.714% <= P <= 83.929%, 4.00 <= Probit <= 6.00`；`P > 83.929%,Probit > 6.00`。因此，定价分档如表5-3-2。
+												</dt>
+												<dt align="center"><img src="images/ZQ-32.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：1表示相对影响程度较低；2表示相对影响程度中等；3表示相对影响程度较高。
+												</dt>
+												<dt><h4>5.3 问题3的解答</h4></dt>
+												<dt><b>5.3.1 基于PCA的GCS-BP网络的股票预测研究 </b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票市场受到诸多因素的影响，是极其不稳定且非常复杂的系统，根据股票的历史数据建立一个准确的、稳定的预测模型，
+													对于研究者来说是十分困难的。传统的股票价格预测方法大都基于统计学，对于解决极其复杂的非线性问题具有一定的局限性，不能非常精确地预测股市。
+													本章是PCA-GCS-BP网络对股票价格进行预测，首先用主成分分析对数据进行降维处理，消除数据冗余，
+													然后用高斯扰动的布谷鸟算法对 BP 神经网络的初始连接权值和阈值进行优化，最后将新建的 PCA-GCS-BP 预测模型用于股票价格预测。
+												</dt>
+												<dt><b>5.3.1.1 BP神经网络</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;神经网络是由大量的基本处理单元-神经元相互连接而成的网络。每个神经元接收输入信息,然后按照一定的转换规则输出信息。
+													常用的神经元模型如图5-3-1 所示：
+												</dt>
+												<dt align="center"><img src="images/ZQ-33.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人工神经网络可以被看成是由连接、加法器和激活函数三要素组成的。
+													其中，x<sub>1</sub>、x<sub>2</sub>、……、x<sub>m</sub>为输入信号w<sub>k1</sub>、w<sub>k2</sub>、……、w<sub>km</sub>为输入层神经元k到隐层神经元的连接权值，
+													θ<sub>k</sub>为隐层神经元的阈值，v<sub>k</sub>隐层神经元到输出层神经元的连接权值，φ(·)为激活函数，y<sub>k</sub>为神经元k的输出。
+													神经元的非线性特征由输出函数f表现，一般有多种激活函数可用。
+													BP神经网络的基本思想如图5-3-2所示：
+												</dt>
+												<dt align="center"><img src="images/ZQ-34.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其具体实现过程如下：
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.数据输入：在区间内随机初始化网络中所有节点的连接权和节点的阈值，读入经过处理的重要影响因子的样本和各方案的股票价格。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.模型训练：根据已知参数计算当前的各方案的股票价格，并计算出输出层神经元的梯度项和影藏层神经元的梯度项，
+													计算各层神经元节点的误差信号，反向传播误差，修正权值和阈值，不断重复上述步骤，直到此神经网络的输出值达到要求的误差范围。
+												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
