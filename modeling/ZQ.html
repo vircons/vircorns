@@ -125,9 +125,9 @@
 										<article class="box page-content">
 
 											<header>
-												<h2>基于熵值法的中小微企业信贷政策</h2>
+												<h2>中青杯</h2>
 												<ul class="meta">
-													<li class="icon fa-clock">2021.1.19</li>
+													<li class="icon fa-clock">2020.6.1</li>
 													<li class="icon fa-comments">by Vircorns</li>
 												</ul>
 											</header>
@@ -136,26 +136,28 @@
 												<h3><div id="No1" align="center">摘要</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着近年来我国资本市场的发展和证券交易规模的扩大，越来越多的资金投资于证券市场，与此同时市场价格的波动也十分剧烈。市场的波动对于人们风险收益的分析、股东权益最大化和监管层的有效监管都有着至关重要的作用，
+													因此研究证券市场波动的规律性，分析引起市场波动的成因，是证券市场理论研究和实证分析的重要内容，也可以为投资者、监管者和上市公司等提供有迹可循的依据。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>针对问题1，</b>
-													
+													第1问要求在附件数据的分析和处理过程中补全数据，结合实际生活中，存在股票停盘的情况，
+													我们认为缺失值为前八支股票中最后一个成交量，可以通过灰色预测模型进行分析。
+													第2问确定选股方案和投资组合方案，总体原则为：风险最小化，利益最大化。
+													可以通过主成分分析，选取十只股票为被解释变量，将各指标量化，进行降维处理，之后进行聚类分析。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>针对问题2，</b>
-													
+													我们建立基于秩和比的综合评价模型，根据公式（5-2-2）计算各个股票的WRSR值，再由熵权法计算原始矩阵的权重系数以及加权秩次。
+													最后根据计算结果，列出WRSR值的列表，确定分档排序的界限，对各影响因素进行分档排序，确定分布直线回归方程WRSR=-0.3844+0.1768*Probit，对股票影响进行分级评估（分级情况见表5-2-2）。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>针对问题3，</b>
-													
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>关键词：熵值法、BP神经网络、层次分析法、贪心</b>
+													本文需要求出当前指数波动，并以此预测未来一年波动指数。可以通过基于PCA的GCS-BP网络进行预测研究，用主成分分析对数据进行降维处理，消除数据冗余，然后用高斯扰动的布谷鸟算法对 BP 神经网络的初始连接权值和阈值进行优化，最后将新建的 PCA-GCS-BP 预测模型用于股票价格预测。
+													最后，根据我们的预测结果，给出合理的投资建议和策略。
 												</dt>
 												</dl>
 											</section>
@@ -163,32 +165,27 @@
 											<section>
 												<h3><div id="No2" align="center">一、问题重述</div></h3>
 												<dl>
-												<dt><h4>1.1 问题背景</h4></dt>	
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt><h4>1.2 问题重述</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													经过30年的快速发展，中国证券市场在多方面取得了举世瞩目的成就，对国民经济的资源配置起着日益重要的作用。
+													随着近年来我国资本市场的发展和证券交易规模的不断扩大，市场价格的波动也十分剧烈，而波动作为证券市场中最本质的属性和特征，
+													对于人们风险收益的分析、股东权益最大化和监管层的有效监管都有着至关重要的作用，因此研究证券市场波动的规律性，分析引起市场波动的成因，
+													是证券市场理论研究和实证分析的重要内容，也可以为投资者、监管者和上市公司等提供有迹可循的依据
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>问题一：</b>
-													
+													在附件数据的分析和处理的过程中，对缺损数据进行补全，并通过建立模型，给出合理选股方案和投资组合方案。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>问题二：</b>
-													
+													尝试给出合理的评价指标来评估问题一中的模型，并给出分析结果。
 												</dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<b>问题三：</b>
-													
+													通过附件股指数据和补充的数据，对当前的指数波动和未来一年的指数波动进行合理建模，并给出合理的投资建议和策略
 												</dt>
 												</dl>
 											</section>
@@ -198,15 +195,22 @@
 												<dl>
 												<dt><h4>2.1 问题1的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 首先，第1问要求在附件数据的分析和处理过程中补全数据，结合实际生活中，存在股票停盘的情况，
+													我们认为缺失值为前八支股票中最后一个成交量，可以通过灰色预测模型进行分析。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第2问确定选股方案和投资组合方案，总体原则为：风险最小化，利益最大化。可以通过主成分分析，选取十只股票为被解释变量，
+													将各指标量化，进行降维处理，之后进行聚类分析。
 												</dt>
 												<dt><h4>2.2 问题2的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题2属于评价与决策类问题，此类问题一般用层次分析法、秩和比法等评价模型，其中层次分析法主观性较强。
+													因此，我们可以建立基于秩和比的综合评价模型。在基于秩和比的评价过程中，可以对股票进行打分，根据得分的分数由高到低进行排序，通过确定分档排序的界限。
 												</dt>
 												<dt><h4>2.3 问题3的分析</h4></dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题3首先需要求出当前指数波动，并以此预测未来一年波动指数。可以通过基于PCA的GCS-BP网络进行预测研究。
+													最后，根据我们的预测结果，给出合理的投资建议和策略。
 												</dt>
 												</dl>
 											</section>
@@ -215,16 +219,16 @@
 												<h3><div id="No4" align="center">三、模型假设</div></h3>
 												<dl>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.假设题目所给的数据真实可靠；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.假设文中所引用的文献和结论均正确可靠；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.假设各因素间无相互影响；
 												</dt>
 												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.假设附件中十只股票可以代表实际股市。
 												</dt>
 												</dl>
 											</section>
@@ -232,137 +236,187 @@
 											<section>
 												<h3><div id="No5" align="center">四、定义与符号声明</div></h3>
 												<dl>
-												<table border="2" cellspacing="0">
-													<tr><td>符号</td><td>符号意义</td></tr>
-													<tr><td>I<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>I<sub>value</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>O<sub>amount</sub></td><td>	</td></tr>
-													<tr><td>R</td><td>	</td></tr>
-													<tr><td>L<sub>i</sub></td><td>	</td></tr>
-													<tr><td>P<sub>i</sub></td><td>	</td></tr>
-													<tr><td>B<sub>eff</sub></td><td>	</td></tr>
-													<tr><td>B<sub>all</sub></td><td>	</td></tr>
-													<tr><td>L</td><td>	</td></tr>
-													<tr><td>N</td><td>	</td></tr>
-													<tr><td>M</td><td>	</td></tr>
-												</table>
+													<dt align="center"><img src="images/ZQ-1.jpg"></dt>
 												</dl>
 											</section>
 
 											<section>
 												<h3><div id="No6" align="center">五、模型的建立与求解</div></h3>
 												<dl>
-												<dt><h4>5.1 问题1模型的建立与求解</h4></dt>
+												<dt><h4>5.1 问题1的解答</h4></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过对于附件数据的观察，本文补全了前八支股票中最后一个数据。
+													本文利用灰色预测分析补全，并通过因子分析或者主成分分析对现有数据进行分析，通过降维处理，对其进行有效组合 ，从而得到合理选股方案和投资组合方案。
+												</dt>
+												<dt><b>5.1.1 灰色预测模型</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设X<sup>(0)</sup>(k)为一非负单调的原始时间序列第期的值。
+													首先，我们采用依次累加的方法弱化原始时间序列的随机性，从而得到X<sup>(1)</sup>,对X<sup>(1)</sup>建立如下一阶线型微分方程：
+												</dt>
+												<dt align="center"><img src="images/ZQ-2.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得到灰色模型GM(1,1)，求解预测值：
+												</dt>
+												<dt align="center"><img src="images/ZQ-3.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在模型预测的过程中，我们将原始数据进行累加处理，求解得到的是累加后的预测值，
+													所以若想求得真是的预测值，则需要在进行累减处理，将GM(1,1)模型所求得的数据X<sup>(1)</sup>(k+1)进行累减，还原为真实的预测值X<sup>(0)</sup>(k+1)，则：
+												</dt>
+												<dt align="center"><img src="images/ZQ-4.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文通过灰色预测模型，对数据进行了补全，具体见表5.1.1
+												</dt>
+												<dt align="center"><img src="images/ZQ-5.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同时，我们还对拟合效果进行了评价，八只股票拟合效果见图5.1.1
+												</dt>
+												<dt align="center"><img src="images/ZQ-6.jpg"></dt>
+												<dt><b>5.1.2 基于聚类分析的选股策略</b></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;聚类分析是解决定价影响因素细分问题的常用方法之一，是基于事物本身特性研究个体的分类方法。聚
+													类分析的原则是在划分后的各子类中，同一类的个体有非常大的相似性，不用类的个体有着明显的差异。
+													本研究中，运用聚类分析的思想方法研究选股策略是不需要提前拟定分类标准的，人为因素不会再聚类过程中进行任何干扰。
+													此方法能保证完全从预处理后的样本数据的角度综合分析各个属性，最终分类的结果可以充分体现各类因素的特征和区别。其流程见图5-2-1。
+												</dt>
+												<dt align="center"><img src="images/ZQ-7.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.原始变量的提取
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从问题出发，选择十只股票作为原始变量，并对变量类型和储存类型进行定义。
+												</dt>
+												<dt align="center"><img src="images/ZQ-8.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里x<sub>i</sub>代表附件数据中的十只股票，同时还可以考虑外生变量如消费者偏好、国家政策扶持。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.原始变量的降维
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出于尽量全面了解事物信息的目的，大多数研究者往往会对事物相关的众多属性因素进行大量观测，并通过统计分析收集到大量数据来探索目标事物的规律。
+													众多变量、大样本的确能够在很大程度上展现出目标事物全面丰富的信息，但是变量间的相关性会对问题的分析产生很大的干扰。相反，单独对各个变量进行分析又容易陷入局限性的误区，不能从整体上把握目标事物的特征，这样非常容易得出局限且偏颇的结论。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以，有必要寻找一种技能减少原始变量个数，又能尽量保留原始变量所包含信息的方法。本文利用降维的方法来选取具有代表性的变量。因子分析是降维的一种常用方法，其能够在具有相关性联系的变量中，
+													准确找到不能通过直接观测得到但对可观测变量的变化有一定支配作用的潜在因子。将相关性高的变量用同一因子表示，可以部分减少变量数量。本研究通过SPSS软件对原始变量进行降维。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.样本聚类
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用降维后提取得到的主成分因子作为分类标准，对从附件中股票相关数据进行聚类并对聚类结果进行检验和评价。聚类结果理想，则进入货运线路定价影响因素的下一步细分；反之，则通过因子分析法寻找新的分类变量，作为重新聚类的输入。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.子类定价影响因素描述
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从各个分类变量的角度，对聚类的结果在各个分类变量上的统计特征做出描述并进行分析。适当合并形成一定规模的细分子定价影响因素，并对其进行具有现实意义的描述。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本研究使用SPSS软件实现聚类分析的过程。
+												</dt>
+												<dt>
+													5.1.2.1 原始变量降维
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先从附件数据中选取出降维前最初的原始变量，各原始变量的定义如下：
+												</dt>
+												<dt align="center"><img src="images/ZQ-9.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.KMO检验及Bartlett检验
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因子分析前，首先需要检验原始变量的适用性。在SPSS中因子分析里描述统计项里可以计算Kaiser-Metey-Olkin统计量，
+													并进行Bartlett球形度检验。
+													检验结果如表5-2-2所示。KMO值0.766以及Sig值小于0.05，表明原始变量间存在一定相对性，适合进一步进行因子分析
+												</dt>
+												<dt align="center"><img src="images/ZQ-10.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用主成分分析法从原始变量中抽取因子，通过特征值大于1 的条件判断因子个数。
+													表5-2-3和图5-2-1显示，9个成分指标对于主成分分析的贡献能力略有偏差，前3个成分指标特征值均大于1，表明其对于主成分分析的贡献更为显著，
+													可以解释原来55.776%的信息，解释效果良好。
+												</dt>
+												<dt align="center"><img src="images/ZQ-11.jpg"></dt>
+												<dt align="center"><img src="images/ZQ-12.jpg"></dt>
+												<dt align="center"><img src="images/ZQ-13.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从成分矩阵表5-2-4可以看出，不同的原始变量在抽取出的主成分1、2、3中的载荷差异并不大，这不便于通过原始变量解释各主成分的含义。
+													所以，为了进一步描述各变量在主成分当中的归属情况，在此利用旋转指令中的最大方差法Varimax来进行处理。正交旋转法具有Kaiser标准化，能使每个主成分上具有最高载荷的变量数最小，从而达到简化主成分解释的目的。
+													采用最大方差法得到的选择成分矩阵和旋转空间中的成分如表5-2-5。
+												</dt>
+												<dt align="center"><img src="images/ZQ-14.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合表5-2-5和图5-2-3容易看出，经过因子分析后得到的3个主成分较好的代表了个原始变量。其中，第1个主成分较好的描述了abc002，abc004，abc005，abc006，abc008这5项因素，
+													第2个主成分较好的描述了abc001，abc009，abc010这3项因素，第3个主成分较好的描述了abc003，abc007这2项因素。
+												</dt>
+												<dt align="center"><img src="images/ZQ-15.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;综上所述，经过降维后共得到3个主成分，这3个主成分分别从不同方面代表了原始的10个股票，降维效果良好。各原始变量指标在3个主成分上的成分得分系数矩阵如表5-2-6所示。
+													将提取出的主成分作为下一步聚类分析的输入变量。
+												</dt>
+												<dt>
+													5.1.2.2 样本聚类
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过原始变量降维得到主成分因子之后，下一步是进行聚类。聚类分析主要有两步聚类、快速聚类和层次聚类三种方法。考虑到样本观测量较大，
+													本研究选择处理速度更快的快速聚类法（K-means）进行聚类分析。
+												</dt>
+												<dt align="center"><img src="images/ZQ-16.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以3个主成分因子作为分类变量，通过SPSS软件中的K-means聚类法实施聚类。结合样本量因素，设置聚类数方面，这里拟将处理后样本分成2类。设置最大迭代次数100次，经过迭代运算后，SPSS输出的最终聚类中心表如表5-2-7所示。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;各最终聚类中心间的距离如表5-2-8所示。
+												</dt>
+												<dt align="center"><img src="images/ZQ-17.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为保证个细分子类之间的差异性，聚类过程中同时进行了ANOVA统计量分析（方程分析），其结果如表5-2-9所示。
+												</dt>
+												<dt align="center"><img src="images/ZQ-18.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从类间均方程、类内误差均方差以及Sig值来看，此聚类过程效果理想，各子类间差异显著。最终的聚类分析结果中，各子类的样本数量如表5-2-10所示。
+												</dt>
+												<dt align="center"><img src="images/ZQ-19.jpg"></dt>
+												<dt>
+													5.1.2.3 选股与投资组合方案
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过主成分分析法，我们可以看出，主成分1占比较大，即abc002，abc004，abc005，abc006，abc008这5股，其对市场影响较大，同时，根据聚类分析结果，其显著性较大，属于高风险高收益股票。而主成分2和主成分3占比相当，显著性也较小，
+													因此也可考虑三种成分股票混合购买，组合投资，同时兼顾风险与收益。
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在长期投资中必须要保证收益也或风险的相对稳定,否则过大的收益波动很可能动摇投资者继续坚持原投资策略的信心。总体来说,基本价值和基本成长组合策略是一种相对最优的股票组合策略。从投资策略的理论依据来看,在评估策略的综合绩效中,
+													把风险调整后收益作为最重要的标准之一,充分权衡风险和收益的匹配则又运用了现代投资组合理论股票组合中涉及的所有单一投资风格的选股策略则又完全运用了基本分析方法。由于基本价值和基本成长组合策略将投资者的风险承受力限定在一个比较适中的水平并且完全不考虑市场时机的选择,
+													因此在本质上类似于介于积极与消极之间的策略。最后,该组合策略的绩效结果是对历史数据运用数学统计的方法而得出相关结论的,所以该策略具有良好的现实应用性,是可以信赖的。
+												</dt>
+												<dt><h4>5.2 问题2的解答</h4></dt>
+												<dt><b>5.2.1 基于秩和比法的评价模型</b></dt>
+												<dt>
+													5.2.1.1秩和比评价法原理及步骤
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秩和比综合评价法进行评价指标参数辨识的基本原理为针对每类评价指标构成的一个n行m列数据矩阵，
+													首先通过秩转换，获得其无量纲统计量RSR或WRSR。然后运用参数统计分析的概念和方法，研究RSR或者WRSR的分布，以其对评价对象的优劣直接排序或分档排序，
+													从而综合评价各评价指标下相关因子对方案的信息。过程如下：
+												</dt>
+												<dt align="center"><img src="images/ZQ-20.jpg"></dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.编秩
+												</dt>
+												<dt>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;针对每类评价指标中n个选股方案和投资组合方案m个评价指标构成的n×m数据矩阵，
+													编出各个方案的总成交量对各个选股方案和投资组合方案的秩，运用非整次秩和比法将定量的指标值转换为半定量的秩次，所编的秩次除了最大指标值和最小指标值为整数外，
+													其余为非整数，如公式（5-2-1）。
+												</dt>
+												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt><b>5.1.1 指标体系的建立</b></dt>
+												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-1.jpg"></dt>
-												<dt><b>5.1.2 基于熵值法的信贷风险量化分析</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-2.jpg"></dt>
-												<dt><b>（1）模型的建立</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-3.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-4.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-5.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-6.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-7.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-8.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-9.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-10.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）问题求解</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-11.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-12.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-13.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-14.jpg"></dt>
-												<dt><b>5.1.3 信贷策略的提出</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（1）银行利润最大化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-15.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt><b>（2）金额均衡分配化</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-16.jpg"></dt>
-												<dt><b>（3）两方案的最终信贷政策</b></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-17.jpg"></dt>
-												<dt><h4>5.2 问题2模型的建立与求解</h4></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
+												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
 												<dt><b>5.2.1 BP神经网络模型的选择与建立</b></dt>
 												<dt><b>（1）选择 BP 神经网络模型的原因</b></dt>
 												<dt>
@@ -381,31 +435,13 @@
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-18.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-19.jpg"></dt>
+												
 												<dt><b>（3）设计 BP 神经网络预测模型</b></dt>
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
-												<dt align="center"><img src="images/NCSMCM-20.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-21.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-22.jpg"></dt>
-												<dt>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</dt>
-												<dt align="center"><img src="images/NCSMCM-23.jpg"></dt>
+												
+												
 												<dt>
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												</dt>
